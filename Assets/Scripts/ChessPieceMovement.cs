@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public interface ChessPiece
+public interface ChessPieceMovement
 {
     public void Move()
     {
