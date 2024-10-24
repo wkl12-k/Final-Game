@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class chessBoard : MonoBehaviour
+public class ChessBoard : MonoBehaviour
 {
     public GameObject whiteBoardTile;
     public GameObject blackBoardTile;
