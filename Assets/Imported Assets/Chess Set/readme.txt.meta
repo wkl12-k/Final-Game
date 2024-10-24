@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: cb0afc2bcef746940a57b9fff95cf079
-timeCreated: 1471931663
+guid: c68913c528c16884da57e679969fa397
+timeCreated: 1471895150
 licenseType: Store
-NativeFormatImporter:
+TextScriptImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
@@ -11,5 +11,5 @@ AssetOrigin:
   productId: 70092
   packageName: Chess Set
   packageVersion: 1.0
-  assetPath: Assets/Prefabs/WhiteChessPieces/Chess Knight White.prefab
+  assetPath: Assets/Chess Set/readme.txt
   uploadId: 133684

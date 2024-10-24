@@ -11,5 +11,5 @@ AssetOrigin:
   productId: 70092
   packageName: Chess Set
   packageVersion: 1.0
-  assetPath: Assets/Chess Set/Prefabs/Chess King Black.prefab
+  assetPath: Assets/Prefabs/BlackChessPieces/Chess King Black.prefab
   uploadId: 133684
