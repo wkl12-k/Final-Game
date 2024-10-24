@@ -1,6 +1,9 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
+
 public class MouseDown : MonoBehaviour
-{
+{ 
+
     void OnMouseDown()
     {
         GetMousePosition();
@@ -10,4 +13,5 @@ public class MouseDown : MonoBehaviour
     {
         return Input.mousePosition;
     }
+
 }
