@@ -11,5 +11,5 @@ AssetOrigin:
   productId: 70092
   packageName: Chess Set
   packageVersion: 1.0
-  assetPath: Assets/Chess Set/Prefabs/Chess Queen Black.prefab
+  assetPath: Assets/Prefabs/BlackChessPieces/Chess Queen Black.prefab
   uploadId: 133684

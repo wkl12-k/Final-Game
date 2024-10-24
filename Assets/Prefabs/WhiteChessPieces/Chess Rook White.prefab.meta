@@ -11,5 +11,5 @@ AssetOrigin:
   productId: 70092
   packageName: Chess Set
   packageVersion: 1.0
-  assetPath: Assets/Chess Set/Prefabs/Chess Rook White.prefab
+  assetPath: Assets/Prefabs/WhiteChessPieces/Chess Rook White.prefab
   uploadId: 133684
