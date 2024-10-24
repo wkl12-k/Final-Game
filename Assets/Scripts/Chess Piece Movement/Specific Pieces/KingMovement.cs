@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class KingMovement : MonoBehaviour
+public class KingMovement : MonoBehaviour, ChessPieceMovement
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -12,5 +12,15 @@ public class KingMovement : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void Move()
+    {
+
+    }
+
+    public float[][] CheckAvailableTiles()
+    {
+        return new float[3][];
     }
 }
