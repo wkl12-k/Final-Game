@@ -1,17 +1,20 @@
 using UnityEngine;
+using System.Collections;
 
 public class RookMovement : MonoBehaviour, ChessPieceMovement
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private Vector3 position;
+    [SerializeField] float speed;
+    [SerializeField] Transform movePoint;
     void Start()
     {
+        position = transform.position;
         
-    }
+    }   
 
-    // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void Move()
@@ -23,4 +26,5 @@ public class RookMovement : MonoBehaviour, ChessPieceMovement
     {
         return new float[3][];
     }
+
 }
