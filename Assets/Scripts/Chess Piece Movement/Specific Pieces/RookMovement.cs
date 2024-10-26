@@ -3,7 +3,7 @@ using System.Collections;
 
 public class RookMovement : MonoBehaviour, ChessPieceMovement
 {
-    [SerializeField] float speed = 0.001f;
+    [SerializeField] float speed = 1;
     private Vector3 position;
 
     void Start()
