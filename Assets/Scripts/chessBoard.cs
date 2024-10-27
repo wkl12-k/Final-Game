@@ -4,13 +4,15 @@ public class ChessBoard : MonoBehaviour
 {
     public GameObject whiteBoardTile;
     public GameObject blackBoardTile;
-    int gridSize =8;
-    float tileCubicSize = 1.0f;
+    [SerializeField] private int gridSize =8;
+    [SerializeField] private float tileCubicSize = 1.0f;
+    private Vector2 boardDimensions;  
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         CreateBoard();
+        CalculateBoardDimensions();
         
     }
 
@@ -40,4 +42,15 @@ public class ChessBoard : MonoBehaviour
             }
         }
     }
+
+    private void CalculateBoardDimensions()
+    {
+        boardDimensions = new Vector2(gridSize * tileCubicSize, gridSize * tileCubicSize);
+    }
+
+    public Vector2 GetBoardDimensions()
+    {
+        return boardDimensions;
+    }
+
 }
