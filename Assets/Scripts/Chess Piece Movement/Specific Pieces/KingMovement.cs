@@ -12,19 +12,19 @@ public class KingMovement : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))  
+        if (Input.GetKeyDown(KeyCode.W))  
         {
             Move(Vector3.back);  
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))  
+        else if (Input.GetKeyDown(KeyCode.X))  
         {
             Move(Vector3.forward);  
         }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow)) // Move Left
+        else if (Input.GetKeyDown(KeyCode.A)) // Move Left
         {
             Move(Vector3.right);  
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow)) // Move Right
+        else if (Input.GetKeyDown(KeyCode.D)) // Move Right
         {
             Move(Vector3.left);  
         }
@@ -36,11 +36,11 @@ public class KingMovement : MonoBehaviour
         {
             Move(new Vector3(-1, 0, -1)); 
         }
-        else if (Input.GetKeyDown(KeyCode.A)) // Move Diagonal Down-Left
+        else if (Input.GetKeyDown(KeyCode.Z)) // Move Diagonal Down-Left
         {
             Move(new Vector3(1, 0, 1));  
         }
-        else if (Input.GetKeyDown(KeyCode.D)) // Move Diagonal Down-Right
+        else if (Input.GetKeyDown(KeyCode.C)) // Move Diagonal Down-Right
         {
             Move(new Vector3(-1, 0, 1));  
         }
