@@ -6,9 +6,9 @@ using UnityEngine;
 public class KnightMovement : MonoBehaviour, ChessPieceMovement
 {
 
-    [SerializeField] float speed = 1;
+    public float speed = 1;
     private Vector3 currentPosition;
-    private int boardSize = 5;
+    private int boardSize = 8;
 
 
      private Vector3[] knightMoves = new Vector3[] {new Vector3(2, 0, 1), new Vector3(2, 0, -1),new Vector3(-2, 0, 1), new Vector3(-2, 0, -1),
@@ -71,14 +71,14 @@ public class KnightMovement : MonoBehaviour, ChessPieceMovement
 
     public void Move(Vector3 targetPosition)
     {
-        if (IsValidMove(targetPosition))
-        {
+       // if (IsValidMove(targetPosition))
+        
             StartCoroutine(MoveTowardsTarget(targetPosition));
-        }
-        else
-        {
-            return;
-        }
+        
+        //else
+        //{
+        //    return;
+        //}
     }
 
     public List<Vector3> CheckAvailableMoves()

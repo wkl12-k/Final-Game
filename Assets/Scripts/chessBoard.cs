@@ -2,21 +2,25 @@ using UnityEngine;
 
 public class ChessBoard : MonoBehaviour
 {
+    [Header("Game Objects")]
     public GameObject whiteBoardTile;
     public GameObject blackBoardTile;
-    [SerializeField] private int gridSize =8;
-    [SerializeField] private float tileCubicSize = 1.0f;
+    [SerializeField] private Material tileMaterial;
+
+    [Header("Grid Creation")]
+    [SerializeField] private int gridSize = 8;
+    [SerializeField] private int tileSize = 1;
+    [SerializeField] private float y = 0.1f;
+
+    private GameObject[,] tiles;
     private Vector2 boardDimensions;  
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         CreateBoard();
-        CalculateBoardDimensions();
-        
+        //CalculateBoardDimensions();
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -24,33 +28,38 @@ public class ChessBoard : MonoBehaviour
 
     public void CreateBoard()
     {
-        for (int i=1; i<=gridSize; i++)
+        tiles = new GameObject[gridSize, gridSize];
+
+        for (int x = 0; x < gridSize; x++)
         {
-            for(int j=1; j<=gridSize; j++)
+            for(int z = 0; z < gridSize; z++)
             {
-                GameObject tile;
-                if ((i+j)% 2 == 0)
+                GameObject tile; 
+
+                if ((x + z) % 2 == 0)
                 {
-                    tile = Instantiate(whiteBoardTile, new Vector3(i * tileCubicSize, 0, j * tileCubicSize), Quaternion.identity);
+                    tile = Instantiate(whiteBoardTile, new Vector3(x * tileSize, y, z * tileSize), Quaternion.identity);
                 }
                 else
                 {
-                    tile = Instantiate(blackBoardTile, new Vector3(i * tileCubicSize, 0, j * tileCubicSize), Quaternion.identity);
+                    tile = Instantiate(blackBoardTile, new Vector3(x * tileSize, y, z * tileSize), Quaternion.identity);
                 }
 
                 tile.transform.parent = transform;
+
+                tiles[x, z] = tile;
             }
         }
     }
 
-    private void CalculateBoardDimensions()
-    {
-        boardDimensions = new Vector2(gridSize * tileCubicSize, gridSize * tileCubicSize);
-    }
+    //private void CalculateBoardDimensions()
+    //{
+    //    boardDimensions = new Vector2(gridSize * tileCubicSize, gridSize * tileCubicSize);
+    //}
 
-    public Vector2 GetBoardDimensions()
-    {
-        return boardDimensions;
-    }
+    //public Vector2 GetBoardDimensions()
+    //{
+    //    return boardDimensions;
+    //}
 
 }
