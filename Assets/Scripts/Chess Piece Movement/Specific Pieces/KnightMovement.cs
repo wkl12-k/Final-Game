@@ -8,7 +8,7 @@ public class KnightMovement : MonoBehaviour, ChessPieceMovement
 
     [SerializeField] float speed = 1;
     private Vector3 currentPosition;
-    private int boardSize = 8;
+    private int boardSize = 5;
 
 
      private Vector3[] knightMoves = new Vector3[] {new Vector3(2, 0, 1), new Vector3(2, 0, -1),new Vector3(-2, 0, 1), new Vector3(-2, 0, -1),
