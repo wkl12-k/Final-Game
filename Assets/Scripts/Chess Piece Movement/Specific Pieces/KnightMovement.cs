@@ -6,7 +6,7 @@ using UnityEngine;
 public class KnightMovement : MonoBehaviour, ChessPieceMovement
 {
 
-    [SerializeField] float speed = 1;
+    public float speed = 1;
     private Vector3 currentPosition;
     private int boardSize = 8;
 
@@ -71,14 +71,14 @@ public class KnightMovement : MonoBehaviour, ChessPieceMovement
 
     public void Move(Vector3 targetPosition)
     {
-        if (IsValidMove(targetPosition))
-        {
+       // if (IsValidMove(targetPosition))
+        
             StartCoroutine(MoveTowardsTarget(targetPosition));
-        }
-        else
-        {
-            return;
-        }
+        
+        //else
+        //{
+        //    return;
+        //}
     }
 
     public List<Vector3> CheckAvailableMoves()
