@@ -23,7 +23,23 @@ public class KnightMovement : MonoBehaviour, ChessPieceMovement
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            Move(Vector3.back);
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            Move(Vector3.forward);
+        }
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            Move(Vector3.right);
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            Move(Vector3.left);
+        }
+
     }
 
 
