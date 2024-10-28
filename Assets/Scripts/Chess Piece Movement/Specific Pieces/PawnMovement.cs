@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PawnMovement : MonoBehaviour, ChessPieceMovement
+public class PawnMovement : MonoBehaviour
 {
     [SerializeField] float speed = 1;
     private Vector3 position;

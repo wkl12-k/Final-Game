@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class BishopMovement : MonoBehaviour, ChessPieceMovement
+public class BishopMovement : MonoBehaviour
 {
     [SerializeField] float speed = 1;
     private Vector3 position;
