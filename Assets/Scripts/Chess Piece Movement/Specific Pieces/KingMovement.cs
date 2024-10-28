@@ -4,45 +4,49 @@ using System.Collections;
 public class KingMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 1f;
-    private const float tileSize = 2f;  // Each tile is 2 units apart
+    private const float tileSize = 2f;  
     private const float minX = -9f;
     private const float maxX = -1f;
     private const float minZ = -9f;
     private const float maxZ = -1f;
+    private bool isMoving;
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))  
+        if (isMoving == false)
         {
-            Move(Vector3.back);  
-        }
-        else if (Input.GetKeyDown(KeyCode.X))  
-        {
-            Move(Vector3.forward);  
-        }
-        else if (Input.GetKeyDown(KeyCode.A)) // Move Left
-        {
-            Move(Vector3.right);  
-        }
-        else if (Input.GetKeyDown(KeyCode.D)) // Move Right
-        {
-            Move(Vector3.left);  
-        }
-        else if (Input.GetKeyDown(KeyCode.Q)) // Move Diagonal Up-Left
-        {
-            Move(new Vector3(1, 0, -1)); 
-        }
-        else if (Input.GetKeyDown(KeyCode.E)) // Move Diagonal Up-Right
-        {
-            Move(new Vector3(-1, 0, -1)); 
-        }
-        else if (Input.GetKeyDown(KeyCode.Z)) // Move Diagonal Down-Left
-        {
-            Move(new Vector3(1, 0, 1));  
-        }
-        else if (Input.GetKeyDown(KeyCode.C)) // Move Diagonal Down-Right
-        {
-            Move(new Vector3(-1, 0, 1));  
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                Move(Vector3.back);
+            }
+            else if (Input.GetKeyDown(KeyCode.X))
+            {
+                Move(Vector3.forward);
+            }
+            else if (Input.GetKeyDown(KeyCode.A)) // Move Left
+            {
+                Move(Vector3.right);
+            }
+            else if (Input.GetKeyDown(KeyCode.D)) // Move Right
+            {
+                Move(Vector3.left);
+            }
+            else if (Input.GetKeyDown(KeyCode.Q)) // Move Diagonal Up-Left
+            {
+                Move(new Vector3(1, 0, -1));
+            }
+            else if (Input.GetKeyDown(KeyCode.E)) // Move Diagonal Up-Right
+            {
+                Move(new Vector3(-1, 0, -1));
+            }
+            else if (Input.GetKeyDown(KeyCode.Z)) // Move Diagonal Down-Left
+            {
+                Move(new Vector3(1, 0, 1));
+            }
+            else if (Input.GetKeyDown(KeyCode.C)) // Move Diagonal Down-Right
+            {
+                Move(new Vector3(-1, 0, 1));
+            }
         }
     }
 
@@ -57,6 +61,7 @@ public class KingMovement : MonoBehaviour
     public void Move(Vector3 direction)
     {
         Vector3 target = GetTargetPos(direction);
+        isMoving = true;
 
         if (IsValidPosition(target) && target != transform.position)
         {
@@ -73,6 +78,7 @@ public class KingMovement : MonoBehaviour
         }
 
         transform.position = target;
+        isMoving = false;
     }
 
     private bool IsValidPosition(Vector3 target)

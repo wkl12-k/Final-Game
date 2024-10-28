@@ -5,25 +5,28 @@ public class RookMovement : MonoBehaviour
 {
     private float speed = 3f;  
     private const int boardSize = 5;  
-    private const float tileSize = 2f; 
+    private const float tileSize = 2f;
+    private bool isMoving;
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            Move(Vector3.back);  
-        }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            Move(Vector3.forward);  
-        }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            Move(Vector3.right);  
-        }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            Move(Vector3.left);  
+        if (isMoving == false) {
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                Move(Vector3.back);
+            }
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                Move(Vector3.forward);
+            }
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                Move(Vector3.right);
+            }
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                Move(Vector3.left);
+            }
         }
     }
 
@@ -54,6 +57,7 @@ public class RookMovement : MonoBehaviour
     public void Move(Vector3 direction)
     {
         Vector3 target = GetTargetPos(direction);
+        isMoving = true;
 
         if (target != transform.position)
         {
@@ -70,6 +74,7 @@ public class RookMovement : MonoBehaviour
         }
 
         transform.position = target;
+        isMoving = false;
     }
 
     public float[][] CheckAvailableTiles()
