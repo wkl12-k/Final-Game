@@ -5,8 +5,6 @@ using UnityEngine;
 public class RookMovement : MonoBehaviour
 {
     private float speed = 3f;  
-    private const int boardSize = 5;  
-    private const float tileSize = 2f;
     private bool isMoving;
 
     void Update()

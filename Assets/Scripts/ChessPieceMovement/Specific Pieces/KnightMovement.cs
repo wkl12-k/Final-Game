@@ -11,8 +11,8 @@ public class KnightMovement : MonoBehaviour, ChessPieceMovement
     private int boardSize = 8;
 
 
-     private Vector3[] knightMoves = new Vector3[] {new Vector3(2, 0, 1), new Vector3(2, 0, -1),new Vector3(-2, 0, 1), new Vector3(-2, 0, -1),
-        new Vector3(1, 0, 2), new Vector3(-1, 0, 2), new Vector3(1, 0, -2), new Vector3(-1, 0, -2)
+     private Vector3[] knightMoves = new Vector3[] {new Vector3(3, 0, 1), new Vector3(3, 0, -1),new Vector3(-3, 0, 1), new Vector3(-3, 0, -1),
+        new Vector3(1, 0, 3), new Vector3(-1, 0, 3), new Vector3(1, 0, -3), new Vector3(-1, 0, -3)
     };
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -71,14 +71,11 @@ public class KnightMovement : MonoBehaviour, ChessPieceMovement
 
     public void Move(Vector3 targetPosition)
     {
-       // if (IsValidMove(targetPosition))
+       
         
             StartCoroutine(MoveTowardsTarget(targetPosition));
-        
-        //else
-        //{
-        //    return;
-        //}
+
+
     }
 
     public List<Vector3> CheckAvailableMoves()
