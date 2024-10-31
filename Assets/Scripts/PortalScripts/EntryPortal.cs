@@ -24,6 +24,7 @@ public class PortalEntry : MonoBehaviour
 
 
 
+
     //void Update()
     //{
     //    if (level == 5 && frog.starCounter == 2)
@@ -32,6 +33,7 @@ public class PortalEntry : MonoBehaviour
     //        portalCollider.enabled = true;
     //    }
     //}
+
 
 
 }
