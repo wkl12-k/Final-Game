@@ -48,7 +48,7 @@ public class RookMovement : MonoBehaviour
         }
         else if (direction == Vector3.left)  
         {
-            target.x = 0;
+            target.x = 7;
         }
 
         return target;
