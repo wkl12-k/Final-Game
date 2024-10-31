@@ -4,7 +4,7 @@ using System.Collections;
 public class KingMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 3f;
-    private const float tileSize = 1f;  
+    private const float tileSize = 1f;
     private const float maxX = 7f;
     private const float minX = 0f;
     private const float maxZ = 7f;
@@ -13,39 +13,39 @@ public class KingMovement : MonoBehaviour
 
     void Update()
     {
-        if (isMoving == false)
+        if (!isMoving)
         {
             if (Input.GetKeyDown(KeyCode.W))
             {
-                Move(Vector3.forward);
+                Move(Vector3.back);
             }
             else if (Input.GetKeyDown(KeyCode.X))
             {
-                Move(Vector3.back);
+                Move(Vector3.forward);
             }
             else if (Input.GetKeyDown(KeyCode.A)) // Move Left
             {
-                Move(Vector3.left);
+                Move(Vector3.right);
             }
             else if (Input.GetKeyDown(KeyCode.D)) // Move Right
             {
-                Move(Vector3.right);
+                Move(Vector3.left);
             }
             else if (Input.GetKeyDown(KeyCode.Q)) // Move Diagonal Up-Left
             {
-                Move(new Vector3(-1, 0, 1));
+                Move(new Vector3(1, 0, -1));
             }
             else if (Input.GetKeyDown(KeyCode.E)) // Move Diagonal Up-Right
             {
-                Move(new Vector3(1, 0, 1));
+                Move(new Vector3(-1, 0, -1));
             }
             else if (Input.GetKeyDown(KeyCode.Z)) // Move Diagonal Down-Left
             {
-                Move(new Vector3(-1, 0, -1));
+                Move(new Vector3(1, 0, 1));
             }
             else if (Input.GetKeyDown(KeyCode.C)) // Move Diagonal Down-Right
             {
-                Move(new Vector3(1, 0, -1));
+                Move(new Vector3(-1, 0, 1));
             }
         }
     }
@@ -67,6 +67,10 @@ public class KingMovement : MonoBehaviour
         {
             StartCoroutine(MoveToTarget(target));
         }
+        else
+        {
+            isMoving = false; // Ensure isMoving is reset if the position is invalid
+        }
     }
 
     private IEnumerator MoveToTarget(Vector3 target)
@@ -74,7 +78,7 @@ public class KingMovement : MonoBehaviour
         while (Vector3.Distance(transform.position, target) > 0.01f)
         {
             transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
-            yield return null;  
+            yield return null;
         }
 
         transform.position = target;
