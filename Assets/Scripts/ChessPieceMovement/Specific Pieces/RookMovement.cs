@@ -1,5 +1,6 @@
-using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class RookMovement : MonoBehaviour
 {
@@ -77,8 +78,16 @@ public class RookMovement : MonoBehaviour
         isMoving = false;
     }
 
-    public float[][] CheckAvailableTiles()
+    public List<Vector3> CheckAvailableTiles()
     {
-        return new float[0][];
+        List<Vector3> availableTiles = new List<Vector3>();
+        Vector3 target = transform.position;
+
+        availableTiles.Add(new Vector3(target.x, target.y, 7));
+        availableTiles.Add(new Vector3(target.x, target.y, 0));
+        availableTiles.Add(new Vector3(7, target.y, target.z));
+        availableTiles.Add(new Vector3(0, target.y, target.z));
+
+        return availableTiles;
     }
 }
