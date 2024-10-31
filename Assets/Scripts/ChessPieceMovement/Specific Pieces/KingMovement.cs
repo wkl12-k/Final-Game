@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-public class KingMovement : MonoBehaviour
+public class KingMovement : MonoBehaviour, ChessPieceMovement
 {
     [SerializeField] private float speed = 3f;
     private const float tileSize = 1f;
@@ -69,7 +70,7 @@ public class KingMovement : MonoBehaviour
         }
         else
         {
-            isMoving = false; // Ensure isMoving is reset if the position is invalid
+            isMoving = false;  
         }
     }
 
@@ -90,8 +91,17 @@ public class KingMovement : MonoBehaviour
         return target.x >= minX && target.x <= maxX && target.z >= minZ && target.z <= maxZ;
     }
 
-    public float[][] CheckAvailableTiles()
+    public List<Vector3> CheckAvailableMoves()
     {
-        return new float[0][];
+        List<Vector3> availableMoves = new List<Vector3>();
+        availableMoves.Add(Vector3.back);
+        availableMoves.Add(Vector3.forward);
+        availableMoves.Add(Vector3.right);
+        availableMoves.Add(Vector3.left);
+        availableMoves.Add(new Vector3(1, 0, -1));
+        availableMoves.Add(new Vector3(-1, 0, -1));
+        availableMoves.Add(new Vector3(1, 0, 1));
+        availableMoves.Add(new Vector3(-1, 0, 1));
+        return availableMoves;
     }
 }
