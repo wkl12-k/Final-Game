@@ -19,19 +19,19 @@ public class PortalEntry : MonoBehaviour
     // Come into contact with piece
     void Update()
     {
-        chessPiece.enabled = false; 
+        chessPiece.enabled = false;
     }
 
-   
 
-    void Update()
-    {
-        if (level == 5 && frog.starCounter == 2)
-        {
-            portalSR.enabled = true;
-            portalCollider.enabled = true;
-        }
-    }
+
+    //void Update()
+    //{
+    //    if (level == 5 && frog.starCounter == 2)
+    //    {
+    //        portalSR.enabled = true;
+    //        portalCollider.enabled = true;
+    //    }
+    //}
 
 
 }
