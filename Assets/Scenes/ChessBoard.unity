@@ -353,6 +353,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: blackTileBoard
       objectReference: {fileID: 0}
+    - target: {fileID: 8973000590598736865, guid: 62a2c255d3d3f4602abaa55edb163912, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
