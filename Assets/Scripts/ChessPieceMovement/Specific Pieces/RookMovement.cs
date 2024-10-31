@@ -13,19 +13,19 @@ public class RookMovement : MonoBehaviour
         if (isMoving == false) {
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                Move(Vector3.back);
+                Move(Vector3.forward);
             }
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
-                Move(Vector3.forward);
+                Move(Vector3.back);
             }
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                Move(Vector3.right);
+                Move(Vector3.left);
             }
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-                Move(Vector3.left);
+                Move(Vector3.right);
             }
         }
     }
@@ -36,19 +36,19 @@ public class RookMovement : MonoBehaviour
 
         if (direction == Vector3.back)  
         {
-            target.z = -9;
+            target.z = 7;
         }
         else if (direction == Vector3.forward)  
         {
-            target.z = -1;
+            target.z = 0;
         }
         else if (direction == Vector3.right)  
         {
-            target.x = -1;
+            target.x = 0;
         }
         else if (direction == Vector3.left)  
         {
-            target.x = -9;
+            target.x = 0;
         }
 
         return target;
