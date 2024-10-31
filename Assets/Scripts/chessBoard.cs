@@ -5,7 +5,6 @@ public class ChessBoard : MonoBehaviour
     [Header("Game Objects")]
     public GameObject whiteBoardTile;
     public GameObject blackBoardTile;
-    [SerializeField] private Material tileMaterial;
 
     [Header("Grid Creation")]
     [SerializeField] private int gridSize = 8;
