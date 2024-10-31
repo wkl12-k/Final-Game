@@ -22,8 +22,8 @@ public class BishopMovement : MonoBehaviour
     public void Move()
     {
         Vector3 target = transform.position;
-        target.z -= 2; // moving one square will be -2
-        target.x -= 2;
+        target.z += 1; // moving one square will be -2
+        target.x += 1;
 
         while (transform.position != target)
         {
