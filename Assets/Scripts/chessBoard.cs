@@ -12,17 +12,17 @@ public class ChessBoard : MonoBehaviour
     [SerializeField] private float y = 0.1f;
 
     private GameObject[,] tiles;
-    private Vector2 boardDimensions;  
+    private Vector2 boardDimensions;
+
+    private KingMovement selectedKing;  
 
     void Start()
     {
         CreateBoard();
-        //CalculateBoardDimensions();
     }
 
     void Update()
     {
-        
     }
 
     public void CreateBoard()
@@ -31,9 +31,9 @@ public class ChessBoard : MonoBehaviour
 
         for (int x = 0; x < gridSize; x++)
         {
-            for(int z = 0; z < gridSize; z++)
+            for (int z = 0; z < gridSize; z++)
             {
-                GameObject tile; 
+                GameObject tile;
 
                 if ((x + z) % 2 == 0)
                 {
@@ -46,19 +46,36 @@ public class ChessBoard : MonoBehaviour
 
                 tile.transform.parent = transform;
 
+                Tile tileComponent = tile.GetComponent<Tile>();
+                tileComponent.chessBoard = this;
+
                 tiles[x, z] = tile;
             }
         }
     }
 
-    //private void CalculateBoardDimensions()
-    //{
-    //    boardDimensions = new Vector2(gridSize * tileCubicSize, gridSize * tileCubicSize);
-    //}
+    public void OnTileClicked(Tile tile)
+    {
+        Vector3 tilePosition = tile.transform.position;
 
-    //public Vector2 GetBoardDimensions()
-    //{
-    //    return boardDimensions;
-    //}
+        if (selectedKing != null)
+        {
+            if (selectedKing.CheckAvailableMoves().Contains(tilePosition))
+            {
+                selectedKing.MoveToTile(tilePosition);
+                selectedKing = null;  
+            }
+            else
+            {
+                Debug.Log("Invalid move. King cannot move there.");  
+            }
+        }
+    }
 
+
+
+    public void SetSelectedKing(KingMovement king)
+    {
+        selectedKing = king;
+    }
 }
