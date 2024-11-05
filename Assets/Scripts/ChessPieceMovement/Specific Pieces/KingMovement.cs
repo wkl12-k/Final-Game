@@ -11,6 +11,8 @@ public class KingMovement : MonoBehaviour, ChessPieceMovement
     private const float maxZ = 7f;
     private const float minZ = 0f;
     private bool isMoving;
+    private Vector3[] kingMoves = new Vector3[] {Vector3.back, Vector3.forward, Vector3.left, Vector3.right,
+        new Vector3(1, 0, -1), new Vector3(-1, 0, -1), new Vector3(1, 0, 1), new Vector3(-1, 0, 1)};
 
     void Update()
     {
@@ -94,14 +96,16 @@ public class KingMovement : MonoBehaviour, ChessPieceMovement
     public List<Vector3> CheckAvailableMoves()
     {
         List<Vector3> availableMoves = new List<Vector3>();
-        availableMoves.Add(Vector3.back);
-        availableMoves.Add(Vector3.forward);
-        availableMoves.Add(Vector3.right);
-        availableMoves.Add(Vector3.left);
-        availableMoves.Add(new Vector3(1, 0, -1));
-        availableMoves.Add(new Vector3(-1, 0, -1));
-        availableMoves.Add(new Vector3(1, 0, 1));
-        availableMoves.Add(new Vector3(-1, 0, 1));
-        return availableMoves;
+
+        foreach (Vector3 move in kingMoves)
+        {
+            Vector3 availablePosition = transform.position + move;
+            if (IsValidPosition(availablePosition))
+            {
+                availableMoves.Add(availablePosition);
+            }
+        }
+        return availableMoves; 
     }
+
 }
