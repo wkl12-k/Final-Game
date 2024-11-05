@@ -38,7 +38,7 @@ public class KingMovement : MonoBehaviour
         }
         else
         {
-            Debug.Log("Invalid position or no movement required."); // Log if invalid
+            Debug.Log("Invalid position or no movement required.");  
             isMoving = false;
         }
     }
