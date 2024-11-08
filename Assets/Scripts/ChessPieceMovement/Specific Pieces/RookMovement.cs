@@ -7,6 +7,18 @@ public class RookMovement : MonoBehaviour
     private float speed = 3f;  
     private bool isMoving;
 
+    // Needs to be own script!!:
+    [SerializeField] GameObject tileLight;
+
+    void Start()
+    {
+        //Light lightComp = tileLight.AddComponent<Light>();
+        //lightComp.color = Color.blue;
+        //tileLight.transform.position = new Vector3(3f, 1.5f, 1f);
+
+        LightAvailableTiles(CheckAvailableTiles());
+    }
+
     void Update()
     {
         if (isMoving == false) {
@@ -87,5 +99,20 @@ public class RookMovement : MonoBehaviour
         availableTiles.Add(new Vector3(0, target.y, target.z));
 
         return availableTiles;
+    }
+
+    // ALSO NEEDS TO BE IN THE OTHER SCRIPT FOR LIGHTS
+    public void LightAvailableTiles(List<Vector3> availableTiles)
+    {
+        foreach (Vector3 tilePos in availableTiles)
+        {
+            if (tilePos != transform.position)
+            {
+                GameObject light = tileLight;
+                // in the new script change 1.5f to a variable lightHeight
+                light.transform.position = new Vector3(tilePos.x, 1.5f, tilePos.z);
+                Instantiate(light);
+            }
+        }
     }
 }
