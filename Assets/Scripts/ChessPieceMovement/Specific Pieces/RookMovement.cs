@@ -2,117 +2,78 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RookMovement : MonoBehaviour
+public class RookMovement : MonoBehaviour, ChessPieceMovement
 {
-    private float speed = 3f;  
-    private bool isMoving;
+    public float speed => pieceSpeed;
+    public bool isMoving { get; set; }
+    public ChessBoard chessBoard { get; set; }
 
-    // Needs to be own script!!:
-    [SerializeField] GameObject tileLight;
+    [SerializeField] private float pieceSpeed = 3f;
+
+    private Vector3[] rookMoves = new Vector3[] {
+        Vector3.forward, Vector3.back, Vector3.left, Vector3.right
+    };
 
     void Start()
     {
-        //Light lightComp = tileLight.AddComponent<Light>();
-        //lightComp.color = Color.blue;
-        //tileLight.transform.position = new Vector3(3f, 1.5f, 1f);
-
-        LightAvailableTiles(CheckAvailableTiles());
+        chessBoard = FindAnyObjectByType<ChessBoard>();
     }
 
-    void Update()
+    public List<Vector3> CheckAvailableMoves()
     {
-        if (isMoving == false) {
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+        List<Vector3> availableMoves = new List<Vector3>();
+
+        foreach (Vector3 direction in rookMoves)
+        {
+            Vector3 targetPosition = transform.position;
+
+            while (IsValidPosition(targetPosition + direction))
             {
-                Move(Vector3.forward);
+                targetPosition += direction;
+                availableMoves.Add(targetPosition);
             }
-            if (Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                Move(Vector3.back);
-            }
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                Move(Vector3.left);
-            }
-            if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                Move(Vector3.right);
-            }
+        }
+
+        return availableMoves;
+    }
+
+    public void Move(Vector3 targetPosition)
+    {
+        if (CheckAvailableMoves().Contains(targetPosition))
+        {
+            chessBoard.StartCoroutine(MoveToTarget(targetPosition));
+        }
+        else
+        {
+            Debug.Log("Invalid move.");
         }
     }
 
-    private Vector3 GetTargetPos(Vector3 direction)
+    public IEnumerator MoveToTarget(Vector3 target)
     {
-        Vector3 target = transform.position;
-
-        if (direction == Vector3.back)  
-        {
-            target.z = 7;
-        }
-        else if (direction == Vector3.forward)  
-        {
-            target.z = 0;
-        }
-        else if (direction == Vector3.right)  
-        {
-            target.x = 0;
-        }
-        else if (direction == Vector3.left)  
-        {
-            target.x = 7;
-        }
-
-        return target;
-    }
-
-    public void Move(Vector3 direction)
-    {
-        Vector3 target = GetTargetPos(direction);
         isMoving = true;
-
-        if (target != transform.position)
-        {
-            StartCoroutine(MoveToTarget(target));
-        }
-    }
-
-    private IEnumerator MoveToTarget(Vector3 target)
-    {
         while (Vector3.Distance(transform.position, target) > 0.01f)
         {
             transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
-            yield return null;  
+            yield return null;
         }
 
         transform.position = target;
         isMoving = false;
     }
 
-    public List<Vector3> CheckAvailableTiles()
+    protected bool IsValidPosition(Vector3 targetPosition)
     {
-        List<Vector3> availableTiles = new List<Vector3>();
-        Vector3 target = transform.position;
+        const float minX = 0f;
+        const float maxX = 7f;
+        const float minZ = 0f;
+        const float maxZ = 7f;
 
-        availableTiles.Add(new Vector3(target.x, target.y, 7));
-        availableTiles.Add(new Vector3(target.x, target.y, 0));
-        availableTiles.Add(new Vector3(7, target.y, target.z));
-        availableTiles.Add(new Vector3(0, target.y, target.z));
-
-        return availableTiles;
+        return targetPosition.x >= minX && targetPosition.x <= maxX && targetPosition.z >= minZ && targetPosition.z <= maxZ;
     }
 
-    // ALSO NEEDS TO BE IN THE OTHER SCRIPT FOR LIGHTS
-    public void LightAvailableTiles(List<Vector3> availableTiles)
+    protected void OnMouseDown()
     {
-        foreach (Vector3 tilePos in availableTiles)
-        {
-            if (tilePos != transform.position)
-            {
-                GameObject light = tileLight;
-                // in the new script change 1.5f to a variable lightHeight
-                light.transform.position = new Vector3(tilePos.x, 1.5f, tilePos.z);
-                Instantiate(light);
-            }
-        }
+        chessBoard.SetSelectedPiece((ChessPieceMovement)this);
     }
 }

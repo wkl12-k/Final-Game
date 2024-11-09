@@ -2,17 +2,14 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class KingMovement : MonoBehaviour
+public class KingMovement : MonoBehaviour, ChessPieceMovement
 {
-    [SerializeField] private float speed = 3f;
-    private const float tileSize = 1f;
-    private const float maxX = 7f;
-    private const float minX = 0f;
-    private const float maxZ = 7f;
-    private const float minZ = 0f;
-    private bool isMoving;
-    private ChessBoard chessBoard;
+    
+    public float speed => pieceSpeed;  
+    public bool isMoving { get; set; }
+    public ChessBoard chessBoard { get; set; }
 
+    [SerializeField] private float pieceSpeed = 3f;
     private Vector3[] kingMoves = new Vector3[] {
         Vector3.back, Vector3.forward, Vector3.left, Vector3.right,
         new Vector3(1, 0, -1), new Vector3(-1, 0, -1),
@@ -21,43 +18,7 @@ public class KingMovement : MonoBehaviour
 
     void Start()
     {
-        chessBoard = FindObjectOfType<ChessBoard>();
-    }
-
-    void Update()
-    {
-    }
-
-    public void Move(Vector3 target)
-    {
-        isMoving = true;
-
-        if (IsValidPosition(target) && target != transform.position)
-        {
-            StartCoroutine(MoveToTarget(target));
-        }
-        else
-        {
-            Debug.Log("Invalid position or no movement required.");  
-            isMoving = false;
-        }
-    }
-
-    private IEnumerator MoveToTarget(Vector3 target)
-    {
-        while (Vector3.Distance(transform.position, target) > 0.01f)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
-            yield return null;
-        }
-
-        transform.position = target;
-        isMoving = false;
-    }
-
-    private bool IsValidPosition(Vector3 target)
-    {
-        return target.x >= minX && target.x <= maxX && target.z >= minZ && target.z <= maxZ;
+        chessBoard = FindAnyObjectByType<ChessBoard>();
     }
 
     public List<Vector3> CheckAvailableMoves()
@@ -75,13 +36,42 @@ public class KingMovement : MonoBehaviour
         return availableMoves;
     }
 
-    public void MoveToTile(Vector3 tilePosition)
+    public void Move(Vector3 targetPosition)
     {
-        Move(tilePosition);
+        if (CheckAvailableMoves().Contains(targetPosition))
+        {
+            chessBoard.StartCoroutine(MoveToTarget(targetPosition));
+        }
+        else
+        {
+            Debug.Log("Invalid move.");
+        }
     }
 
-    void OnMouseDown()
+    public IEnumerator MoveToTarget(Vector3 target)
     {
-        chessBoard.SetSelectedKing(this);
+        isMoving = true;
+        while (Vector3.Distance(transform.position, target) > 0.01f)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
+            yield return null;
+        }
+        transform.position = target;
+        isMoving = false;
+    }
+
+    protected bool IsValidPosition(Vector3 targetPosition)
+    {
+        const float minX = 0f;
+        const float maxX = 7f;
+        const float minZ = 0f;
+        const float maxZ = 7f;
+
+        return targetPosition.x >= minX && targetPosition.x <= maxX && targetPosition.z >= minZ && targetPosition.z <= maxZ;
+    }
+
+    protected void OnMouseDown()
+    {
+        chessBoard.SetSelectedPiece((ChessPieceMovement)this);
     }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class ChessBoard : MonoBehaviour
 {
@@ -12,17 +13,11 @@ public class ChessBoard : MonoBehaviour
     [SerializeField] private float y = 0.1f;
 
     private GameObject[,] tiles;
-    private Vector2 boardDimensions;
-
-    private KingMovement selectedKing;  
+    private ChessPieceMovement selectedPiece;
 
     void Start()
     {
         CreateBoard();
-    }
-
-    void Update()
-    {
     }
 
     public void CreateBoard()
@@ -56,26 +51,38 @@ public class ChessBoard : MonoBehaviour
 
     public void OnTileClicked(Tile tile)
     {
-        Vector3 tilePosition = tile.transform.position;
+        Vector3 tilePosition = new Vector3(Mathf.Round(tile.transform.position.x), tile.transform.position.y, Mathf.Round(tile.transform.position.z));
 
-        if (selectedKing != null)
+        if (selectedPiece != null)
         {
-            if (selectedKing.CheckAvailableMoves().Contains(tilePosition))
+            List<Vector3> validMoves = selectedPiece.CheckAvailableMoves();
+            if (IsValidMove(tilePosition, validMoves))
             {
-                selectedKing.MoveToTile(tilePosition);
-                selectedKing = null;  
+                selectedPiece.Move(tilePosition);
+                selectedPiece = null;   
             }
             else
             {
-                Debug.Log("Invalid move. King cannot move there.");  
+                Debug.Log("Invalid move.");
             }
         }
     }
 
-
-
-    public void SetSelectedKing(KingMovement king)
+    private bool IsValidMove(Vector3 tilePosition, List<Vector3> validMoves)
     {
-        selectedKing = king;
+        foreach (Vector3 move in validMoves)
+        {
+            if (Mathf.Approximately(tilePosition.x, move.x) && Mathf.Approximately(tilePosition.z, move.z))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void SetSelectedPiece(ChessPieceMovement piece)
+    {
+        selectedPiece = piece;
     }
 }
+
