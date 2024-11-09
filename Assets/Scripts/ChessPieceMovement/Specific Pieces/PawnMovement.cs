@@ -1,39 +1,76 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
-public class PawnMovement : MonoBehaviour
+public class PawnMovement : MonoBehaviour 
 {
-    [SerializeField] float speed = 1;
-    private Vector3 position;
+    public float speed => pieceSpeed;
+    public bool isMoving { get; set; }
+    public ChessBoard chessBoard { get; set; }
+
+    [SerializeField] private float pieceSpeed = 1f;
+
+    private Vector3[] pawnMoves = new Vector3[]
+    {
+        Vector3.forward, Vector3.back  
+    };
 
     void Start()
     {
-        position = transform.position;
+        chessBoard = FindAnyObjectByType<ChessBoard>();
     }
 
-    void Update()
+    public List<Vector3> CheckAvailableMoves()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        List<Vector3> availableMoves = new List<Vector3>();
+
+        foreach (Vector3 move in pawnMoves)
         {
-            Move();
+            Vector3 availablePosition = transform.position + move;
+            if (IsValidPosition(availablePosition))
+            {
+                availableMoves.Add(availablePosition);
+            }
+        }
+        return availableMoves;
+    }
+
+    public void Move(Vector3 targetPosition)
+    {
+        if (CheckAvailableMoves().Contains(targetPosition))
+        {
+            chessBoard.StartCoroutine(MoveToTarget(targetPosition));
+        }
+        else
+        {
+            Debug.Log("Invalid move.");
         }
     }
 
-    public void Move()
+    public IEnumerator MoveToTarget(Vector3 target)
     {
-        Vector3 target = transform.position;
-        //target.z -= 0; // moving one square will be -2
-        target.x += 2;
-
-        while (transform.position != target)
+        isMoving = true;
+        while (Vector3.Distance(transform.position, target) > 0.01f)
         {
             transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
+            yield return null;
         }
-
-
+        transform.position = target;
+        isMoving = false;
     }
 
-    public float[][] CheckAvailableTiles(Vector3 pos)
+    protected bool IsValidPosition(Vector3 targetPosition)
     {
-        return new float[3][];
+        const float minX = 0f;
+        const float maxX = 7f;
+        const float minZ = 0f;
+        const float maxZ = 7f;
+
+        return targetPosition.x >= minX && targetPosition.x <= maxX && targetPosition.z >= minZ && targetPosition.z <= maxZ;
+    }
+
+    protected void OnMouseDown()
+    {
+        chessBoard.SetSelectedPiece((ChessPieceMovement)this);
     }
 }
