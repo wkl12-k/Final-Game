@@ -1,8 +1,14 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public interface ChessPieceMovement
 {
+    float speed { get; }
+    bool isMoving { get; set; }
+    ChessBoard chessBoard { get; set; }
+
+    List<Vector3> CheckAvailableMoves();
     void Move(Vector3 targetPosition);
-    List<Vector3> CheckAvailableMoves(Vector3 pos);
+    IEnumerator MoveToTarget(Vector3 target);
 }
