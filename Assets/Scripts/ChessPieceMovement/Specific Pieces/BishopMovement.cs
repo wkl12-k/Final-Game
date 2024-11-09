@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BishopMovement : MonoBehaviour 
+public class BishopMovement : MonoBehaviour, ChessPieceMovement
 {
     public float speed => pieceSpeed;
     public bool isMoving { get; set; }
@@ -91,6 +91,6 @@ public class BishopMovement : MonoBehaviour
 
     protected void OnMouseDown()
     {
-        chessBoard.SetSelectedPiece((ChessPieceMovement)this);
+        chessBoard.SetSelectedPiece(this);
     }
 }

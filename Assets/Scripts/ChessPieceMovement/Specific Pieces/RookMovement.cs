@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RookMovement : MonoBehaviour 
+public class RookMovement : MonoBehaviour, ChessPieceMovement
 {
     public float speed => pieceSpeed;
     public bool isMoving { get; set; }

@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class PawnMovement : MonoBehaviour 
+public class PawnMovement : MonoBehaviour, ChessPieceMovement
 {
     public float speed => pieceSpeed;
     public bool isMoving { get; set; }
