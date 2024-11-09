@@ -45,7 +45,7 @@ public class KnightMovement : MonoBehaviour, ChessPieceMovement
 
     private bool IsValidMove(Vector3 targetPosition)
     {
-        return CheckAvailableMoves().Contains(targetPosition);
+        return CheckAvailableMoves(transform.position).Contains(targetPosition);
     }
 
 
@@ -65,26 +65,18 @@ public class KnightMovement : MonoBehaviour, ChessPieceMovement
         currentPosition = targetPosition;
     }
 
-
-
-
-
     public void Move(Vector3 targetPosition)
     {
-       
-        
-            StartCoroutine(MoveTowardsTarget(targetPosition));
-
-
+        StartCoroutine(MoveTowardsTarget(targetPosition));
     }
 
-    public List<Vector3> CheckAvailableMoves()
+    public List<Vector3> CheckAvailableMoves(Vector3 pos)
     {
         List<Vector3> availableMoves = new List<Vector3>();
 
         foreach (Vector3 move in knightMoves)
         {
-            Vector3 availablePosition = currentPosition + move;
+            Vector3 availablePosition = pos + move;
             if (IsOnBoard(availablePosition))
             {
                 availableMoves.Add(availablePosition);
