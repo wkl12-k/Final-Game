@@ -16,7 +16,7 @@ public class RookMovement : MonoBehaviour
         //lightComp.color = Color.blue;
         //tileLight.transform.position = new Vector3(3f, 1.5f, 1f);
 
-        LightAvailableTiles(CheckAvailableTiles());
+        LightAvailableTiles(CheckAvailableTiles(transform.position));
     }
 
     void Update()
@@ -88,10 +88,10 @@ public class RookMovement : MonoBehaviour
         isMoving = false;
     }
 
-    public List<Vector3> CheckAvailableTiles()
+    public List<Vector3> CheckAvailableTiles(Vector3 pos)
     {
         List<Vector3> availableTiles = new List<Vector3>();
-        Vector3 target = transform.position;
+        Vector3 target = pos;
 
         availableTiles.Add(new Vector3(target.x, target.y, 7));
         availableTiles.Add(new Vector3(target.x, target.y, 0));

@@ -32,7 +32,7 @@ public class PawnMovement : MonoBehaviour
 
     }
 
-    public float[][] CheckAvailableTiles()
+    public float[][] CheckAvailableTiles(Vector3 pos)
     {
         return new float[3][];
     }

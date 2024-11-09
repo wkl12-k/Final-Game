@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 
 public class KingMovement : MonoBehaviour
 {
@@ -11,25 +10,57 @@ public class KingMovement : MonoBehaviour
     private const float maxZ = 7f;
     private const float minZ = 0f;
     private bool isMoving;
-    private ChessBoard chessBoard;
-
-    private Vector3[] kingMoves = new Vector3[] {
-        Vector3.back, Vector3.forward, Vector3.left, Vector3.right,
-        new Vector3(1, 0, -1), new Vector3(-1, 0, -1),
-        new Vector3(1, 0, 1), new Vector3(-1, 0, 1)
-    };
-
-    void Start()
-    {
-        chessBoard = FindObjectOfType<ChessBoard>();
-    }
 
     void Update()
     {
+        if (!isMoving)
+        {
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                Move(Vector3.back);
+            }
+            else if (Input.GetKeyDown(KeyCode.X))
+            {
+                Move(Vector3.forward);
+            }
+            else if (Input.GetKeyDown(KeyCode.A)) // Move Left
+            {
+                Move(Vector3.right);
+            }
+            else if (Input.GetKeyDown(KeyCode.D)) // Move Right
+            {
+                Move(Vector3.left);
+            }
+            else if (Input.GetKeyDown(KeyCode.Q)) // Move Diagonal Up-Left
+            {
+                Move(new Vector3(1, 0, -1));
+            }
+            else if (Input.GetKeyDown(KeyCode.E)) // Move Diagonal Up-Right
+            {
+                Move(new Vector3(-1, 0, -1));
+            }
+            else if (Input.GetKeyDown(KeyCode.Z)) // Move Diagonal Down-Left
+            {
+                Move(new Vector3(1, 0, 1));
+            }
+            else if (Input.GetKeyDown(KeyCode.C)) // Move Diagonal Down-Right
+            {
+                Move(new Vector3(-1, 0, 1));
+            }
+        }
     }
 
-    public void Move(Vector3 target)
+    private Vector3 GetTargetPos(Vector3 direction)
     {
+        float targetX = transform.position.x + direction.x * tileSize;
+        float targetZ = transform.position.z + direction.z * tileSize;
+
+        return new Vector3(targetX, transform.position.y, targetZ);
+    }
+
+    public void Move(Vector3 direction)
+    {
+        Vector3 target = GetTargetPos(direction);
         isMoving = true;
 
         if (IsValidPosition(target) && target != transform.position)
@@ -38,8 +69,7 @@ public class KingMovement : MonoBehaviour
         }
         else
         {
-            Debug.Log("Invalid position or no movement required.");  
-            isMoving = false;
+            isMoving = false; // Ensure isMoving is reset if the position is invalid
         }
     }
 
@@ -60,28 +90,8 @@ public class KingMovement : MonoBehaviour
         return target.x >= minX && target.x <= maxX && target.z >= minZ && target.z <= maxZ;
     }
 
-    public List<Vector3> CheckAvailableMoves()
+    public float[][] CheckAvailableTiles(Vector3 pos)
     {
-        List<Vector3> availableMoves = new List<Vector3>();
-
-        foreach (Vector3 move in kingMoves)
-        {
-            Vector3 availablePosition = transform.position + move;
-            if (IsValidPosition(availablePosition))
-            {
-                availableMoves.Add(availablePosition);
-            }
-        }
-        return availableMoves;
-    }
-
-    public void MoveToTile(Vector3 tilePosition)
-    {
-        Move(tilePosition);
-    }
-
-    void OnMouseDown()
-    {
-        chessBoard.SetSelectedKing(this);
+        return new float[0][];
     }
 }
