@@ -77,5 +77,10 @@ public class KnightMovement : MonoBehaviour, ChessPieceMovement
     {
         chessBoard.SetSelectedPiece((ChessPieceMovement)this);
     }
+
+    public List<Vector3> CheckAvailableMoves(Vector3 pos)
+    {
+        throw new System.NotImplementedException();
+    }
 }
 

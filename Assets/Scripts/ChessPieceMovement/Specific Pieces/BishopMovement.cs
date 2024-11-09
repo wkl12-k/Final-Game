@@ -93,4 +93,9 @@ public class BishopMovement : MonoBehaviour, ChessPieceMovement
     {
         chessBoard.SetSelectedPiece(this);
     }
+
+    public List<Vector3> CheckAvailableMoves(Vector3 pos)
+    {
+        throw new System.NotImplementedException();
+    }
 }
