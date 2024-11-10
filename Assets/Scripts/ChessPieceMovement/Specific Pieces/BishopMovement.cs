@@ -63,19 +63,19 @@ public class BishopMovement : MonoBehaviour, ChessPieceMovement
     private void AddMovesInDirection(List<Vector3> availableMoves, Vector3 direction)
     {
         Vector3 targetPosition = transform.position;
+        Vector3 validPosition = targetPosition;
 
-        for (int i = 1; i < 8; i++)
+        
+        while (IsValidPosition(targetPosition + direction))
         {
             targetPosition += direction;
+            validPosition = targetPosition;  
+        }
 
-            if (IsValidPosition(targetPosition))
-            {
-                availableMoves.Add(targetPosition);
-            }
-            else
-            {
-                break;
-            }
+        
+        if (validPosition != transform.position)
+        {
+            availableMoves.Add(validPosition);
         }
     }
 

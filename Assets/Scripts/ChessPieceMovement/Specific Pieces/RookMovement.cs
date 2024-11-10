@@ -26,11 +26,19 @@ public class RookMovement : MonoBehaviour, ChessPieceMovement
         foreach (Vector3 direction in rookMoves)
         {
             Vector3 targetPosition = transform.position;
+            Vector3 lastValidPosition = targetPosition;
 
+            
             while (IsValidPosition(targetPosition + direction))
             {
                 targetPosition += direction;
-                availableMoves.Add(targetPosition);
+                lastValidPosition = targetPosition;  
+            }
+
+            
+            if (lastValidPosition != transform.position)
+            {
+                availableMoves.Add(lastValidPosition);
             }
         }
 
