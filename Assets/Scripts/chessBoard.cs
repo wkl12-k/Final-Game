@@ -15,11 +15,13 @@ public class ChessBoard : MonoBehaviour
     private GameObject[,] tiles;
     private ChessPieceMovement selectedPiece;
 
+
     void Start()
     {
         CreateBoard();
     }
 
+    
     public void CreateBoard()
     {
         tiles = new GameObject[gridSize, gridSize];
@@ -39,10 +41,14 @@ public class ChessBoard : MonoBehaviour
                     tile = Instantiate(blackBoardTile, new Vector3(x * tileSize, y, z * tileSize), Quaternion.identity);
                 }
 
+
+
                 tile.transform.parent = transform;
 
                 Tile tileComponent = tile.GetComponent<Tile>();
                 tileComponent.chessBoard = this;
+
+               
 
                 tiles[x, z] = tile;
             }
@@ -55,7 +61,7 @@ public class ChessBoard : MonoBehaviour
 
         if (selectedPiece != null)
         {
-            List<Vector3> validMoves = selectedPiece.CheckAvailableMoves();
+            List<Vector3> validMoves = selectedPiece.CheckAvailableMoves(transform.position);
             if (IsValidMove(tilePosition, validMoves))
             {
                 selectedPiece.Move(tilePosition);

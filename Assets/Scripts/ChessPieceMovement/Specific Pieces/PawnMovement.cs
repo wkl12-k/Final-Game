@@ -20,7 +20,7 @@ public class PawnMovement : MonoBehaviour, ChessPieceMovement
         chessBoard = FindAnyObjectByType<ChessBoard>();
     }
 
-    public List<Vector3> CheckAvailableMoves()
+    public List<Vector3> CheckAvailableMoves(Vector3 position)
     {
         List<Vector3> availableMoves = new List<Vector3>();
 
@@ -37,7 +37,7 @@ public class PawnMovement : MonoBehaviour, ChessPieceMovement
 
     public void Move(Vector3 targetPosition)
     {
-        if (CheckAvailableMoves().Contains(targetPosition))
+        if (CheckAvailableMoves(transform.position).Contains(targetPosition))
         {
             chessBoard.StartCoroutine(MoveToTarget(targetPosition));
         }
@@ -74,8 +74,5 @@ public class PawnMovement : MonoBehaviour, ChessPieceMovement
         chessBoard.SetSelectedPiece((ChessPieceMovement)this);
     }
 
-    public List<Vector3> CheckAvailableMoves(Vector3 pos)
-    {
-        throw new System.NotImplementedException();
-    }
+   
 }

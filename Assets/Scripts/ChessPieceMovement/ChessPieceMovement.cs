@@ -8,7 +8,7 @@ public interface ChessPieceMovement
     bool isMoving { get; set; }
     ChessBoard chessBoard { get; set; }
 
-    List<Vector3> CheckAvailableMoves();
+    List<Vector3> CheckAvailableMoves(Vector3 position);
     void Move(Vector3 targetPosition);
     IEnumerator MoveToTarget(Vector3 target);
 }
