@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 public class ChessBoard : MonoBehaviour
 {
@@ -14,14 +15,30 @@ public class ChessBoard : MonoBehaviour
 
     private GameObject[,] tiles;
     private ChessPieceMovement selectedPiece;
+    public static event Action OnBoardCreated;
 
 
     void Start()
     {
         CreateBoard();
+        OnBoardCreated?.Invoke();
     }
 
-    
+    public Vector3 GetStartTilePosition()
+    {
+        if (tiles != null && tiles[0, 0] != null)
+        {
+            return tiles[0, 0].transform.position;
+        }
+        else
+        {
+           
+            return Vector3.zero; 
+        }
+    }
+
+
+
     public void CreateBoard()
     {
         tiles = new GameObject[gridSize, gridSize];
