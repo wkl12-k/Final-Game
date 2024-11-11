@@ -35,8 +35,9 @@ public class ShowAvailableTiles : MonoBehaviour
         List<Vector3> avilableTiles = pieceMovement.CheckAvailableMoves(piece.transform.position);
         foreach (Vector3 tilePos in avilableTiles)
         {
-            Instantiate(availableTileLight);
+            Instantiate(availableTileLight);//piece.transform
             availableTileLight.transform.position = new Vector3(tilePos.x, lightHeight, tilePos.z);
+            //availableTileLight.transform.parent = piece.transform;
         }
     }
 
