@@ -19,11 +19,11 @@ public class DragPieces : MonoBehaviour
     public ChessBoard chessBoard;
 
     private GameObject selectedPiecePrefab;
-    private GameObject lastPlacedPiece;  // Track the last placed piece
+    private GameObject lastPlacedPiece;  
 
     void Start()
     {
-        // Set up button listeners to select pieces and pass the corresponding button as a parameter
+        
         rookButton.onClick.AddListener(() => SelectPiece(rookPrefab, rookButton));
         bishopButton.onClick.AddListener(() => SelectPiece(bishopPrefab, bishopButton));
         kingButton.onClick.AddListener(() => SelectPiece(kingPrefab, kingButton));
