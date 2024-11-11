@@ -416,12 +416,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 590d200134fbc4064af4d3318f395d8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UIElement: {fileID: 2002679744}
-  trigger: 323
-  tutorials:
-  - {fileID: 2002679744}
-  - {fileID: 1353580626}
-  - {fileID: 1975012874}
 --- !u!4 &251482844
 Transform:
   m_ObjectHideFlags: 0

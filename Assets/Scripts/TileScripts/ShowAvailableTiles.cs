@@ -6,10 +6,15 @@ public class ShowAvailableTiles : MonoBehaviour
     [SerializeField] ChessPieceMovement pieceMovement;
     [SerializeField] GameObject piece;
     [SerializeField] GameObject availableTileLight;
+
+    private List<GameObject> lights = new List<GameObject>();
     private float lightHeight = 1.5f;
+    private Vector3 startPos;
 
     void Start()
     {
+        startPos = piece.transform.position;
+
         if (piece.CompareTag("rook"))
         {
             pieceMovement = GetComponent<RookMovement>();
@@ -33,16 +38,23 @@ public class ShowAvailableTiles : MonoBehaviour
 
         
         List<Vector3> avilableTiles = pieceMovement.CheckAvailableMoves(piece.transform.position);
+
         foreach (Vector3 tilePos in avilableTiles)
         {
-            Instantiate(availableTileLight);//piece.transform
-            availableTileLight.transform.position = new Vector3(tilePos.x, lightHeight, tilePos.z);
-            //availableTileLight.transform.parent = piece.transform;
+            GameObject tileLight = Instantiate(availableTileLight);//piece.transform
+            tileLight.transform.position = new Vector3(tilePos.x, lightHeight, tilePos.z);
+            lights.Add(tileLight);
         }
     }
 
     void Update()
     {
-        
+        if (piece.transform.position != startPos)
+        {
+            foreach (GameObject light in lights)
+            {
+                Destroy(light);
+            }
+        }
     }
 }
