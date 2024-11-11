@@ -37,36 +37,31 @@ public class TutorialScript : MonoBehaviour
                 // Move to the next tutorial
                 currentIndex++;
             }
+            else
+            {
+                // Ensure the last tutorial is deactivated if all have been shown
+                tutorials[currentIndex - 1].SetActive(false);
+            }
         }
     }
 
     private void Awake()
     {
-        if (_hasInitialized)
+        // Ensure the initial state is correct before initialization
+        UIElement.SetActive(true);
+
+        // Deactivate all tutorial UIs initially
+        foreach (GameObject tutorial in tutorials)
         {
-            // Ensure the initial UI element is inactive
-            UIElement.SetActive(false);
-
-            // Deactivate all tutorial UIs initially
-            foreach (GameObject tutorial in tutorials)
-            {
-                tutorial.SetActive(false);
-            }
-
-            // Activate the current tutorial UI if within bounds
-            if (currentIndex > 0 && currentIndex <= tutorials.Length)
-            {
-                tutorials[currentIndex - 1].SetActive(true);
-            }
+            tutorial.SetActive(false);
         }
-        else
+
+        // Activate the first tutorial if not initialized yet and tutorials array is not empty
+        if (!_hasInitialized && tutorials.Length > 0)
         {
-            // Ensure the initial state is correct before initialization
-            UIElement.SetActive(true);
-            foreach (GameObject tutorial in tutorials)
-            {
-                tutorial.SetActive(false);
-            }
+            tutorials[0].SetActive(true);
+            _hasInitialized = true; // Mark as initialized to avoid reinitialization in Update
+            currentIndex = 1; // Set to the next tutorial in the array
         }
     }
 }
