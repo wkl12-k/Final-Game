@@ -1,56 +1,82 @@
-//using UnityEngine;
+using UnityEngine;
+using UnityEngine.UI;
 
-//public class TutorialScript : MonoBehaviour
-//{
-//    [SerializeField] private GameObject UIElement;
-//    [SerializeField] private KeyCode trigger;
-//    [SerializeField] private GameObject[] tutorials;
+public class TutorialScript : MonoBehaviour
+{
+    public GameObject tutorial1;
+    public GameObject tutorial2;
+    public GameObject tutorial3;
+    public Button bishopButton;
+    public Button rookButton;
+    public Button knightButton;
+    public Button kingButton;
+    public Button helpButton;
+    public Button returnButton;
 
-//    private static bool _hasInitialized = false;
-//    private int currentIndex = 0;
+    private bool isTutorial1Completed = false;
+    private bool isTutorial2Completed = false;
+    private bool isTutorial3Active = false;
 
-//    void Update()
-//    {
-//        if (Input.GetKeyDown(trigger))
-//        {
-//            if (!_hasInitialized)
-//            {
-//                UIElement.SetActive(false);
-//                _hasInitialized = true;
+    void Awake()
+    {
+        ShowTutorial1();
+    }
 
-//                if (tutorials.Length > 0)
-//                {
-//                    tutorials[0].SetActive(true);
-//                    currentIndex = 1;  
-//                }
-//            }
-//            else if (currentIndex < tutorials.Length)
-//            {
-//                tutorials[currentIndex - 1].SetActive(false);
-//                tutorials[currentIndex].SetActive(true);
-//                currentIndex++;
-//            }
-//            else
-//            {
-//                tutorials[currentIndex - 1].SetActive(false);
-//            }
-//        }
-//    }
+    void Update()
+    {
+        if (isTutorial3Active && Input.GetMouseButtonDown(0))
+        {
+            HideTutorial3();
+        }
+    }
 
-//    private void Awake()
-//    {
-//        UIElement.SetActive(true);
+    void ShowTutorial1()
+    {
+        tutorial1.SetActive(true);
+        tutorial2.SetActive(false);
+        tutorial3.SetActive(false);
 
-//        foreach (GameObject tutorial in tutorials)
-//        {
-//            tutorial.SetActive(false);
-//        }
+        bishopButton.onClick.AddListener(HideTutorial1);
+        rookButton.onClick.AddListener(HideTutorial1);
+        knightButton.onClick.AddListener(HideTutorial1);
+        kingButton.onClick.AddListener(HideTutorial1);
+    }
 
-//        if (!_hasInitialized && tutorials.Length > 0)
-//        {
-//            tutorials[0].SetActive(true);
-//            _hasInitialized = true;  
-//            currentIndex = 1; 
-//        }
-//    }
-//}
+    void HideTutorial1()
+    {
+        if (!isTutorial1Completed)
+        {
+            tutorial1.SetActive(false);
+            isTutorial1Completed = true;
+            ShowTutorial2();
+        }
+    }
+
+    void ShowTutorial2()
+    {
+        tutorial2.SetActive(true);
+        helpButton.onClick.AddListener(HideTutorial2);
+    }
+
+    void HideTutorial2()
+    {
+        if (!isTutorial2Completed)
+        {
+            tutorial2.SetActive(false);
+            isTutorial2Completed = true;
+            returnButton.onClick.AddListener(ShowTutorial3);
+        }
+    }
+
+    void ShowTutorial3()
+    {
+        tutorial3.SetActive(true);
+        isTutorial3Active = true;
+    }
+
+    void HideTutorial3()
+    {
+        tutorial3.SetActive(false);
+        isTutorial3Active = false;
+    }
+}
