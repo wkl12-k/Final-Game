@@ -7,7 +7,7 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     private bool isEndGoal = false;
     private Color originalColor;
     public Color hoverColor = Color.green;
-    private Color endGoalColor = Color.HSVToRGB(0,0,75);
+    private Color endGoalColor = Color.HSVToRGB(60, 100,50);
     [HideInInspector]
     public ChessBoard chessBoard;
 
