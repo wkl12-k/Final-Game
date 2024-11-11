@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     private Renderer tileRenderer;
+    private bool isEndGoal = false;
     private Color originalColor;
     public Color hoverColor = Color.green;
     public Color endGoalColor = Color.red;
@@ -21,11 +22,12 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if(!isEndGoal)
         tileRenderer.material.color = hoverColor;
     }
 
     public void OnPointerExit(PointerEventData eventData)
-    {
+    {   if(!isEndGoal)
         tileRenderer.material.color = originalColor;
     }
 
@@ -34,9 +36,11 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         chessBoard.OnTileClicked(this);
     }
 
-    public void selectEndGoal(PointerEventData eventData)
+    public void SetEndGoal()
     {
-        tileRenderer.material.color = endGoalColor;
+       
+            tileRenderer.material.color = endGoalColor;
+        isEndGoal = true;
     }
 
 }

@@ -1,66 +1,56 @@
 using UnityEngine;
+using UnityEngine.UI;
 
-public class PieceMenuHandler : MonoBehaviour
+public class DragPieces : MonoBehaviour
 {
-    public GameObject knightPrefab;
+    [Header("Piece Prefabs")]
     public GameObject rookPrefab;
     public GameObject bishopPrefab;
     public GameObject kingPrefab;
+    public GameObject knightPrefab;
 
-    private Vector3 currentTilePosition;
-    private bool isFirstPiece = true;
-    private ChessBoard chessBoard;
+    [Header("UI Buttons")]
+    public Button rookButton;
+    public Button bishopButton;
+    public Button kingButton;
+    public Button knightButton;
 
-    void OnEnable()
+    [Header("Chess Board Reference")]
+    public ChessBoard chessBoard;
+
+    private GameObject selectedPiecePrefab;
+    private GameObject lastPlacedPiece;
+
+    void Start()
     {
-        ChessBoard.OnBoardCreated += InitializePosition;
+
+
+        rookButton.onClick.AddListener(() => SelectPiece(rookPrefab));
+        bishopButton.onClick.AddListener(() => SelectPiece(bishopPrefab));
+        kingButton.onClick.AddListener(() => SelectPiece(kingPrefab));
+        knightButton.onClick.AddListener(() => SelectPiece(knightPrefab));
     }
 
-    void OnDisable()
+    void SelectPiece(GameObject piecePrefab)
     {
-        ChessBoard.OnBoardCreated -= InitializePosition;
+        selectedPiecePrefab = piecePrefab;
+        Vector3 position = lastPlacedPiece != null ? lastPlacedPiece.transform.position : chessBoard.GetStartTilePosition();
+
+        if (lastPlacedPiece != null)
+            Destroy(lastPlacedPiece);
+
+        lastPlacedPiece=InstantiatePieceOnBoard(position, piecePrefab);
     }
 
-    
-    private void InitializePosition()
+    GameObject InstantiatePieceOnBoard(Vector3 position, GameObject piecePrefab)
     {
-        chessBoard = FindObjectOfType<ChessBoard>();
-        if (chessBoard != null)
-        {
-            currentTilePosition = chessBoard.GetStartTilePosition();
-        }
+        Quaternion uprightRotation = Quaternion.Euler(-90, 90, 0);
+        GameObject piece = Instantiate(piecePrefab, position, uprightRotation);
+
+        ChessPieceMovement pieceMovement = piece.GetComponent<ChessPieceMovement>();
+        chessBoard.SetSelectedPiece(pieceMovement);
+
+        return piece;
     }
 
-    public void SpawnPiece(string pieceType)
-    {
-        if (isFirstPiece && chessBoard != null)
-        {
-            currentTilePosition = chessBoard.GetStartTilePosition();
-            isFirstPiece = false;
-        }
-
-        GameObject pieceToSpawn = null;
-
-        switch (pieceType)
-        {
-            case "Knight":
-                pieceToSpawn = knightPrefab;
-                break;
-            case "Rook":
-                pieceToSpawn = rookPrefab;
-                break;
-            case "Bishop":
-                pieceToSpawn = bishopPrefab;
-                break;
-            case "King":
-                pieceToSpawn = kingPrefab;
-                break;
-        }
-
-        if (pieceToSpawn != null && chessBoard != null)
-        {
-            GameObject newPiece = Instantiate(pieceToSpawn, currentTilePosition, Quaternion.identity);
-            currentTilePosition = newPiece.transform.position;
-        }
-    }
 }

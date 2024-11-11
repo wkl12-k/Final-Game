@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System;
+using System.Collections;
 
 public class ChessBoard : MonoBehaviour
 {
@@ -22,13 +23,20 @@ public class ChessBoard : MonoBehaviour
     {
         CreateBoard();
         OnBoardCreated?.Invoke();
+        StartCoroutine(SetEndGoalAfterBoardCreated());
+    }
+
+    private IEnumerator SetEndGoalAfterBoardCreated()
+    {
+        yield return new WaitForEndOfFrame(); 
+        SetEndGoalTile(5, 1); 
     }
 
     public Vector3 GetStartTilePosition()
     {
-        if (tiles != null && tiles[0, 0] != null)
+        if (tiles != null && tiles[7, 7] != null)
         {
-            return tiles[0, 0].transform.position;
+            return tiles[7, 7].transform.position;
         }
         else
         {
@@ -107,5 +115,19 @@ public class ChessBoard : MonoBehaviour
     {
         selectedPiece = piece;
     }
+
+    public void SetEndGoalTile(int x, int z)
+    {
+       
+        if (x >= 0 && x < gridSize && z >= 0 && z < gridSize)
+        {
+            Tile endGoalTile = tiles[x, z].GetComponent<Tile>();
+            if (endGoalTile != null)
+            {
+                endGoalTile.SetEndGoal();
+            }
+        }
+    }
+
 }
 
