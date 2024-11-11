@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 4000010292491684}
   - component: {fileID: 33000012717517702}
   - component: {fileID: 23000012025704030}
+  - component: {fileID: -5728754986740141710}
   m_Layer: 0
   m_Name: Chess Pawn Black
-  m_TagString: Untagged
+  m_TagString: pawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86,3 +87,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-5728754986740141710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000014207659374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6812e52f4811549af93a8120ca61854d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  piece: {fileID: 1000014207659374}
+  availableTileLight: {fileID: 7725060036523578422, guid: 751695308fc3e42e4b8ca868f0f4cda1, type: 3}

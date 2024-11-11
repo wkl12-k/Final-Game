@@ -933,7 +933,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 07e5147bce6e44d59bfd828c8b5dd88b, type: 2}
+  m_Material: {fileID: 2100000, guid: 0a9d9f5526de64439a6a56932dae29ca, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 0.392}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -1143,6 +1143,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23000012475157416, guid: 411f5295934dd1c4eb5916e3c649f0a7, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 912af2ca129004709a42d924bd02dd0a, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1150,6 +1154,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1000013351177638, guid: 411f5295934dd1c4eb5916e3c649f0a7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1367072674}
+    - targetCorrespondingSourceObject: {fileID: 1000013351177638, guid: 411f5295934dd1c4eb5916e3c649f0a7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1367072679}
   m_SourcePrefab: {fileID: 100100000, guid: 411f5295934dd1c4eb5916e3c649f0a7, type: 3}
 --- !u!1 &1367072673 stripped
 GameObject:
@@ -1169,6 +1176,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pieceSpeed: 3
+--- !u!114 &1367072679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367072673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6812e52f4811549af93a8120ca61854d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  piece: {fileID: 1367072673}
+  availableTileLight: {fileID: 7725060036523578422, guid: 751695308fc3e42e4b8ca868f0f4cda1, type: 3}
 --- !u!1 &1401346137
 GameObject:
   m_ObjectHideFlags: 0
@@ -1913,6 +1934,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23000012459057614, guid: 1700328aaf96fd243a71d862897619a4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 912af2ca129004709a42d924bd02dd0a, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
