@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1b989d2c0309a49559a4a7ca62e2941b, type: 2}
+  - {fileID: 2100000, guid: 4837cb9f5a5a34e08b73dd8e2075f141, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -123,4 +123,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverColor: {r: 0.21269079, g: 0.9716981, b: 0, a: 1}
+  endGoalColor: {r: 1, g: 0, b: 0, a: 1}
   chessBoard: {fileID: 0}
