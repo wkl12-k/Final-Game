@@ -19,27 +19,35 @@ public class DragPieces : MonoBehaviour
     public ChessBoard chessBoard;
 
     private GameObject selectedPiecePrefab;
-    private GameObject lastPlacedPiece;
+    private GameObject lastPlacedPiece;  // Track the last placed piece
 
     void Start()
     {
-
-
-        rookButton.onClick.AddListener(() => SelectPiece(rookPrefab));
-        bishopButton.onClick.AddListener(() => SelectPiece(bishopPrefab));
-        kingButton.onClick.AddListener(() => SelectPiece(kingPrefab));
-        knightButton.onClick.AddListener(() => SelectPiece(knightPrefab));
+        // Set up button listeners to select pieces and pass the corresponding button as a parameter
+        rookButton.onClick.AddListener(() => SelectPiece(rookPrefab, rookButton));
+        bishopButton.onClick.AddListener(() => SelectPiece(bishopPrefab, bishopButton));
+        kingButton.onClick.AddListener(() => SelectPiece(kingPrefab, kingButton));
+        knightButton.onClick.AddListener(() => SelectPiece(knightPrefab, knightButton));
     }
 
-    void SelectPiece(GameObject piecePrefab)
+    void SelectPiece(GameObject piecePrefab, Button pieceButton)
     {
         selectedPiecePrefab = piecePrefab;
+
         Vector3 position = lastPlacedPiece != null ? lastPlacedPiece.transform.position : chessBoard.GetStartTilePosition();
 
+        
         if (lastPlacedPiece != null)
+        {
             Destroy(lastPlacedPiece);
+            lastPlacedPiece = null;  
+        }
 
-        lastPlacedPiece=InstantiatePieceOnBoard(position, piecePrefab);
+       
+        lastPlacedPiece = InstantiatePieceOnBoard(position, piecePrefab);
+
+        
+        pieceButton.interactable = false;
     }
 
     GameObject InstantiatePieceOnBoard(Vector3 position, GameObject piecePrefab)
@@ -47,10 +55,10 @@ public class DragPieces : MonoBehaviour
         Quaternion uprightRotation = Quaternion.Euler(-90, 90, 0);
         GameObject piece = Instantiate(piecePrefab, position, uprightRotation);
 
+        
         ChessPieceMovement pieceMovement = piece.GetComponent<ChessPieceMovement>();
         chessBoard.SetSelectedPiece(pieceMovement);
 
-        return piece;
+        return piece;  
     }
-
 }
