@@ -5,6 +5,9 @@ using System.Collections;
 
 public class ChessBoard : MonoBehaviour
 {
+    public static event Action OnBoardCreated;
+    public MusicManagement musicManager;
+
     [Header("Game Objects")]
     public GameObject whiteBoardTile;
     public GameObject blackBoardTile;
@@ -16,8 +19,7 @@ public class ChessBoard : MonoBehaviour
 
     private GameObject[,] tiles;
     private ChessPieceMovement selectedPiece;
-    public static event Action OnBoardCreated;
-
+    
 
     void Start()
     {
@@ -90,7 +92,8 @@ public class ChessBoard : MonoBehaviour
             if (IsValidMove(tilePosition, validMoves))
             {
                 selectedPiece.Move(tilePosition);
-                selectedPiece = null;   
+                selectedPiece = null;
+                musicManager.PlayChessMoveSound();
             }
             else
             {
