@@ -1,10 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
 public class SceneManagement : MonoBehaviour
 {
-
     [SerializeField] GameObject exitPanel;
     [SerializeField] GameObject instructionsPanel;
     [SerializeField] GameObject playButton;
@@ -20,10 +18,6 @@ public class SceneManagement : MonoBehaviour
         {
             exitPanel.SetActive(true);
             Time.timeScale = 0;
-            //foreach (GameObject element in UIelements)
-            //{
-            //    element.SetActive(false);
-            //}
         }
     }
 
@@ -33,10 +27,6 @@ public class SceneManagement : MonoBehaviour
         {
             exitPanel.SetActive(false);
             Time.timeScale = 1;
-            //foreach (GameObject element in UIelements)
-            //{
-            //    element.SetActive(true);
-            //}
         }
     }
 
@@ -46,10 +36,6 @@ public class SceneManagement : MonoBehaviour
         {
             instructionsPanel.SetActive(true);
             Time.timeScale = 0;
-            //foreach (GameObject element in UIelements)
-            //{
-            //    element.SetActive(false);
-            //}
         }
     }
 
@@ -59,10 +45,6 @@ public class SceneManagement : MonoBehaviour
         {
             instructionsPanel.SetActive(false);
             Time.timeScale = 1;
-            //foreach (GameObject element in UIelements)
-            //{
-            //    element.SetActive(true);
-            //}
         }
     }
 
@@ -75,4 +57,8 @@ public class SceneManagement : MonoBehaviour
         }
     }
 
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }
