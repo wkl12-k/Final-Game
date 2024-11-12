@@ -129,5 +129,10 @@ public class ChessBoard : MonoBehaviour
         }
     }
 
+    public void PathBuilder()
+    {
+
+    }
+
 }
 
