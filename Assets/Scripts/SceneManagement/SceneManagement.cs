@@ -61,4 +61,9 @@ public class SceneManagement : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    public void toLevel(string name)
+    {
+        SceneManager.LoadScene(name);
+    }
 }
