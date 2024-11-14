@@ -41,7 +41,7 @@ public class chessPuzzleSpawner : MonoBehaviour
         List<GameObject> pieceMenu = new List<GameObject>();
         pieceMenu.Clear();
         int randomAmount = Random.Range(4, 8);
-        List<GameObject> pieces = new List<GameObject> { rookPrefab, bishopPrefab, knightPrefab, kingPrefab };
+        List<GameObject> pieces = new List<GameObject> { rookPrefab, bishopPrefab, knightPrefab, kingPrefab, pawnPrefab };
 
         for (int i = 0; i < randomAmount; i++)
         {
@@ -60,37 +60,32 @@ public class chessPuzzleSpawner : MonoBehaviour
        List<GameObject> pieceMenu=CreatePieceMenu();
        
         Vector3 prevPosition=chessBoard.GetStartTilePosition();
-      
-        
-
 
         foreach (GameObject piece in pieceMenu)
         {
             if (piece.CompareTag("rook"))
             {
-                pieceMovement = GetComponent<RookMovement>();
+                pieceMovement = piece.GetComponent<RookMovement>();
             }
             else if (piece.CompareTag("king"))
             {
-                pieceMovement = GetComponent<KingMovement>();
+                pieceMovement = piece.GetComponent<KingMovement>();
             }
             else if (piece.CompareTag("bishop"))
             {
-                pieceMovement = GetComponent<BishopMovement>();
+                pieceMovement = piece.GetComponent<BishopMovement>();
             }
             else if (piece.CompareTag("pawn"))
             {
-                pieceMovement = GetComponent<PawnMovement>();
+                pieceMovement = piece.GetComponent<PawnMovement>();
             }
             else if (piece.CompareTag("knight"))
             {
-                pieceMovement = GetComponent<KnightMovement>();
+                pieceMovement = piece.GetComponent<KnightMovement>();
             }
 
             List<Vector3> availableTiles = pieceMovement.CheckAvailableMoves(prevPosition);
-            
-
-
+    
             int randomPosition = Random.Range(0, availableTiles.Count);
             prevPosition = availableTiles[randomPosition];
 

@@ -2,6 +2,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum PieceType
+{
+    Rook,
+    Bishop,
+    Knight,
+    Pawn,
+    King
+}
+
 public class DragPieces : MonoBehaviour
 {
     [Header("Piece Prefabs")]
