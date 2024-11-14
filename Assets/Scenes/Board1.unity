@@ -1748,9 +1748,6 @@ MonoBehaviour:
   rookButton: {fileID: 1740926223}
   knightButton: {fileID: 703974850}
   kingButton: {fileID: 1891845905}
-  helpButton: {fileID: 1829822437}
-  returnButton: {fileID: 1456141465}
-  resetButton: {fileID: 1419632625}
 --- !u!4 &799856907
 Transform:
   m_ObjectHideFlags: 0
@@ -2811,7 +2808,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1168643493
 RectTransform:
   m_ObjectHideFlags: 0

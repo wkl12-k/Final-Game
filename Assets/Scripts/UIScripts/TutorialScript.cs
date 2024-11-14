@@ -6,19 +6,17 @@ public class TutorialScript : MonoBehaviour
     public GameObject tutorial1;
     public GameObject tutorial2;
     public GameObject tutorial3;
-    public GameObject tutorial4; 
+    public GameObject tutorial4;
     public Button bishopButton;
     public Button rookButton;
     public Button knightButton;
     public Button kingButton;
-    public Button helpButton;
-    public Button returnButton;
-    public Button resetButton;
 
     private bool isTutorial1Completed = false;
-    private bool isTutorial2Completed = false;
+    private bool isTutorial2Active = false;
     private bool isTutorial3Active = false;
-    private bool isTutorial4Active = false;  
+    private bool isTutorial4Active = false;
+
 
     private static bool tutorialsCompleted = false;
 
@@ -47,10 +45,20 @@ public class TutorialScript : MonoBehaviour
 
     void Update()
     {
-        if (isTutorial3Active && Input.GetMouseButtonDown(0))
+        if (isTutorial2Active && Input.GetMouseButtonDown(0))
+        {
+            HideTutorial2();
+            ShowTutorial3();
+        }
+        else if (isTutorial3Active && Input.GetMouseButtonDown(0))
         {
             HideTutorial3();
-            ShowTutorial4();   
+            ShowTutorial4();
+        }
+        else if (isTutorial4Active && Input.GetMouseButtonDown(0))
+        {
+            HideTutorial4();
+            tutorialsCompleted = true;
         }
     }
 
@@ -80,17 +88,13 @@ public class TutorialScript : MonoBehaviour
     void ShowTutorial2()
     {
         tutorial2.SetActive(true);
-        helpButton.onClick.AddListener(HideTutorial2);
+        isTutorial2Active = true;
     }
 
     void HideTutorial2()
     {
-        if (!isTutorial2Completed)
-        {
-            tutorial2.SetActive(false);
-            isTutorial2Completed = true;
-            returnButton.onClick.AddListener(ShowTutorial3);
-        }
+        tutorial2.SetActive(false);
+        isTutorial2Active = false;
     }
 
     void ShowTutorial3()
@@ -109,7 +113,6 @@ public class TutorialScript : MonoBehaviour
     {
         tutorial4.SetActive(true);
         isTutorial4Active = true;
-        resetButton.onClick.AddListener(RestartLevel);
     }
 
     void HideTutorial4()
@@ -118,10 +121,4 @@ public class TutorialScript : MonoBehaviour
         isTutorial4Active = false;
     }
 
-    public void RestartLevel()
-    {
-        HideTutorial4();
-        tutorialsCompleted = true;
-        sceneManagement.ReloadScene();
-    }
 }
