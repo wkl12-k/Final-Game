@@ -25,7 +25,7 @@ public class RookMovement : MonoBehaviour, ChessPieceMovement
 
         foreach (Vector3 direction in rookMoves)
         {
-            Vector3 targetPosition = transform.position;
+            Vector3 targetPosition = position;
             Vector3 lastValidPosition = targetPosition;
 
             
@@ -36,7 +36,7 @@ public class RookMovement : MonoBehaviour, ChessPieceMovement
             }
 
             
-            if (lastValidPosition != transform.position)
+            if (lastValidPosition != position)
             {
                 availableMoves.Add(lastValidPosition);
             }
