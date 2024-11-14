@@ -7,13 +7,13 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     private bool isEndGoal = false;
     private Color originalColor;
     public Color hoverColor = Color.green;
-    private Color endGoalColor = Color.HSVToRGB(60, 100,50);
+    private Color endGoalColor = Color.cyan;
 
     [HideInInspector]
     public ChessBoard chessBoard;
 
 
-    //we want if the piece is chosen and put on board for it to show the available tiles for it by turning green or something else.
+    
 
     void Start()
     {
