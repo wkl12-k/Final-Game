@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,12 +15,15 @@ public class DragPieces : MonoBehaviour
     public Button bishopButton;
     public Button kingButton;
     public Button knightButton;
+    public GameObject pieceButton;
+
 
     [Header("Chess Board Reference")]
     public ChessBoard chessBoard;
 
     private GameObject selectedPiecePrefab;
-    private GameObject lastPlacedPiece;  
+    private GameObject lastPlacedPiece;
+    private List<GameObject> randomPieces = new List<GameObject>();
 
     void Start()
     {
@@ -29,6 +33,8 @@ public class DragPieces : MonoBehaviour
         kingButton.onClick.AddListener(() => SelectPiece(kingPrefab, kingButton));
         knightButton.onClick.AddListener(() => SelectPiece(knightPrefab, knightButton));
     }
+
+
 
     void SelectPiece(GameObject piecePrefab, Button pieceButton)
     {

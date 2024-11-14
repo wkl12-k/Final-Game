@@ -9,6 +9,8 @@ public class ChessBoard : MonoBehaviour
     public GameObject whiteBoardTile;
     public GameObject blackBoardTile;
 
+    public chessPuzzleSpawner chessSpawner;
+
     [Header("Grid Creation")]
     [SerializeField] private int gridSize = 8;
     [SerializeField] private int tileSize = 1;
@@ -29,7 +31,7 @@ public class ChessBoard : MonoBehaviour
     private IEnumerator SetEndGoalAfterBoardCreated()
     {
         yield return new WaitForEndOfFrame(); 
-        SetEndGoalTile(5, 1); 
+        chessSpawner.CreateEndGoal(); 
     }
 
     public Vector3 GetStartTilePosition()
@@ -80,6 +82,8 @@ public class ChessBoard : MonoBehaviour
         }
     }
 
+   
+
     public void OnTileClicked(Tile tile)
     {
         Vector3 tilePosition = new Vector3(Mathf.Round(tile.transform.position.x), tile.transform.position.y, Mathf.Round(tile.transform.position.z));
@@ -116,23 +120,24 @@ public class ChessBoard : MonoBehaviour
         selectedPiece = piece;
     }
 
-    public void SetEndGoalTile(int x, int z)
+    public Tile SetEndGoalTile(int x, int z)
     {
-       
+        Tile endGoalTile = null;
+
         if (x >= 0 && x < gridSize && z >= 0 && z < gridSize)
         {
-            Tile endGoalTile = tiles[x, z].GetComponent<Tile>();
+            endGoalTile = tiles[x, z].GetComponent<Tile>();
             if (endGoalTile != null)
             {
                 endGoalTile.SetEndGoal();
             }
         }
+        return endGoalTile;
     }
 
-    public void PathBuilder()
-    {
+   
 
-    }
+
 
 }
 
