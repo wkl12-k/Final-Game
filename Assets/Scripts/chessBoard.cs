@@ -44,7 +44,6 @@ public class ChessBoard : MonoBehaviour
         }
         else
         {
-           
             return Vector3.zero; 
         }
     }

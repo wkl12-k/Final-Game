@@ -57,7 +57,7 @@ public class chessPuzzleSpawner : MonoBehaviour
     public void CreateEndGoal()
     {
        
-       List<GameObject> pieceMenu=CreatePieceMenu();
+        List<GameObject> pieceMenu=CreatePieceMenu();
        
         Vector3 prevPosition=chessBoard.GetStartTilePosition();
 
@@ -85,13 +85,13 @@ public class chessPuzzleSpawner : MonoBehaviour
             }
 
             List<Vector3> availableTiles = pieceMovement.CheckAvailableMoves(prevPosition);
-            if(availableTiles.Contains(new Vector3(7, 0, 7)))
-            availableTiles.Remove(new Vector3(7, 0, 7));
+            //if(availableTiles.Contains(new Vector3(7, 0, 7)))
+            //availableTiles.Remove(new Vector3(7, 0, 7));
 
             int randomPosition = Random.Range(0, availableTiles.Count);
             prevPosition = availableTiles[randomPosition];
 
-            Debug.Log(prevPosition.ToString());
+            //Debug.Log(prevPosition.ToString());
             
         }
         chessBoard.SetEndGoalTile((int)prevPosition.x, (int)prevPosition.z);

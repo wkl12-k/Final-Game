@@ -602,11 +602,12 @@ MonoBehaviour:
   bishopPrefab: {fileID: 1000012633253314, guid: 8c44c8a6238ea0148bc07d2371dedc74, type: 3}
   kingPrefab: {fileID: 1000013427829390, guid: 1700328aaf96fd243a71d862897619a4, type: 3}
   knightPrefab: {fileID: 1000010201698906, guid: edd10668f6a183d4180f8dc7b94f9e5c, type: 3}
+  pawnPrefab: {fileID: 0}
   rookButton: {fileID: 485030357}
   bishopButton: {fileID: 2075424298}
   kingButton: {fileID: 684465965}
   knightButton: {fileID: 1345510153}
-  pieceButton: {fileID: 0}
+  pawnButton: {fileID: 0}
   chessBoard: {fileID: 218804513}
 --- !u!1 &684465963
 GameObject:
@@ -1284,7 +1285,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1345510152
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1299,9 +1300,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1983691332}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 421.07867, y: -32.008118}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 75, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1345510153

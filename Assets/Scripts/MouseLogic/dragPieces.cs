@@ -2,33 +2,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum PieceType
-{
-    Rook,
-    Bishop,
-    Knight,
-    Pawn,
-    King
-}
+//public enum PieceType
+//{
+//    Rook,
+//    Bishop,
+//    Knight,
+//    Pawn,
+//    King
+//}
 
 public class DragPieces : MonoBehaviour
 {
     [Header("Piece Prefabs")]
-    public GameObject rookPrefab;
-    public GameObject bishopPrefab;
-    public GameObject kingPrefab;
-    public GameObject knightPrefab;
+    [SerializeField] GameObject rookPrefab;
+    [SerializeField] GameObject bishopPrefab;
+    [SerializeField] GameObject kingPrefab;
+    [SerializeField] GameObject knightPrefab;
+    [SerializeField] GameObject pawnPrefab;
 
     [Header("UI Buttons")]
-    public Button rookButton;
-    public Button bishopButton;
-    public Button kingButton;
-    public Button knightButton;
-    public GameObject pieceButton;
-
+    [SerializeField] Button rookButton;
+    [SerializeField] Button bishopButton;
+    [SerializeField] Button kingButton;
+    [SerializeField] Button knightButton;
+    [SerializeField] Button pawnButton;
+    //[SerializeField] GameObject pieceButton;
 
     [Header("Chess Board Reference")]
-    public ChessBoard chessBoard;
+    [SerializeField] ChessBoard chessBoard;
 
     private GameObject selectedPiecePrefab;
     private GameObject lastPlacedPiece;
@@ -36,11 +37,11 @@ public class DragPieces : MonoBehaviour
 
     void Start()
     {
-        
         rookButton.onClick.AddListener(() => SelectPiece(rookPrefab, rookButton));
         bishopButton.onClick.AddListener(() => SelectPiece(bishopPrefab, bishopButton));
         kingButton.onClick.AddListener(() => SelectPiece(kingPrefab, kingButton));
         knightButton.onClick.AddListener(() => SelectPiece(knightPrefab, knightButton));
+        pawnButton.onClick.AddListener(() => SelectPiece(pawnPrefab, pawnButton));
     }
 
 
