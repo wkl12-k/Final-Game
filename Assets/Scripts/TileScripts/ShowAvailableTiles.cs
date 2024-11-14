@@ -36,12 +36,14 @@ public class ShowAvailableTiles : MonoBehaviour
             pieceMovement = GetComponent<KnightMovement>();
         }
 
+
         
-        List<Vector3> avilableTiles = pieceMovement.CheckAvailableMoves(piece.transform.position);
+        List<Vector3> avilableTiles = pieceMovement.CheckAvailableMoves(piece.transform.position); //piece.transform.position
+
 
         foreach (Vector3 tilePos in avilableTiles)
         {
-            GameObject tileLight = Instantiate(availableTileLight);//piece.transform
+            GameObject tileLight = Instantiate(availableTileLight);
             tileLight.transform.position = new Vector3(tilePos.x, lightHeight, tilePos.z);
             lights.Add(tileLight);
         }

@@ -27,7 +27,7 @@ public class KingMovement : MonoBehaviour, ChessPieceMovement
 
         foreach (Vector3 move in kingMoves)
         {
-            Vector3 availablePosition = transform.position + move;
+            Vector3 availablePosition = position + move;
             if (IsValidPosition(availablePosition))
             {
                 availableMoves.Add(availablePosition);
