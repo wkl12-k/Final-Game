@@ -10,10 +10,6 @@ public class MusicManagement : MonoBehaviour
     private AudioSource audioSource;
     private static MusicManagement instance;
 
-    void Start()
-    {
-    }
-
     void Awake()
     {
         if (instance == null)
@@ -22,16 +18,12 @@ public class MusicManagement : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             audioSource = gameObject.AddComponent<AudioSource>();
             audioSource.loop = true;
-            PlayMusicForCurrentScene();
+            PlayBackgroundMusic();
         }
         else
         {
             Destroy(gameObject);
         }
-    }
-
-    void Update()
-    {
     }
 
     public void PlayChessMoveSound()
@@ -44,22 +36,12 @@ public class MusicManagement : MonoBehaviour
         audioSource.PlayOneShot(reachedGoalSound);
     }
 
-    private void PlayMusic(AudioClip song)
+    private void PlayBackgroundMusic()
     {
-        audioSource.PlayOneShot(song);
-    }
-
-    private void PlayMusicForCurrentScene()
-    {
-        string sceneName = SceneManager.GetActiveScene().name;
-
-        if (sceneName == "Intro" && !audioSource.isPlaying)
+        if (!audioSource.isPlaying)
         {
-            PlayMusic(backgroundMusic);
-        }
-        else if (sceneName == "Menu" && !audioSource.isPlaying)
-        {
-            PlayMusic(backgroundMusic);
+            audioSource.clip = backgroundMusic;
+            audioSource.Play();
         }
     }
 }

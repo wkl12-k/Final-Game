@@ -8,6 +8,8 @@ public class SceneManagement : MonoBehaviour
     [SerializeField] GameObject playButton;
     [SerializeField] GameObject[] UIelements;
 
+    private static string lastSceneName;
+
     void Update()
     {
     }
@@ -64,6 +66,15 @@ public class SceneManagement : MonoBehaviour
 
     public void toLevel(string name)
     {
+        lastSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(name);
+    }
+
+    public void LoadLastScene()
+    {
+        if (!string.IsNullOrEmpty(lastSceneName))
+        {
+            SceneManager.LoadScene(lastSceneName);
+        }
     }
 }
