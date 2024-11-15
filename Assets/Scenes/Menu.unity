@@ -1858,7 +1858,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chessMoveSound: {fileID: 8300000, guid: 13ba342c61b5f466598f8f07f070ae75, type: 3}
   reachedGoalSound: {fileID: 8300000, guid: 3db01fc6191824b65958cf7175ef187c, type: 3}
-  backgroundMusic: {fileID: 8300000, guid: 4a28c2fb2c1ee4f2f9a7978d0b9573b2, type: 3}
+  backgroundMusic: {fileID: 8300000, guid: 1d8beb838966341bda2bc5948a0c31a1, type: 3}
 --- !u!4 &2035919263
 Transform:
   m_ObjectHideFlags: 0

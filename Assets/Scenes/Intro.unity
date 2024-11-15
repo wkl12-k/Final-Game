@@ -882,6 +882,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1245235753}
   m_CullTransparentMesh: 1
+--- !u!1 &1465997038
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1465997040}
+  - component: {fileID: 1465997039}
+  m_Layer: 0
+  m_Name: MusicManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1465997039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465997038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6059fd8af2dcc40b5859bacf04299925, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chessMoveSound: {fileID: 8300000, guid: 13ba342c61b5f466598f8f07f070ae75, type: 3}
+  reachedGoalSound: {fileID: 8300000, guid: 3db01fc6191824b65958cf7175ef187c, type: 3}
+  backgroundMusic: {fileID: 8300000, guid: 1d8beb838966341bda2bc5948a0c31a1, type: 3}
+--- !u!4 &1465997040
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465997038}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.859613, y: 9.125317, z: -2.9609985}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1516151353
 GameObject:
   m_ObjectHideFlags: 0
@@ -1052,53 +1099,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1825585571
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1825585573}
-  - component: {fileID: 1825585574}
-  m_Layer: 0
-  m_Name: MusicManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1825585573
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1825585571}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 552.1897, y: 213.48448, z: -1.8725586}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1825585574
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1825585571}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6059fd8af2dcc40b5859bacf04299925, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chessMoveSound: {fileID: 8300000, guid: 13ba342c61b5f466598f8f07f070ae75, type: 3}
-  reachedGoalSound: {fileID: 8300000, guid: 3db01fc6191824b65958cf7175ef187c, type: 3}
-  backgroundMusic: {fileID: 8300000, guid: 4a28c2fb2c1ee4f2f9a7978d0b9573b2, type: 3}
 --- !u!1 &1840723071
 GameObject:
   m_ObjectHideFlags: 0
@@ -1402,7 +1402,7 @@ SceneRoots:
   - {fileID: 1840723075}
   - {fileID: 737962527}
   - {fileID: 2125820417}
-  - {fileID: 1825585573}
   - {fileID: 977368368}
   - {fileID: 2107961736}
   - {fileID: 1988755537}
+  - {fileID: 1465997040}
