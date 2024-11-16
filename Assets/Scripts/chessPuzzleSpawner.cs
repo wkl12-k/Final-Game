@@ -5,41 +5,21 @@ public class chessPuzzleSpawner : MonoBehaviour
 {
 
     [Header("Piece Prefabs")]
-    public GameObject rookPrefab;
-    public GameObject bishopPrefab;
-    public GameObject kingPrefab;
-    public GameObject knightPrefab;
-    public GameObject pawnPrefab;
+    [SerializeField] GameObject rookPrefab;
+    [SerializeField] GameObject bishopPrefab;
+    [SerializeField] GameObject kingPrefab;
+    [SerializeField] GameObject knightPrefab;
+    [SerializeField] GameObject pawnPrefab;
 
-
+    [Header("Other Components")]
     [SerializeField] ChessPieceMovement pieceMovement;
+    [SerializeField] ChessBoard chessBoard;
 
-    
-
-
-
-
-
-
-    public ChessBoard chessBoard;
-    
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    private List<GameObject> pieceMenu;
 
     List<GameObject> CreatePieceMenu()
     {
-        List<GameObject> pieceMenu = new List<GameObject>();
-        pieceMenu.Clear();
+        pieceMenu = new List<GameObject>();
         int randomAmount = Random.Range(4, 8);
         List<GameObject> pieces = new List<GameObject> { rookPrefab, bishopPrefab, knightPrefab, kingPrefab, pawnPrefab };
 
@@ -53,11 +33,10 @@ public class chessPuzzleSpawner : MonoBehaviour
 
     }
 
-
     public void CreateEndGoal()
     {
        
-        List<GameObject> pieceMenu=CreatePieceMenu();
+        CreatePieceMenu();
        
         Vector3 prevPosition=chessBoard.GetStartTilePosition();
 
@@ -95,13 +74,11 @@ public class chessPuzzleSpawner : MonoBehaviour
             
         }
         chessBoard.SetEndGoalTile((int)prevPosition.x, (int)prevPosition.z);
-
-
-
     }
 
-   
 
-  
-
+    public List<GameObject> GetPieceMenu()
+    {
+        return pieceMenu;
+    }
 }

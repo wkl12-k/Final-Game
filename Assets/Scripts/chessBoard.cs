@@ -12,7 +12,8 @@ public class ChessBoard : MonoBehaviour
     public GameObject whiteBoardTile;
     public GameObject blackBoardTile;
 
-    public chessPuzzleSpawner chessSpawner;
+    public chessPuzzleSpawner chessSpawner = null;
+    [SerializeField] PieceButtons pieceButtons = null;
 
     [Header("Grid Creation")]
     [SerializeField] private int gridSize = 8;
@@ -27,13 +28,20 @@ public class ChessBoard : MonoBehaviour
     {
         CreateBoard();
         OnBoardCreated?.Invoke();
-        StartCoroutine(SetEndGoalAfterBoardCreated());
+
+        if (chessSpawner != null && pieceButtons != null)
+        {
+            StartCoroutine(SetEndGoalAfterBoardCreated());
+        }
     }
 
     private IEnumerator SetEndGoalAfterBoardCreated()
     {
         yield return new WaitForEndOfFrame(); 
-        chessSpawner.CreateEndGoal(); 
+        chessSpawner.CreateEndGoal();
+
+        List<GameObject> pieceMenu = chessSpawner.GetPieceMenu();
+        pieceButtons.CreatePieceMenu(pieceMenu);
     }
 
     public Vector3 GetStartTilePosition()
@@ -96,7 +104,7 @@ public class ChessBoard : MonoBehaviour
             {
                 selectedPiece.Move(tilePosition);
                 selectedPiece = null;
-                musicManager.PlayChessMoveSound();
+                //musicManager.PlayChessMoveSound();
             }
             else
             {
@@ -136,10 +144,5 @@ public class ChessBoard : MonoBehaviour
         }
         return endGoalTile;
     }
-
-   
-
-
-
 }
 
