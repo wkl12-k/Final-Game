@@ -1322,8 +1322,8 @@ MonoBehaviour:
   knightPrefab: {fileID: 1000010201698906, guid: edd10668f6a183d4180f8dc7b94f9e5c, type: 3}
   pawnPrefab: {fileID: 1000014207659374, guid: 61ed95d5d9afc0842b0c4d0c96678d38, type: 3}
   chessBoard: {fileID: 274136389}
-  minPieces: 3
-  maxPieces: 3
+  minPieces: 1
+  maxPieces: 2
 --- !u!4 &615943785
 Transform:
   m_ObjectHideFlags: 0

@@ -28,7 +28,7 @@ public class PieceButtons : MonoBehaviour
 
     public void CreatePieceMenu(List<GameObject> pieceMenu)
     {
-        pieceMenu = puzzleSpawner.GetPieceMenu();
+        //pieceMenu = puzzleSpawner.GetPieceMenu();
         //pieceMenu = GetComponent<chessPuzzleSpawner>().GetPieceMenu();
 
         foreach (GameObject piece in pieceMenu)
