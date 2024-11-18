@@ -56,8 +56,6 @@ public class ChessBoard : MonoBehaviour
         }
     }
 
-
-
     public void CreateBoard()
     {
         tiles = new GameObject[gridSize, gridSize];
@@ -91,38 +89,15 @@ public class ChessBoard : MonoBehaviour
         }
     }
 
-   
-
     public void OnTileClicked(Tile tile)
     {
         Vector3 tilePosition = new Vector3(Mathf.Round(tile.transform.position.x), tile.transform.position.y, Mathf.Round(tile.transform.position.z));
 
         if (selectedPiece != null)
         {
-            List<Vector3> validMoves = selectedPiece.CheckAvailableMoves(transform.position);
-            if (IsValidMove(tilePosition, validMoves))
-            {
-                selectedPiece.Move(tilePosition);
-                selectedPiece = null;
-                //musicManager.PlayChessMoveSound();
-            }
-            else
-            {
-                Debug.Log("Invalid move.");
-            }
+            selectedPiece.Move(tilePosition);
+            selectedPiece = null;
         }
-    }
-
-    private bool IsValidMove(Vector3 tilePosition, List<Vector3> validMoves)
-    {
-        foreach (Vector3 move in validMoves)
-        {
-            if (Mathf.Approximately(tilePosition.x, move.x) && Mathf.Approximately(tilePosition.z, move.z))
-            {
-                return true;
-            }
-        }
-        return false;
     }
 
     public void SetSelectedPiece(ChessPieceMovement piece)

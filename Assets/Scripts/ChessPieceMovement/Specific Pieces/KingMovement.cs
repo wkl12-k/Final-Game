@@ -11,9 +11,15 @@ public class KingMovement : MonoBehaviour, ChessPieceMovement
 
     [SerializeField] private float pieceSpeed = 3f;
     private Vector3[] kingMoves = new Vector3[] {
-        Vector3.back, Vector3.forward, Vector3.left, Vector3.right,
-        new Vector3(1, 0, -1), new Vector3(-1, 0, -1),
-        new Vector3(1, 0, 1), new Vector3(-1, 0, 1)
+        Vector3.back,
+        Vector3.forward,
+        Vector3.left,
+        Vector3.right,
+
+        new Vector3(1, 0, -1),
+        new Vector3(-1, 0, -1),
+        new Vector3(1, 0, 1),
+        new Vector3(-1, 0, 1)
     };
 
     void Start()
@@ -33,6 +39,7 @@ public class KingMovement : MonoBehaviour, ChessPieceMovement
                 availableMoves.Add(availablePosition);
             }
         }
+
         return availableMoves;
     }
 
