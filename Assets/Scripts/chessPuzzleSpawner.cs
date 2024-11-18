@@ -15,12 +15,16 @@ public class chessPuzzleSpawner : MonoBehaviour
     [SerializeField] ChessPieceMovement pieceMovement;
     [SerializeField] ChessBoard chessBoard;
 
+    [Header("Difficulty Indicator")]
+    [SerializeField] int minPieces = 1;
+    [SerializeField] int maxPieces = 2;
+
     private List<GameObject> pieceMenu;
 
     List<GameObject> CreatePieceMenu()
     {
         pieceMenu = new List<GameObject>();
-        int randomAmount = Random.Range(4, 8);
+        int randomAmount = Random.Range(minPieces, maxPieces);
         List<GameObject> pieces = new List<GameObject> { rookPrefab, bishopPrefab, knightPrefab, kingPrefab, pawnPrefab };
 
         for (int i = 0; i < randomAmount; i++)
