@@ -24,16 +24,15 @@ public class PieceButtons : MonoBehaviour
     [Header("Other Scripts")]
     [SerializeField] chessPuzzleSpawner puzzleSpawner;
 
-    //private List<GameObject> pieceMenu;
+    private List<GameObject> pieceMenuButtonList;
 
     public void CreatePieceMenu(List<GameObject> pieceMenu)
     {
-        //pieceMenu = puzzleSpawner.GetPieceMenu();
-        //pieceMenu = GetComponent<chessPuzzleSpawner>().GetPieceMenu();
+        pieceMenuButtonList = new List<GameObject>();
 
         foreach (GameObject piece in pieceMenu)
         {
-            GameObject button;
+            GameObject button = null;
 
             if (piece.CompareTag("rook"))
             {
@@ -60,6 +59,18 @@ public class PieceButtons : MonoBehaviour
                 button = Instantiate(knightButtonPrefab, pieceMenuPanel.transform);
                 button.GetComponent<Button>().onClick.AddListener(() => GetComponent<SelectPiece>().PieceSelected(knightPrefab, button.GetComponent<Button>()));
             }
+
+            pieceMenuButtonList.Add(button);
         }
+    }
+
+    public void ResetPieceMenu()
+    {
+        foreach (GameObject button in pieceMenuButtonList)
+        {
+            button.GetComponent<Button>().interactable = true;
+        }
+
+        GetComponent<SelectPiece>().ResetBoard();
     }
 }

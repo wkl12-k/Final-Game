@@ -55,4 +55,9 @@ public class SelectPiece : MonoBehaviour
 
         return piece;
     }
+
+    public void ResetBoard()
+    {
+        Destroy(lastPlacedPiece);
+    }
 }

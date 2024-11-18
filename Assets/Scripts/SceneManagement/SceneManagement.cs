@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class SceneManagement : MonoBehaviour
 {
@@ -8,10 +9,16 @@ public class SceneManagement : MonoBehaviour
     [SerializeField] GameObject playButton;
     [SerializeField] GameObject[] UIelements;
 
+    [SerializeField] chessPuzzleSpawner chessSpawner = null;
+    [SerializeField] PieceButtons pieceButtons = null;
+
     private static string lastSceneName;
+    private SelectPiece selectPiece;
+
 
     void Update()
     {
+        selectPiece = FindAnyObjectByType<SelectPiece>();
     }
 
     public void OpenExitPanel()
@@ -76,5 +83,13 @@ public class SceneManagement : MonoBehaviour
         {
             SceneManager.LoadScene(lastSceneName);
         }
+    }
+
+    public void RestartScene()
+    {
+        pieceButtons.ResetPieceMenu();
+        PieceStatus pieceStatus = FindAnyObjectByType<PieceStatus>();
+        pieceStatus.SetPieceStatus(false);
+        selectPiece.ResetBoard();
     }
 }

@@ -8,11 +8,13 @@ public class ShowAvailableTiles : MonoBehaviour
     [SerializeField] GameObject availableTileLight;
 
     private List<GameObject> lights = new List<GameObject>();
+    private PieceStatus pieceStatus;
     private float lightHeight = 1.5f;
     private Vector3 startPos;
 
     void Start()
     {
+        
         startPos = piece.transform.position;
 
         if (piece.CompareTag("rook"))
@@ -51,12 +53,17 @@ public class ShowAvailableTiles : MonoBehaviour
 
     void Update()
     {
-        if (piece.transform.position != startPos)
+        if (piece.transform.position != startPos) 
         {
-            foreach (GameObject light in lights)
-            {
-                Destroy(light);
-            }
+            DestroyTileLights();
+        }
+    }
+
+    public void DestroyTileLights()
+    {
+        foreach (GameObject light in lights)
+        {
+            Destroy(light);
         }
     }
 }
