@@ -8,6 +8,8 @@ public class BishopMovement : MonoBehaviour, ChessPieceMovement
     public bool isMoving { get; set; }
     public ChessBoard chessBoard { get; set; }
 
+    [SerializeField] PieceStatus pieceStatus;
+
     [SerializeField] private float pieceSpeed = 1f;
 
     private Vector3[] bishopDirections = new Vector3[]
@@ -21,6 +23,7 @@ public class BishopMovement : MonoBehaviour, ChessPieceMovement
     void Start()
     {
         chessBoard = FindAnyObjectByType<ChessBoard>();
+        pieceStatus = FindAnyObjectByType<PieceStatus>();
     }
 
     public List<Vector3> CheckAvailableMoves(Vector3 position)
@@ -58,6 +61,7 @@ public class BishopMovement : MonoBehaviour, ChessPieceMovement
 
         transform.position = target;
         isMoving = false;
+        pieceStatus.SetPieceStatus(false);
     }
 
     private void AddMovesInDirection(List<Vector3> availableMoves, Vector3 direction)

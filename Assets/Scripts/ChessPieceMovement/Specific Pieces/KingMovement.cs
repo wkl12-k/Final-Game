@@ -4,7 +4,8 @@ using System.Collections.Generic;
 
 public class KingMovement : MonoBehaviour, ChessPieceMovement
 {
-    
+    [SerializeField] PieceStatus pieceStatus;
+
     public float speed => pieceSpeed;  
     public bool isMoving { get; set; }
     public ChessBoard chessBoard { get; set; }
@@ -25,6 +26,7 @@ public class KingMovement : MonoBehaviour, ChessPieceMovement
     void Start()
     {
         chessBoard = FindAnyObjectByType<ChessBoard>();
+        pieceStatus = FindAnyObjectByType<PieceStatus>();
     }
 
     public List<Vector3> CheckAvailableMoves(Vector3 position)
@@ -65,6 +67,8 @@ public class KingMovement : MonoBehaviour, ChessPieceMovement
         }
         transform.position = target;
         isMoving = false;
+        pieceStatus.SetPieceStatus(false);
+
     }
 
     protected bool IsValidPosition(Vector3 targetPosition)

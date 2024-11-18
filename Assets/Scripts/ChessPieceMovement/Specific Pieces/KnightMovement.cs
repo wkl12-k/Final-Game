@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class KnightMovement : MonoBehaviour, ChessPieceMovement
 {
+    [SerializeField] PieceStatus pieceStatus;
+
     public float speed => pieceSpeed;
     public bool isMoving { get; set; }
     public ChessBoard chessBoard { get; set; }
@@ -19,6 +21,7 @@ public class KnightMovement : MonoBehaviour, ChessPieceMovement
     void Start()
     {
         chessBoard = FindAnyObjectByType<ChessBoard>();
+        pieceStatus = FindAnyObjectByType<PieceStatus>();
     }
 
     public List<Vector3> CheckAvailableMoves(Vector3 position)
@@ -61,6 +64,8 @@ public class KnightMovement : MonoBehaviour, ChessPieceMovement
 
         transform.position = target;
         isMoving = false;
+        pieceStatus.SetPieceStatus(false);
+
     }
 
     protected bool IsValidPosition(Vector3 targetPosition)

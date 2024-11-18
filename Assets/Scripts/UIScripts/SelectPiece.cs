@@ -17,29 +17,31 @@ public class SelectPiece : MonoBehaviour
     [Header("Chess Board Reference")]
     [SerializeField] ChessBoard chessBoard;
 
-    //private GameObject selectedPiecePrefab;
-    private GameObject lastPlacedPiece;
-    //private List<GameObject> randomPieces = new List<GameObject>();
+    [Header("Other Scripts")]
+    [SerializeField] PieceStatus pieceStatus;
 
+    private GameObject lastPlacedPiece;
 
     public void PieceSelected(GameObject piecePrefab, Button pieceButton)
     {
-        //selectedPiecePrefab = piecePrefab;
-
-        Vector3 position = lastPlacedPiece != null ? lastPlacedPiece.transform.position : chessBoard.GetStartTilePosition();
-
-
-        if (lastPlacedPiece != null)
+        if (pieceStatus.GetPieceStatus() == false)
         {
-            Destroy(lastPlacedPiece);
-            lastPlacedPiece = null;
+            Vector3 position = lastPlacedPiece != null ? lastPlacedPiece.transform.position : chessBoard.GetStartTilePosition();
+
+
+            if (lastPlacedPiece != null)
+            {
+                Destroy(lastPlacedPiece);
+                lastPlacedPiece = null;
+            }
+
+
+            lastPlacedPiece = InstantiatePieceOnBoard(position, piecePrefab);
+            pieceStatus.SetPieceStatus(true);
+
+
+            pieceButton.interactable = false;
         }
-
-
-        lastPlacedPiece = InstantiatePieceOnBoard(position, piecePrefab);
-
-
-        pieceButton.interactable = false;
     }
 
     public GameObject InstantiatePieceOnBoard(Vector3 position, GameObject piecePrefab)
