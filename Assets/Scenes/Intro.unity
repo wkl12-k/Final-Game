@@ -1377,6 +1377,8 @@ MonoBehaviour:
   instructionsPanel: {fileID: 0}
   playButton: {fileID: 0}
   UIelements: []
+  chessSpawner: {fileID: 0}
+  pieceButtons: {fileID: 0}
 --- !u!4 &2125820417
 Transform:
   m_ObjectHideFlags: 0
@@ -1400,9 +1402,9 @@ SceneRoots:
   - {fileID: 893705557}
   - {fileID: 836501655}
   - {fileID: 1840723075}
-  - {fileID: 737962527}
-  - {fileID: 2125820417}
   - {fileID: 977368368}
   - {fileID: 2107961736}
   - {fileID: 1988755537}
+  - {fileID: 737962527}
   - {fileID: 1465997040}
+  - {fileID: 2125820417}
