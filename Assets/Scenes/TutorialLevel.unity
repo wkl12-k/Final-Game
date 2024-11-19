@@ -6396,6 +6396,8 @@ MonoBehaviour:
   - {fileID: 2017057706}
   - {fileID: 1082532534}
   - {fileID: 1248625946}
+  chessSpawner: {fileID: 0}
+  pieceButtons: {fileID: 0}
 --- !u!4 &2105807333
 Transform:
   m_ObjectHideFlags: 0
@@ -6470,7 +6472,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d532a9e813b5043e59a708edc6f529f6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 714a64382b750448f853ebfadc475a84, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
