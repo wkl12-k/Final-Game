@@ -9,6 +9,7 @@ TagManager:
   - king
   - knight
   - pawn
+  - opponent
   layers:
   - Default
   - TransparentFX

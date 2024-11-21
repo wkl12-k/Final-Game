@@ -12,6 +12,8 @@ public class ChessBoard : MonoBehaviour
     public GameObject whiteBoardTile;
     public GameObject blackBoardTile;
 
+    public chessPuzzleSpawner chessPuzzleSpawner;
+
     public chessPuzzleSpawner chessSpawner = null;
     [SerializeField] PieceButtons pieceButtons = null;
 
@@ -36,6 +38,17 @@ public class ChessBoard : MonoBehaviour
     }
 
     private IEnumerator SetGoalsAfterBoardCreated()
+    {
+        yield return new WaitForEndOfFrame();
+
+        SetStartTile(7, 7);
+        chessSpawner.CreateEndGoal();
+
+        List<GameObject> pieceMenu = chessSpawner.GetPieceMenu();
+        pieceButtons.CreatePieceMenu(pieceMenu);
+    }
+
+    private IEnumerator SetQueenAfterBoardCreated()
     {
         yield return new WaitForEndOfFrame();
 
