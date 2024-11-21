@@ -58,6 +58,7 @@ public class SelectPiece : MonoBehaviour
 
     public void ResetBoard()
     {
+        lastPlacedPiece.GetComponent<ShowAvailableTiles>().DestroyTileLights();
         Destroy(lastPlacedPiece);
     }
 }
