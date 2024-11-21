@@ -74,7 +74,9 @@ public class SceneManagement : MonoBehaviour
     public void toLevel(string name)
     {
         lastSceneName = SceneManager.GetActiveScene().name;
+        Time.timeScale = 1;
         SceneManager.LoadScene(name);
+        
     }
 
     public void LoadLastScene()
