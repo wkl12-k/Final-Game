@@ -52,9 +52,6 @@ public class chessPuzzleSpawner : MonoBehaviour
         
         Vector3 endPosition = chessBoard.GetStartTilePosition();
 
-
-        while (endPosition == new Vector3(7, 0, 7))
-        {
             Vector3 prevPosition = chessBoard.GetStartTilePosition();
 
             while (oppQueenPosition == prevPosition || oppQueenPosition == new Vector3(7, 0, 7))
@@ -96,7 +93,7 @@ public class chessPuzzleSpawner : MonoBehaviour
             }
             endPosition = prevPosition;
             chessBoard.SetEndGoalTile((int)endPosition.x, (int)endPosition.z);
-        }
+        
     }
 
 
