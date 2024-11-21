@@ -4,7 +4,7 @@ public class PieceStatus : MonoBehaviour
 {
     private chessPuzzleSpawner chessPuzzleSpawner;
     private int piecesPlaced = 0;
-    private int totalPieces = 0;
+    private int totalPieces;
     public bool pieceOnBoard = false;
     public bool allowEndGoal = false;
 
@@ -18,7 +18,7 @@ public class PieceStatus : MonoBehaviour
         return pieceOnBoard;
     }
 
-    public void SetTotalPieces(bool status)
+    public void SetTotalPieces()
     {
         totalPieces = chessPuzzleSpawner.GetTotalPieces();
     }

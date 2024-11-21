@@ -22,7 +22,8 @@ public class ChessBoard : MonoBehaviour
 
     private GameObject[,] tiles;
     private ChessPieceMovement selectedPiece;
-    
+    private Vector3 endGoalPosition;
+
 
     void Start()
     {
@@ -136,9 +137,15 @@ public class ChessBoard : MonoBehaviour
             if (endGoalTile != null)
             {
                 endGoalTile.SetEndGoal();
+                endGoalPosition = endGoalTile.transform.position;
             }
         }
         return endGoalTile;
+    }
+
+    public Vector3 EndGoalPosition
+    {
+        get { return endGoalPosition; }
     }
 }
 

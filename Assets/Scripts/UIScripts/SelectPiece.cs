@@ -62,3 +62,7 @@ public class SelectPiece : MonoBehaviour
         Destroy(lastPlacedPiece);
     }
 }
+
+
+
+

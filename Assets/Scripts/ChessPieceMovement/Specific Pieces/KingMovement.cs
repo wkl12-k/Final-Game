@@ -11,6 +11,8 @@ public class KingMovement : MonoBehaviour, ChessPieceMovement
     public ChessBoard chessBoard { get; set; }
 
     [SerializeField] private float pieceSpeed = 3f;
+    private SceneManagement sceneManagement;
+
     private Vector3[] kingMoves = new Vector3[] {
         Vector3.back,
         Vector3.forward,
@@ -27,6 +29,7 @@ public class KingMovement : MonoBehaviour, ChessPieceMovement
     {
         chessBoard = FindAnyObjectByType<ChessBoard>();
         pieceStatus = FindAnyObjectByType<PieceStatus>();
+        sceneManagement = FindAnyObjectByType<SceneManagement>();
     }
 
     public List<Vector3> CheckAvailableMoves(Vector3 position)
@@ -68,10 +71,19 @@ public class KingMovement : MonoBehaviour, ChessPieceMovement
         transform.position = target;
         isMoving = false;
         pieceStatus.SetPieceStatus(false);
-
+        if (pieceStatus.allowEndGoal && target == chessBoard.EndGoalPosition)
+        {
+            OnEndGoalReached();
+        }
     }
 
-    protected bool IsValidPosition(Vector3 targetPosition)
+    private void OnEndGoalReached()
+    {
+        Debug.Log("End goal reached!");
+        sceneManagement.toLevel("WinScene");
+    }
+
+protected bool IsValidPosition(Vector3 targetPosition)
     {
         const float minX = 0f;
         const float maxX = 7f;
