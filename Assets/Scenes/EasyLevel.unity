@@ -363,6 +363,7 @@ MonoBehaviour:
   musicManager: {fileID: 77277858}
   whiteBoardTile: {fileID: 87067673436362835, guid: 923c128ca03994ad08b22c212d2de687, type: 3}
   blackBoardTile: {fileID: 8973000590598736865, guid: 62a2c255d3d3f4602abaa55edb163912, type: 3}
+  chessPuzzleSpawner: {fileID: 0}
   chessSpawner: {fileID: 1133421165}
   pieceButtons: {fileID: 1725264164}
   gridSize: 8
@@ -1803,8 +1804,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0.0018158, y: 0.5}
+  m_SizeDelta: {x: 860.33, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &573895863
 GameObject:
@@ -4157,8 +4158,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1.5141602, y: -256.5111}
-  m_SizeDelta: {x: -63.5938, y: -455.9348}
+  m_AnchoredPosition: {x: -1.5141602, y: -247.67744}
+  m_SizeDelta: {x: -63.5938, y: -461.42987}
   m_Pivot: {x: 0.5, y: 0.56259316}
 --- !u!114 &1725264166
 MonoBehaviour:
