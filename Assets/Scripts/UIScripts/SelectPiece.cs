@@ -48,6 +48,8 @@ public class SelectPiece : MonoBehaviour
                 Debug.Log("All pieces are placed. End goal is now allowed.");
             }
         }
+
+       
     }
 
     public GameObject InstantiatePieceOnBoard(Vector3 position, GameObject piecePrefab)

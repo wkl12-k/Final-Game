@@ -86,6 +86,7 @@ public class chessPuzzleSpawner : MonoBehaviour
 
                 List<Vector3> availableTiles = pieceMovement.CheckAvailableMoves(prevPosition);
                 int randomPosition = Random.Range(0, availableTiles.Count);
+                while(prevPosition == new Vector3(7,0,7))
                 prevPosition = availableTiles[randomPosition];
 
                 //Debug.Log(prevPosition.ToString());
