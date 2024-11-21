@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class RookMovement : MonoBehaviour, ChessPieceMovement
 {
-    [SerializeField] PieceStatus pieceStatus;
-
     public float speed => pieceSpeed;
     public bool isMoving { get; set; }
     public ChessBoard chessBoard { get; set; }
 
-    [SerializeField] private float pieceSpeed = 3f;
+    [SerializeField] PieceStatus pieceStatus;
+    [SerializeField] SelectPiece selectPiece;
     private SceneManagement sceneManagement;
+
+    [SerializeField] private float pieceSpeed = 3f;
 
     private Vector3[] rookMoves = new Vector3[] {
         Vector3.forward, Vector3.back, Vector3.left, Vector3.right
@@ -19,6 +20,7 @@ public class RookMovement : MonoBehaviour, ChessPieceMovement
 
     void Start()
     {
+        selectPiece = FindAnyObjectByType<SelectPiece>();
         chessBoard = FindAnyObjectByType<ChessBoard>();
         pieceStatus = FindAnyObjectByType<PieceStatus>();
         sceneManagement = FindAnyObjectByType<SceneManagement>();
@@ -74,9 +76,13 @@ public class RookMovement : MonoBehaviour, ChessPieceMovement
         transform.position = target;
         isMoving = false;
         pieceStatus.SetPieceStatus(false);
-        if (pieceStatus.allowEndGoal && target == chessBoard.EndGoalPosition)
+
+        if (target == chessBoard.EndGoalPosition)
         {
-            OnEndGoalReached();
+            if (selectPiece.IsLastPiece())
+            {
+                OnEndGoalReached();
+            }
         }
     }
 
@@ -100,6 +106,4 @@ protected bool IsValidPosition(Vector3 targetPosition)
     {
         chessBoard.SetSelectedPiece((ChessPieceMovement)this);
     }
-
- 
 }

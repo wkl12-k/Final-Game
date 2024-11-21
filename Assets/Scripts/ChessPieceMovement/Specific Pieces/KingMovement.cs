@@ -4,14 +4,15 @@ using System.Collections.Generic;
 
 public class KingMovement : MonoBehaviour, ChessPieceMovement
 {
-    [SerializeField] PieceStatus pieceStatus;
-
     public float speed => pieceSpeed;  
     public bool isMoving { get; set; }
     public ChessBoard chessBoard { get; set; }
 
-    [SerializeField] private float pieceSpeed = 3f;
+    [SerializeField] PieceStatus pieceStatus;
+    [SerializeField] SelectPiece selectPiece;
     private SceneManagement sceneManagement;
+
+    [SerializeField] private float pieceSpeed = 3f;
 
     private Vector3[] kingMoves = new Vector3[] {
         Vector3.back,
@@ -27,6 +28,7 @@ public class KingMovement : MonoBehaviour, ChessPieceMovement
 
     void Start()
     {
+        selectPiece = FindAnyObjectByType<SelectPiece>();
         chessBoard = FindAnyObjectByType<ChessBoard>();
         pieceStatus = FindAnyObjectByType<PieceStatus>();
         sceneManagement = FindAnyObjectByType<SceneManagement>();
@@ -68,12 +70,17 @@ public class KingMovement : MonoBehaviour, ChessPieceMovement
             transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
             yield return null;
         }
+
         transform.position = target;
         isMoving = false;
         pieceStatus.SetPieceStatus(false);
-        if (pieceStatus.allowEndGoal && target == chessBoard.EndGoalPosition)
+
+        if (target == chessBoard.EndGoalPosition)
         {
-            OnEndGoalReached();
+            if (selectPiece.IsLastPiece())
+            {
+                OnEndGoalReached();
+            }
         }
     }
 

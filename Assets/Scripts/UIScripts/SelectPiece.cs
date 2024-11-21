@@ -19,10 +19,18 @@ public class SelectPiece : MonoBehaviour
 
     [Header("Other Scripts")]
     [SerializeField] PieceStatus pieceStatus;
+    [SerializeField] chessPuzzleSpawner chessPuzzleSpawner;
 
     private GameObject lastPlacedPiece;
+    private int counter;
+    private bool lastPiece = false;
 
-     public void PieceSelected(GameObject piecePrefab, Button pieceButton)
+    private void Start()
+    {
+        chessPuzzleSpawner = FindAnyObjectByType<chessPuzzleSpawner>();
+    }
+
+    public void PieceSelected(GameObject piecePrefab, Button pieceButton)
     {
         if (!pieceStatus.GetPieceStatus())  
         {
@@ -37,12 +45,16 @@ public class SelectPiece : MonoBehaviour
             lastPlacedPiece = InstantiatePieceOnBoard(position, piecePrefab);
             pieceStatus.SetPieceStatus(true);   
 
-            pieceButton.interactable = false;   
+            pieceButton.interactable = false;
 
-     
+            counter++;    
+
+            if (counter == chessPuzzleSpawner.GetPieceMenu().ToArray().Length)
+            {
+                lastPiece = true;
+            }
         }
 
-       
     }
 
     public GameObject InstantiatePieceOnBoard(Vector3 position, GameObject piecePrefab)
@@ -58,6 +70,8 @@ public class SelectPiece : MonoBehaviour
 
     public void ResetBoard()
     {
+        counter = 0;
+
         if (lastPlacedPiece != null)
         {
             Destroy(lastPlacedPiece);  
@@ -65,5 +79,10 @@ public class SelectPiece : MonoBehaviour
 
         lastPlacedPiece.GetComponent<ShowAvailableTiles>().DestroyTileLights();
 
+    }
+
+    public bool IsLastPiece()
+    {
+        return lastPiece;
     }
 }

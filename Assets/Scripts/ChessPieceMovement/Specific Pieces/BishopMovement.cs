@@ -9,6 +9,7 @@ public class BishopMovement : MonoBehaviour, ChessPieceMovement
     public ChessBoard chessBoard { get; set; }
 
     [SerializeField] PieceStatus pieceStatus;
+    [SerializeField] SelectPiece selectPiece;
     private SceneManagement sceneManagement;
 
     [SerializeField] private float pieceSpeed = 1f;
@@ -23,6 +24,7 @@ public class BishopMovement : MonoBehaviour, ChessPieceMovement
 
     void Start()
     {
+        selectPiece = FindAnyObjectByType<SelectPiece>();
         chessBoard = FindAnyObjectByType<ChessBoard>();
         pieceStatus = FindAnyObjectByType<PieceStatus>();
         sceneManagement = FindAnyObjectByType<SceneManagement>();
@@ -64,9 +66,12 @@ public class BishopMovement : MonoBehaviour, ChessPieceMovement
         transform.position = target;
         isMoving = false;
         pieceStatus.SetPieceStatus(false);
-        if (pieceStatus.allowEndGoal && target == chessBoard.EndGoalPosition)
+        if (target == chessBoard.EndGoalPosition)
         {
-            OnEndGoalReached();
+            if (selectPiece.IsLastPiece())
+            {
+                OnEndGoalReached();
+            }
         }
     }
 
