@@ -10,14 +10,20 @@ public class chessPuzzleSpawner : MonoBehaviour
     [SerializeField] GameObject kingPrefab;
     [SerializeField] GameObject knightPrefab;
     [SerializeField] GameObject pawnPrefab;
+    [SerializeField] GameObject oppQueenPrefab;
+
+
+    private Vector3 oppQueenPosition;
+    private GameObject oppQueen;
+
 
     [Header("Other Components")]
     [SerializeField] ChessPieceMovement pieceMovement;
     [SerializeField] ChessBoard chessBoard;
 
     [Header("Difficulty Indicator")]
-    [SerializeField] int minPieces = 1;
-    [SerializeField] int maxPieces = 2;
+    [SerializeField] int minPieces = 4;
+    [SerializeField] int maxPieces = 8;
 
     private List<GameObject> pieceMenu;
 
@@ -43,6 +49,14 @@ public class chessPuzzleSpawner : MonoBehaviour
         CreatePieceMenu();
        
         Vector3 prevPosition=chessBoard.GetStartTilePosition();
+
+
+        while(oppQueenPosition==prevPosition || oppQueenPosition==new Vector3(7, 0, 7))
+        {
+            oppQueenPosition = new Vector3(Random.Range(0, 8), 0, Random.Range(0, 8));
+            oppQueen=Instantiate(oppQueenPrefab, oppQueenPosition, Quaternion.identity);
+        }
+
 
         foreach (GameObject piece in pieceMenu)
         {

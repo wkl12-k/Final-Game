@@ -26,6 +26,12 @@ public class DragPieces : MonoBehaviour
     [SerializeField] Button kingButton;
     [SerializeField] Button knightButton;
     [SerializeField] Button pawnButton;
+
+
+
+    
+
+
     //[SerializeField] GameObject pieceButton;
 
     [Header("Chess Board Reference")]
@@ -42,17 +48,18 @@ public class DragPieces : MonoBehaviour
         kingButton.onClick.AddListener(() => SelectPiece(kingPrefab, kingButton));
         knightButton.onClick.AddListener(() => SelectPiece(knightPrefab, knightButton));
         pawnButton.onClick.AddListener(() => SelectPiece(pawnPrefab, pawnButton));
+        
     }
-
-
+   
+    
 
     void SelectPiece(GameObject piecePrefab, Button pieceButton)
     {
         selectedPiecePrefab = piecePrefab;
 
         Vector3 position = lastPlacedPiece != null ? lastPlacedPiece.transform.position : chessBoard.GetStartTilePosition();
-
         
+
         if (lastPlacedPiece != null)
         {
             Destroy(lastPlacedPiece);

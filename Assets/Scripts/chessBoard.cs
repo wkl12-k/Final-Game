@@ -31,13 +31,15 @@ public class ChessBoard : MonoBehaviour
 
         if (chessSpawner != null && pieceButtons != null)
         {
-            StartCoroutine(SetEndGoalAfterBoardCreated());
+            StartCoroutine(SetGoalsAfterBoardCreated());
         }
     }
 
-    private IEnumerator SetEndGoalAfterBoardCreated()
+    private IEnumerator SetGoalsAfterBoardCreated()
     {
-        yield return new WaitForEndOfFrame(); 
+        yield return new WaitForEndOfFrame();
+
+        SetStartTile(7, 7);
         chessSpawner.CreateEndGoal();
 
         List<GameObject> pieceMenu = chessSpawner.GetPieceMenu();
@@ -48,6 +50,7 @@ public class ChessBoard : MonoBehaviour
     {
         if (tiles != null && tiles[7, 7] != null)
         {
+
             return tiles[7, 7].transform.position;
         }
         else
@@ -84,6 +87,8 @@ public class ChessBoard : MonoBehaviour
 
                
 
+               
+
                 tiles[x, z] = tile;
             }
         }
@@ -104,6 +109,22 @@ public class ChessBoard : MonoBehaviour
     {
         selectedPiece = piece;
     }
+
+    public Tile SetStartTile(int x, int z)
+    {
+        Tile startTile = null;
+
+        if (x >= 0 && x < gridSize && z >= 0 && z < gridSize)
+        {
+            startTile = tiles[x, z].GetComponent<Tile>();
+            if (startTile != null)
+            {
+                startTile.setStartTileColor();
+            }
+        }
+        return startTile;
+    }
+
 
     public Tile SetEndGoalTile(int x, int z)
     {

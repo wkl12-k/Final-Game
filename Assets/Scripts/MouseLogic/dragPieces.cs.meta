@@ -14,6 +14,7 @@ MonoImporter:
   - kingButton: {instanceID: 0}
   - knightButton: {instanceID: 0}
   - pawnButton: {instanceID: 0}
+  - oppQueenPrefab: {fileID: 1000011613667446, guid: c9476b5c23fb4634485fcb52734c04d5, type: 3}
   - chessBoard: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
