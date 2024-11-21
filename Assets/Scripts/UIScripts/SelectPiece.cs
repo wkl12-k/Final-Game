@@ -41,6 +41,8 @@ public class SelectPiece : MonoBehaviour
 
      
         }
+
+       
     }
 
     public GameObject InstantiatePieceOnBoard(Vector3 position, GameObject piecePrefab)
