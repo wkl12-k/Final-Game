@@ -2952,8 +2952,8 @@ MonoBehaviour:
   oppQueenPrefab: {fileID: 0}
   totalPieces: 0
   chessBoard: {fileID: 166072035}
-  minPieces: 5
-  maxPieces: 6
+  minPieces: 3
+  maxPieces: 4
 --- !u!4 &1133421166
 Transform:
   m_ObjectHideFlags: 0
