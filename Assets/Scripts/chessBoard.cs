@@ -115,7 +115,7 @@ public class ChessBoard : MonoBehaviour
         if (selectedPiece != null)
         {
             selectedPiece.Move(tilePosition);
-            selectedPiece = null;
+            
         }
     }
 
