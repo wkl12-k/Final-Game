@@ -22,10 +22,9 @@ public class SelectPiece : MonoBehaviour
 
     private GameObject lastPlacedPiece;
 
-    // This method handles piece selection and placement
-    public void PieceSelected(GameObject piecePrefab, Button pieceButton)
+     public void PieceSelected(GameObject piecePrefab, Button pieceButton)
     {
-        if (!pieceStatus.GetPieceStatus())  // Check if piece hasn't been placed yet
+        if (!pieceStatus.GetPieceStatus())  
         {
             Vector3 position = lastPlacedPiece != null ? lastPlacedPiece.transform.position : chessBoard.GetStartTilePosition();
 
@@ -36,17 +35,11 @@ public class SelectPiece : MonoBehaviour
             }
 
             lastPlacedPiece = InstantiatePieceOnBoard(position, piecePrefab);
-            pieceStatus.SetPieceStatus(true);  // Mark this piece as placed
-            pieceStatus.IncrementPieceCount(); // Increment placed piece count
+            pieceStatus.SetPieceStatus(true);   
 
-            pieceButton.interactable = false;  // Disable button for this piece
+            pieceButton.interactable = false;   
 
-            // After placing the piece, check if all pieces are placed
-            if (pieceStatus.AreAllPiecesUsed())
-            {
-                pieceStatus.allowEndGoal = true;  // Enable the end goal when all pieces are placed
-                Debug.Log("All pieces are placed. End goal is now allowed.");
-            }
+     
         }
 
        
@@ -67,11 +60,10 @@ public class SelectPiece : MonoBehaviour
     {
         if (lastPlacedPiece != null)
         {
-            Destroy(lastPlacedPiece); // Destroy the last placed piece
+            Destroy(lastPlacedPiece);  
         }
 
         lastPlacedPiece.GetComponent<ShowAvailableTiles>().DestroyTileLights();
 
-        pieceStatus.ResetPieceCount(); // Reset piece status count
     }
 }
