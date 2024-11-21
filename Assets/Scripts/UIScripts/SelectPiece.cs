@@ -66,10 +66,11 @@ public class SelectPiece : MonoBehaviour
         if (lastPlacedPiece != null)
         {
             Destroy(lastPlacedPiece); // Destroy the last placed piece
+
+            lastPlacedPiece.GetComponent<ShowAvailableTiles>().DestroyTileLights();
+
+            pieceStatus.ResetPieceCount(); // Reset piece status count
         }
 
-        lastPlacedPiece.GetComponent<ShowAvailableTiles>().DestroyTileLights();
-
-        pieceStatus.ResetPieceCount(); // Reset piece status count
     }
 }
