@@ -47,54 +47,58 @@ public class chessPuzzleSpawner : MonoBehaviour
 
     public void CreateEndGoal()
     {
-       
         CreatePieceMenu();
-       
-        Vector3 prevPosition=chessBoard.GetStartTilePosition();
+
+        
+        Vector3 endPosition = chessBoard.GetStartTilePosition();
 
 
-        while(oppQueenPosition==prevPosition || oppQueenPosition==new Vector3(7, 0, 7))
+        while (endPosition == new Vector3(7, 0, 7))
         {
-            oppQueenPosition = new Vector3(Random.Range(0, 8), 0, Random.Range(0, 8));
-            oppQueen=Instantiate(oppQueenPrefab, oppQueenPosition, Quaternion.identity);
+            Vector3 prevPosition = chessBoard.GetStartTilePosition();
+
+            while (oppQueenPosition == prevPosition || oppQueenPosition == new Vector3(7, 0, 7))
+            {
+                oppQueenPosition = new Vector3(Random.Range(0, 8), 0, Random.Range(0, 8));
+                oppQueen = Instantiate(oppQueenPrefab, oppQueenPosition, Quaternion.identity);
+            }
+
+
+            foreach (GameObject piece in pieceMenu)
+            {
+                if (piece.CompareTag("rook"))
+                {
+                    pieceMovement = piece.GetComponent<RookMovement>();
+                }
+                else if (piece.CompareTag("king"))
+                {
+                    pieceMovement = piece.GetComponent<KingMovement>();
+                }
+                else if (piece.CompareTag("bishop"))
+                {
+                    pieceMovement = piece.GetComponent<BishopMovement>();
+                }
+                else if (piece.CompareTag("pawn"))
+                {
+                    pieceMovement = piece.GetComponent<PawnMovement>();
+                }
+                else if (piece.CompareTag("knight"))
+                {
+                    pieceMovement = piece.GetComponent<KnightMovement>();
+                }
+
+                List<Vector3> availableTiles = pieceMovement.CheckAvailableMoves(prevPosition);
+                int randomPosition = Random.Range(0, availableTiles.Count);
+                prevPosition = availableTiles[randomPosition];
+
+                //Debug.Log(prevPosition.ToString());
+
+            }
+            endPosition = prevPosition;
+            chessBoard.SetEndGoalTile((int)endPosition.x, (int)endPosition.z);
         }
-
-
-        foreach (GameObject piece in pieceMenu)
-        {
-            if (piece.CompareTag("rook"))
-            {
-                pieceMovement = piece.GetComponent<RookMovement>();
-            }
-            else if (piece.CompareTag("king"))
-            {
-                pieceMovement = piece.GetComponent<KingMovement>();
-            }
-            else if (piece.CompareTag("bishop"))
-            {
-                pieceMovement = piece.GetComponent<BishopMovement>();
-            }
-            else if (piece.CompareTag("pawn"))
-            {
-                pieceMovement = piece.GetComponent<PawnMovement>();
-            }
-            else if (piece.CompareTag("knight"))
-            {
-                pieceMovement = piece.GetComponent<KnightMovement>();
-            }
-
-            List<Vector3> availableTiles = pieceMovement.CheckAvailableMoves(prevPosition);
-            //if(availableTiles.Contains(new Vector3(7, 0, 7)))
-            //availableTiles.Remove(new Vector3(7, 0, 7));
-
-            int randomPosition = Random.Range(0, availableTiles.Count);
-            prevPosition = availableTiles[randomPosition];
-
-            //Debug.Log(prevPosition.ToString());
-            
-        }
-        chessBoard.SetEndGoalTile((int)prevPosition.x, (int)prevPosition.z);
     }
+
 
 
     public List<GameObject> GetPieceMenu()
