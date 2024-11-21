@@ -15,6 +15,7 @@ public class chessPuzzleSpawner : MonoBehaviour
 
     private Vector3 oppQueenPosition;
     private GameObject oppQueen;
+    public int totalPieces;
 
 
     [Header("Other Components")]
@@ -31,6 +32,7 @@ public class chessPuzzleSpawner : MonoBehaviour
     {
         pieceMenu = new List<GameObject>();
         int randomAmount = Random.Range(minPieces, maxPieces);
+        totalPieces = randomAmount;
         List<GameObject> pieces = new List<GameObject> { rookPrefab, bishopPrefab, knightPrefab, kingPrefab, pawnPrefab };
 
         for (int i = 0; i < randomAmount; i++)
@@ -98,5 +100,10 @@ public class chessPuzzleSpawner : MonoBehaviour
     public List<GameObject> GetPieceMenu()
     {
         return pieceMenu;
+    }
+
+    public int GetTotalPieces()
+    {
+        return totalPieces;
     }
 }
