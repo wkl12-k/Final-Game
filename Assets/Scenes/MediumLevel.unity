@@ -686,8 +686,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -0.0018158, y: 0.00009059906}
+  m_SizeDelta: {x: 860.33, y: 63.584}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &365643431
 GameObject:
@@ -883,7 +883,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1.5141602, y: -256.5111}
+  m_AnchoredPosition: {x: 0, y: -247}
   m_SizeDelta: {x: -63.5938, y: -455.9348}
   m_Pivot: {x: 0.5, y: 0.56259316}
 --- !u!114 &397505991
@@ -1823,6 +1823,8 @@ MonoBehaviour:
   kingPrefab: {fileID: 1000013427829390, guid: 1700328aaf96fd243a71d862897619a4, type: 3}
   knightPrefab: {fileID: 1000010201698906, guid: edd10668f6a183d4180f8dc7b94f9e5c, type: 3}
   pawnPrefab: {fileID: 1000014207659374, guid: 61ed95d5d9afc0842b0c4d0c96678d38, type: 3}
+  oppQueenPrefab: {fileID: 0}
+  totalPieces: 0
   chessBoard: {fileID: 1922466476}
   minPieces: 5
   maxPieces: 6
@@ -3769,6 +3771,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pieceOnBoard: 0
+  allowEndGoal: 0
 --- !u!4 &1746830890
 Transform:
   m_ObjectHideFlags: 0
@@ -4421,6 +4424,7 @@ MonoBehaviour:
   musicManager: {fileID: 1879062938}
   whiteBoardTile: {fileID: 87067673436362835, guid: 923c128ca03994ad08b22c212d2de687, type: 3}
   blackBoardTile: {fileID: 8973000590598736865, guid: 62a2c255d3d3f4602abaa55edb163912, type: 3}
+  chessPuzzleSpawner: {fileID: 0}
   chessSpawner: {fileID: 866918119}
   pieceButtons: {fileID: 397505989}
   gridSize: 8
