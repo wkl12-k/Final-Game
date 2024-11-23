@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 344625368}
   - component: {fileID: 344625367}
   m_Layer: 5
-  m_Name: PlayAnotherText
+  m_Name: NewPuzzleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -175,7 +175,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Play Another
+  m_text: New Puzzle
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 34f734191d52f435589c5e492b3864b2, type: 2}
   m_sharedMaterial: {fileID: 5584383268773100773, guid: 34f734191d52f435589c5e492b3864b2, type: 2}
@@ -311,7 +311,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Level Passed
+  m_text: Puzzle Completed
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 34f734191d52f435589c5e492b3864b2, type: 2}
   m_sharedMaterial: {fileID: 5584383268773100773, guid: 34f734191d52f435589c5e492b3864b2, type: 2}
@@ -480,7 +480,7 @@ GameObject:
   - component: {fileID: 624667703}
   - component: {fileID: 624667702}
   m_Layer: 5
-  m_Name: HomeText
+  m_Name: QuitText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -525,7 +525,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Go Home
+  m_text: Quit
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 34f734191d52f435589c5e492b3864b2, type: 2}
   m_sharedMaterial: {fileID: 5584383268773100773, guid: 34f734191d52f435589c5e492b3864b2, type: 2}
@@ -617,7 +617,7 @@ GameObject:
   - component: {fileID: 705063278}
   - component: {fileID: 705063277}
   m_Layer: 5
-  m_Name: PlayAnotherButton
+  m_Name: NewPuzzleButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -665,7 +665,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.5058824, g: 0.38039216, b: 0.23137255, a: 1}
+    m_HighlightedColor: {r: 0.20784314, g: 0.14901961, b: 0.11764706, a: 1}
     m_PressedColor: {r: 0.103773594, g: 0.07137931, b: 0.050418306, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -689,8 +689,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1497908219}
         m_TargetAssemblyTypeName: SceneManagement, Assembly-CSharp
-        m_MethodName: toLevel
-        m_Mode: 5
+        m_MethodName: LoadLastScene
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -887,7 +887,7 @@ GameObject:
   - component: {fileID: 946132946}
   - component: {fileID: 946132945}
   m_Layer: 5
-  m_Name: HomeButton
+  m_Name: QuitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -935,7 +935,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.5058824, g: 0.38039216, b: 0.23137255, a: 1}
+    m_HighlightedColor: {r: 0.20784314, g: 0.14901961, b: 0.11764706, a: 1}
     m_PressedColor: {r: 0.103773594, g: 0.07137931, b: 0.050418306, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -1070,7 +1070,7 @@ GameObject:
   - component: {fileID: 1635555188}
   - component: {fileID: 1635555187}
   m_Layer: 5
-  m_Name: ReplayLevelButton
+  m_Name: LevelMenuButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1118,7 +1118,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.5058824, g: 0.38039216, b: 0.23137255, a: 1}
+    m_HighlightedColor: {r: 0.20784314, g: 0.14901961, b: 0.11764706, a: 1}
     m_PressedColor: {r: 0.103773594, g: 0.07137931, b: 0.050418306, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -1139,7 +1139,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1635555188}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1497908219}
+        m_TargetAssemblyTypeName: SceneManagement, Assembly-CSharp
+        m_MethodName: toLevel
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Menu
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1635555188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1492,7 +1504,7 @@ GameObject:
   - component: {fileID: 2015949873}
   - component: {fileID: 2015949872}
   m_Layer: 5
-  m_Name: ReplayTex
+  m_Name: LevelMenuText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1537,7 +1549,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Replay Level
+  m_text: Level Menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 34f734191d52f435589c5e492b3864b2, type: 2}
   m_sharedMaterial: {fileID: 5584383268773100773, guid: 34f734191d52f435589c5e492b3864b2, type: 2}
