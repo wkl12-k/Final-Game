@@ -5,6 +5,7 @@ public class TutorialScript : MonoBehaviour
 {
     public GameObject tutorial1;
     public GameObject tutorial2;
+    public GameObject tutorial2_5;
     public GameObject tutorial3;
     public GameObject tutorial4;
     public Button bishopButton;
@@ -14,6 +15,7 @@ public class TutorialScript : MonoBehaviour
 
     private bool isTutorial1Completed = false;
     private bool isTutorial2Active = false;
+    private bool isTutorial2_5Active = false;
     private bool isTutorial3Active = false;
     private bool isTutorial4Active = false;
 
@@ -34,6 +36,7 @@ public class TutorialScript : MonoBehaviour
         {
             tutorial1.SetActive(false);
             tutorial2.SetActive(false);
+            tutorial2_5.SetActive(false);
             tutorial3.SetActive(false);
             tutorial4.SetActive(false);
         }
@@ -88,13 +91,17 @@ public class TutorialScript : MonoBehaviour
     void ShowTutorial2()
     {
         tutorial2.SetActive(true);
+        tutorial2_5.SetActive(true);
         isTutorial2Active = true;
+        isTutorial2_5Active = true;
     }
 
     void HideTutorial2()
     {
         tutorial2.SetActive(false);
         isTutorial2Active = false;
+        tutorial2_5.SetActive(false);
+        isTutorial2_5Active = false;
     }
 
     void ShowTutorial3()
