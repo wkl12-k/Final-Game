@@ -36,12 +36,12 @@ public class ChessBoard : MonoBehaviour
         CreateBoard();
         OnBoardCreated?.Invoke();
 
-        if (SceneManager.GetActiveScene().name == "TutorialLevel")
-        {
-            StartCoroutine(SetGoalsForTutorialLevel());
-        }
+        //if (SceneManager.GetActiveScene().name == "TutorialLevel")
+        //{
+        //    StartCoroutine(SetGoalsForTutorialLevel());
+        //}
 
-          else  if (chessSpawner != null && pieceButtons != null)
+    if (chessSpawner != null && pieceButtons != null)
         {
             StartCoroutine(SetGoalsAfterBoardCreated());
         }

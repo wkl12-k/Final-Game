@@ -21,6 +21,11 @@ public class SceneManagement : MonoBehaviour
         selectPiece = FindAnyObjectByType<SelectPiece>();
     }
 
+    public string GetCurrentScene()
+    {
+        return SceneManager.GetActiveScene().name;
+    }
+
     public void OpenExitPanel()
     {
         if (exitPanel != null)

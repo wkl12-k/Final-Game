@@ -12,6 +12,7 @@ public class TutorialScript : MonoBehaviour
     public Button rookButton;
     public Button knightButton;
     public Button kingButton;
+    public Button pawnButton;
 
     private bool isTutorial1Completed = false;
     private bool isTutorial2Active = false;
@@ -69,6 +70,7 @@ public class TutorialScript : MonoBehaviour
     {
         tutorial1.SetActive(true);
         tutorial2.SetActive(false);
+        tutorial2_5.SetActive(false);
         tutorial3.SetActive(false);
         tutorial4.SetActive(false);
 
@@ -76,6 +78,7 @@ public class TutorialScript : MonoBehaviour
         rookButton.onClick.AddListener(HideTutorial1);
         knightButton.onClick.AddListener(HideTutorial1);
         kingButton.onClick.AddListener(HideTutorial1);
+        pawnButton.onClick.AddListener(HideTutorial1);
     }
 
     void HideTutorial1()

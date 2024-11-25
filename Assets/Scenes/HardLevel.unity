@@ -1809,6 +1809,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chessBoard: {fileID: 1915680873}
   pieceStatus: {fileID: 107252225}
+  chessPuzzleSpawner: {fileID: 0}
 --- !u!114 &461550001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3786,6 +3787,7 @@ MonoBehaviour:
   oppQueenPrefab: {fileID: 0}
   totalPieces: 0
   chessBoard: {fileID: 1915680873}
+  sceneManager: {fileID: 1151647720}
   minPieces: 7
   maxPieces: 8
 --- !u!4 &1691056177
