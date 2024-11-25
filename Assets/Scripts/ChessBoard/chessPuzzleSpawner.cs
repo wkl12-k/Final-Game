@@ -66,6 +66,7 @@ public class chessPuzzleSpawner : MonoBehaviour
         Vector3 endPosition = chessBoard.GetStartTilePosition();
 
         Vector3 prevPosition = chessBoard.GetStartTilePosition();
+        string prevPieceType = "";
 
         //while (oppQueenPosition == prevPosition || oppQueenPosition == new Vector3(7, 0, 7))
         //{
@@ -76,6 +77,7 @@ public class chessPuzzleSpawner : MonoBehaviour
 
         foreach (GameObject piece in pieceMenu)
         {
+           
             if (piece.CompareTag("rook"))
             {
                 pieceMovement = piece.GetComponent<RookMovement>();
@@ -97,10 +99,18 @@ public class chessPuzzleSpawner : MonoBehaviour
                 pieceMovement = piece.GetComponent<KnightMovement>();
             }
 
+
+
             List<Vector3> availableTiles = pieceMovement.CheckAvailableMoves(prevPosition);
+
+          
+
             int randomPosition = Random.Range(0, availableTiles.Count);
+
             while(prevPosition == new Vector3(7,0,7))
             prevPosition = availableTiles[randomPosition];
+            
+        
 
             //Debug.Log(prevPosition.ToString());
 

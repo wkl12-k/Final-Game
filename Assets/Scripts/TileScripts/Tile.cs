@@ -8,8 +8,8 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     private bool isStartGoal = false;
     private Color originalColor;
     public Color hoverColor = Color.green;
-    private Color endGoalColor = Color.Lerp(Color.green, Color.yellow, 5);
-    private Color startTileColor = Color.red;
+    private Color endGoalColor = Color.HSVToRGB(51, 100, 100);
+    private Color startTileColor = Color.magenta;
 
     [HideInInspector]
     public ChessBoard chessBoard;
@@ -36,16 +36,22 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
             textObject.transform.SetParent(this.transform, false);
             textMesh = textObject.AddComponent<TextMesh>();
 
+           
             textObject.transform.localPosition = Vector3.up * 0.1f;
 
+            
+            textObject.transform.rotation = Quaternion.Euler(90, 180, 0); 
+
+         
             textMesh.fontSize = 50;
             textMesh.alignment = TextAlignment.Center;
             textMesh.anchor = TextAnchor.MiddleCenter;
-            textMesh.characterSize = 0.1f;
-            textMesh.color = Color.black; 
+            textMesh.characterSize = 0.8f;
+            textMesh.color = Color.red;
         }
         textMesh.text = "";
     }
+
 
     public void OnPointerEnter(PointerEventData eventData)
     {
