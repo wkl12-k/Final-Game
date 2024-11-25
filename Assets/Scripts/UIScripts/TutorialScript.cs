@@ -15,10 +15,7 @@ public class TutorialScript : MonoBehaviour
     public Button pawnButton;
 
     private bool isTutorial1Completed = false;
-    private bool isTutorial2Active = false;
-    private bool isTutorial2_5Active = false;
-    private bool isTutorial3Active = false;
-    private bool isTutorial4Active = false;
+    private int nextTutorial = 1;
 
 
     private static bool tutorialsCompleted = false;
@@ -28,6 +25,7 @@ public class TutorialScript : MonoBehaviour
     void Awake()
     {
         sceneManagement = FindAnyObjectByType<SceneManagement>();
+
         if (sceneManagement == null)
         {
             Debug.LogError("SceneManagement not found in the scene.");
@@ -49,17 +47,22 @@ public class TutorialScript : MonoBehaviour
 
     void Update()
     {
-        if (isTutorial2Active && Input.GetMouseButtonDown(0))
+        if (nextTutorial == 2 && Input.GetMouseButtonDown(0))
+        {
+                HideTutorial1();
+                ShowTutorial2();
+        }
+        else if (nextTutorial == 3 && Input.GetMouseButtonDown(0))
         {
             HideTutorial2();
             ShowTutorial3();
         }
-        else if (isTutorial3Active && Input.GetMouseButtonDown(0))
+        else if (nextTutorial == 4 && Input.GetMouseButtonDown(0))
         {
             HideTutorial3();
             ShowTutorial4();
         }
-        else if (isTutorial4Active && Input.GetMouseButtonDown(0))
+        else if ( nextTutorial == 0 && Input.GetMouseButtonDown(0))
         {
             HideTutorial4();
             tutorialsCompleted = true;
@@ -74,20 +77,15 @@ public class TutorialScript : MonoBehaviour
         tutorial3.SetActive(false);
         tutorial4.SetActive(false);
 
-        bishopButton.onClick.AddListener(HideTutorial1);
-        rookButton.onClick.AddListener(HideTutorial1);
-        knightButton.onClick.AddListener(HideTutorial1);
-        kingButton.onClick.AddListener(HideTutorial1);
-        pawnButton.onClick.AddListener(HideTutorial1);
+        nextTutorial = 2;
     }
 
-    void HideTutorial1()
+    public void HideTutorial1()
     {
         if (!isTutorial1Completed)
         {
             tutorial1.SetActive(false);
             isTutorial1Completed = true;
-            ShowTutorial2();
         }
     }
 
@@ -95,40 +93,35 @@ public class TutorialScript : MonoBehaviour
     {
         tutorial2.SetActive(true);
         tutorial2_5.SetActive(true);
-        isTutorial2Active = true;
-        isTutorial2_5Active = true;
+        nextTutorial = 3;
     }
 
     void HideTutorial2()
     {
         tutorial2.SetActive(false);
-        isTutorial2Active = false;
         tutorial2_5.SetActive(false);
-        isTutorial2_5Active = false;
     }
 
     void ShowTutorial3()
     {
         tutorial3.SetActive(true);
-        isTutorial3Active = true;
+        nextTutorial = 4;
     }
 
     void HideTutorial3()
     {
         tutorial3.SetActive(false);
-        isTutorial3Active = false;
     }
 
     void ShowTutorial4()
     {
         tutorial4.SetActive(true);
-        isTutorial4Active = true;
+        nextTutorial = 0;
     }
 
     void HideTutorial4()
     {
         tutorial4.SetActive(false);
-        isTutorial4Active = false;
     }
 
 }
