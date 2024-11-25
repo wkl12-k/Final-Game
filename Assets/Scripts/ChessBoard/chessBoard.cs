@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class ChessBoard : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class ChessBoard : MonoBehaviour
     [SerializeField] private int tileSize = 1;
     [SerializeField] private float y = 0.1f;
 
+
+
     private GameObject[,] tiles;
     private ChessPieceMovement selectedPiece;
     private Vector3 endGoalPosition;
@@ -29,10 +32,16 @@ public class ChessBoard : MonoBehaviour
 
     void Start()
     {
+      
         CreateBoard();
         OnBoardCreated?.Invoke();
 
-        if (chessSpawner != null && pieceButtons != null)
+        if (SceneManager.GetActiveScene().name == "TutorialLevel")
+        {
+            StartCoroutine(SetGoalsForTutorialLevel());
+        }
+
+          else  if (chessSpawner != null && pieceButtons != null)
         {
             StartCoroutine(SetGoalsAfterBoardCreated());
         }
@@ -41,12 +50,23 @@ public class ChessBoard : MonoBehaviour
     private IEnumerator SetGoalsAfterBoardCreated()
     {
         yield return new WaitForEndOfFrame();
+        
 
         SetStartTile(7, 7);
+        
         chessSpawner.CreateEndGoal();
 
         List<GameObject> pieceMenu = chessSpawner.GetPieceMenu();
         pieceButtons.CreatePieceMenu(pieceMenu);
+    }
+
+    private IEnumerator SetGoalsForTutorialLevel()
+    {
+        yield return new WaitForEndOfFrame();
+
+        SetStartTile(7, 7);
+        SetEndGoalTile(3, 7);
+
     }
 
     private IEnumerator SetQueenAfterBoardCreated()
@@ -143,6 +163,8 @@ public class ChessBoard : MonoBehaviour
     public Tile SetEndGoalTile(int x, int z)
     {
         Tile endGoalTile = null;
+
+
 
         if (x >= 0 && x < gridSize && z >= 0 && z < gridSize)
         {
