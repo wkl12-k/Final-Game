@@ -88,8 +88,14 @@ public class RookMovement : MonoBehaviour, ChessPieceMovement
 
     private void OnEndGoalReached()
     {
-        Debug.Log("End goal reached!");
-        sceneManagement.toLevel("WinScene");
+        if (sceneManagement.GetCurrentScene() == "TutorialLevel")
+        {
+            sceneManagement.toLevel("TutorialCompleted");
+        }
+        else
+        {
+            sceneManagement.toLevel("WinScene");
+        }
     }
 
 protected bool IsValidPosition(Vector3 targetPosition)

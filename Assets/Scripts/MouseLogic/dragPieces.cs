@@ -27,19 +27,12 @@ public class DragPieces : MonoBehaviour
     [SerializeField] Button knightButton;
     [SerializeField] Button pawnButton;
 
-
-
-    
-
-
     //[SerializeField] GameObject pieceButton;
 
     [Header("Chess Board Reference")]
     [SerializeField] ChessBoard chessBoard;
 
-    private GameObject selectedPiecePrefab;
     private GameObject lastPlacedPiece;
-    private List<GameObject> randomPieces = new List<GameObject>();
 
     void Start()
     {
@@ -51,11 +44,8 @@ public class DragPieces : MonoBehaviour
         
     }
    
-    
-
     void SelectPiece(GameObject piecePrefab, Button pieceButton)
     {
-        selectedPiecePrefab = piecePrefab;
 
         Vector3 position = lastPlacedPiece != null ? lastPlacedPiece.transform.position : chessBoard.GetStartTilePosition();
         

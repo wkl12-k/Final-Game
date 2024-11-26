@@ -12,10 +12,9 @@ public class chessPuzzleSpawner : MonoBehaviour
     [SerializeField] GameObject pawnPrefab;
     [SerializeField] GameObject oppQueenPrefab;
 
-
     private Vector3 oppQueenPosition;
     private GameObject oppQueen;
-    public int totalPieces;
+    private int totalPieces;
 
 
     [Header("Other Components")]
@@ -68,6 +67,7 @@ public class chessPuzzleSpawner : MonoBehaviour
         Vector3 prevPosition = chessBoard.GetStartTilePosition();
         string prevPieceType = "";
 
+
         //while (oppQueenPosition == prevPosition || oppQueenPosition == new Vector3(7, 0, 7))
         //{
         //    oppQueenPosition = new Vector3(Random.Range(0, 8), 0, Random.Range(0, 8));
@@ -117,7 +117,6 @@ public class chessPuzzleSpawner : MonoBehaviour
         }
         endPosition = prevPosition;
         chessBoard.SetEndGoalTile((int)endPosition.x, (int)endPosition.z);
-        
     }
 
 

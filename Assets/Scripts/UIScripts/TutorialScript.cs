@@ -4,8 +4,9 @@ using UnityEngine.UI;
 public class TutorialScript : MonoBehaviour
 {
     public GameObject tutorial1;
+    public GameObject tutorial1_1;
     public GameObject tutorial2;
-    public GameObject tutorial2_5;
+    public GameObject tutorial2_1;
     public GameObject tutorial3;
     public GameObject tutorial4;
     public Button bishopButton;
@@ -35,7 +36,7 @@ public class TutorialScript : MonoBehaviour
         {
             tutorial1.SetActive(false);
             tutorial2.SetActive(false);
-            tutorial2_5.SetActive(false);
+            tutorial2_1.SetActive(false);
             tutorial3.SetActive(false);
             tutorial4.SetActive(false);
         }
@@ -62,7 +63,7 @@ public class TutorialScript : MonoBehaviour
             HideTutorial3();
             ShowTutorial4();
         }
-        else if ( nextTutorial == 0 && Input.GetMouseButtonDown(0))
+        else if (nextTutorial == 0 && Input.GetMouseButtonDown(0))
         {
             HideTutorial4();
             tutorialsCompleted = true;
@@ -72,8 +73,10 @@ public class TutorialScript : MonoBehaviour
     void ShowTutorial1()
     {
         tutorial1.SetActive(true);
+        tutorial1_1.SetActive(true);
+
         tutorial2.SetActive(false);
-        tutorial2_5.SetActive(false);
+        tutorial2_1.SetActive(false);
         tutorial3.SetActive(false);
         tutorial4.SetActive(false);
 
@@ -85,6 +88,7 @@ public class TutorialScript : MonoBehaviour
         if (!isTutorial1Completed)
         {
             tutorial1.SetActive(false);
+            tutorial1_1.SetActive(false);
             isTutorial1Completed = true;
         }
     }
@@ -92,14 +96,14 @@ public class TutorialScript : MonoBehaviour
     void ShowTutorial2()
     {
         tutorial2.SetActive(true);
-        tutorial2_5.SetActive(true);
+        tutorial2_1.SetActive(true);
         nextTutorial = 3;
     }
 
     void HideTutorial2()
     {
         tutorial2.SetActive(false);
-        tutorial2_5.SetActive(false);
+        tutorial2_1.SetActive(false);
     }
 
     void ShowTutorial3()

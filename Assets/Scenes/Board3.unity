@@ -859,6 +859,7 @@ MonoBehaviour:
   musicManager: {fileID: 479446236}
   whiteBoardTile: {fileID: 87067673436362835, guid: 923c128ca03994ad08b22c212d2de687, type: 3}
   blackBoardTile: {fileID: 8973000590598736865, guid: 62a2c255d3d3f4602abaa55edb163912, type: 3}
+  chessPuzzleSpawner: {fileID: 0}
   chessSpawner: {fileID: 615943784}
   pieceButtons: {fileID: 1489729957}
   gridSize: 8
@@ -1593,7 +1594,10 @@ MonoBehaviour:
   kingPrefab: {fileID: 1000013427829390, guid: 1700328aaf96fd243a71d862897619a4, type: 3}
   knightPrefab: {fileID: 1000010201698906, guid: edd10668f6a183d4180f8dc7b94f9e5c, type: 3}
   pawnPrefab: {fileID: 1000014207659374, guid: 61ed95d5d9afc0842b0c4d0c96678d38, type: 3}
+  oppQueenPrefab: {fileID: 0}
+  totalPieces: 0
   chessBoard: {fileID: 274136389}
+  sceneManager: {fileID: 0}
   minPieces: 3
   maxPieces: 4
 --- !u!4 &615943785
@@ -1743,6 +1747,127 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 658668897}
   m_CullTransparentMesh: 1
+--- !u!1 &694764827
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 694764830}
+  - component: {fileID: 694764829}
+  - component: {fileID: 694764828}
+  m_Layer: 0
+  m_Name: Spot Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &694764828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 694764827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
+--- !u!108 &694764829
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 694764827}
+  m_Enabled: 1
+  serializedVersion: 11
+  m_Type: 0
+  m_Color: {r: 0.55907536, g: 0.745283, b: 0.36912602, a: 1}
+  m_Intensity: 1.03
+  m_Range: 24.73
+  m_SpotAngle: 179
+  m_InnerSpotAngle: 78.01696
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ForceVisible: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+  m_LightUnit: 1
+  m_LuxAtDistance: 1
+  m_EnableSpotReflector: 1
+--- !u!4 &694764830
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 694764827}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 7, y: 0.5, z: 7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &843949262
 GameObject:
   m_ObjectHideFlags: 0
@@ -2004,6 +2129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pieceOnBoard: 0
+  allowEndGoal: 1
 --- !u!1 &1489729952
 GameObject:
   m_ObjectHideFlags: 0
@@ -2120,6 +2246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chessBoard: {fileID: 274136389}
   pieceStatus: {fileID: 1246640727}
+  chessPuzzleSpawner: {fileID: 0}
 --- !u!1 &1621114285
 GameObject:
   m_ObjectHideFlags: 0
@@ -2516,3 +2643,4 @@ SceneRoots:
   - {fileID: 479446237}
   - {fileID: 1621114287}
   - {fileID: 1246640726}
+  - {fileID: 694764830}

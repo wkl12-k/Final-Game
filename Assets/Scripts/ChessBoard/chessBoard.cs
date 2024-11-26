@@ -12,6 +12,8 @@ public class ChessBoard : MonoBehaviour
     [Header("Game Objects")]
     public GameObject whiteBoardTile;
     public GameObject blackBoardTile;
+    [SerializeField] GameObject endLight;
+    private float lightHeight = 1.5f;
 
     public chessPuzzleSpawner chessPuzzleSpawner;
 
@@ -32,7 +34,8 @@ public class ChessBoard : MonoBehaviour
 
     void Start()
     {
-      
+
+        endLight.SetActive(false);
         CreateBoard();
         OnBoardCreated?.Invoke();
 
@@ -175,6 +178,11 @@ public class ChessBoard : MonoBehaviour
                 endGoalPosition = endGoalTile.transform.position;
             }
         }
+
+        
+        endLight.transform.position = new Vector3(x, lightHeight, z);
+        endLight.SetActive(true);
+
         return endGoalTile;
     }
 
