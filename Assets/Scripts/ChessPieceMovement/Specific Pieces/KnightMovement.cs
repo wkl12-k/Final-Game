@@ -51,10 +51,6 @@ public class KnightMovement : MonoBehaviour, ChessPieceMovement
         {
             StartCoroutine(MoveToTarget(targetPosition));
         }
-        else
-        {
-            Debug.Log("Invalid move.");
-        }
     }
 
     public IEnumerator MoveToTarget(Vector3 target)

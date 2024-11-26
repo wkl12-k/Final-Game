@@ -36,7 +36,20 @@ public class BishopMovement : MonoBehaviour, ChessPieceMovement
 
         foreach (Vector3 direction in bishopDirections)
         {
-            AddMovesInDirection(availableMoves, direction);
+            Vector3 targetPosition = position;
+            Vector3 lastValidPosition = targetPosition;
+
+            while (IsValidPosition(targetPosition + direction))
+            {
+                targetPosition += direction;
+                lastValidPosition = targetPosition;
+            }
+
+
+            if (lastValidPosition != position)
+            {
+                availableMoves.Add(lastValidPosition);
+            }
         }
 
         return availableMoves;
@@ -47,10 +60,6 @@ public class BishopMovement : MonoBehaviour, ChessPieceMovement
         if (CheckAvailableMoves(transform.position).Contains(targetPosition))
         {
             chessBoard.StartCoroutine(MoveToTarget(targetPosition));
-        }
-        else
-        {
-            Debug.Log("Invalid move.");
         }
     }
 
@@ -86,27 +95,6 @@ public class BishopMovement : MonoBehaviour, ChessPieceMovement
             sceneManagement.toLevel("WinScene");
         }
     }
-
-
-    private void AddMovesInDirection(List<Vector3> availableMoves, Vector3 direction)
-    {
-        Vector3 targetPosition = transform.position;
-        Vector3 validPosition = targetPosition;
-
-        
-        while (IsValidPosition(targetPosition + direction))
-        {
-            targetPosition += direction;
-            validPosition = targetPosition;  
-        }
-
-        
-        if (validPosition != transform.position)
-        {
-            availableMoves.Add(validPosition);
-        }
-    }
-
 
 
     protected bool IsValidPosition(Vector3 targetPosition)

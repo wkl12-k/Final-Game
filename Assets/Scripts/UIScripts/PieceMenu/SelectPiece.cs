@@ -77,7 +77,11 @@ public class SelectPiece : MonoBehaviour
             Destroy(lastPlacedPiece);  
         }
 
-        lastPlacedPiece.GetComponent<ShowAvailableTiles>().DestroyTileLights();
+        lastPiece = false;
+        if (lastPlacedPiece != null)
+        {
+            lastPlacedPiece.GetComponent<ShowAvailableTiles>().DestroyTileLights();
+        }
 
     }
 
