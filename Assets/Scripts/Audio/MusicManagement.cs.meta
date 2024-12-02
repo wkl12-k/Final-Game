@@ -1,2 +1,14 @@
 fileFormatVersion: 2
 guid: 6059fd8af2dcc40b5859bacf04299925
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - chessMoveSound: {fileID: 8300000, guid: 13ba342c61b5f466598f8f07f070ae75, type: 3}
+  - reachedGoalSound: {instanceID: 0}
+  - backgroundMusic: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -11,10 +11,11 @@ public class KnightMovement : MonoBehaviour, ChessPieceMovement
     [SerializeField] PieceStatus pieceStatus;
     [SerializeField] SelectPiece selectPiece;
     private SceneManagement sceneManagement;
+    private MusicManagement musicManagement;
 
     private bool hasMoved = false;
 
-    [SerializeField] private float pieceSpeed = 1f;
+    [SerializeField] private float pieceSpeed = 3f;
 
     private Vector3[] knightMoves = new Vector3[] {
         new Vector3(2, 0, 1), new Vector3(2, 0, -1),
@@ -28,7 +29,8 @@ public class KnightMovement : MonoBehaviour, ChessPieceMovement
         selectPiece = FindAnyObjectByType<SelectPiece>();
         chessBoard = FindAnyObjectByType<ChessBoard>();
         pieceStatus = FindAnyObjectByType<PieceStatus>();
-        sceneManagement = FindAnyObjectByType<SceneManagement>();  
+        sceneManagement = FindAnyObjectByType<SceneManagement>();
+        musicManagement = FindAnyObjectByType<MusicManagement>();
     }
 
     public List<Vector3> CheckAvailableMoves(Vector3 position)
@@ -53,6 +55,7 @@ public class KnightMovement : MonoBehaviour, ChessPieceMovement
         {
             hasMoved = true;
             StartCoroutine(MoveToTarget(targetPosition));
+            musicManagement.PlayChessMoveSound();
         }
     }
 
@@ -73,6 +76,7 @@ public class KnightMovement : MonoBehaviour, ChessPieceMovement
         {
             if (selectPiece.IsLastPiece())
             {
+                musicManagement.PlayReachedGoalSound();
                 OnEndGoalReached();
             }
         }

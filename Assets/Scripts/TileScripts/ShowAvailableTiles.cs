@@ -40,10 +40,10 @@ public class ShowAvailableTiles : MonoBehaviour
 
 
         
-        List<Vector3> avilableTiles = pieceMovement.CheckAvailableMoves(piece.transform.position); //piece.transform.position
+        List<Vector3> availableTiles = pieceMovement.CheckAvailableMoves(piece.transform.position); //piece.transform.position
 
 
-        foreach (Vector3 tilePos in avilableTiles)
+        foreach (Vector3 tilePos in availableTiles)
         {
             GameObject tileLight = Instantiate(availableTileLight);
             tileLight.transform.position = new Vector3(tilePos.x, lightHeight, tilePos.z);

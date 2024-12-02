@@ -11,6 +11,7 @@ public class RookMovement : MonoBehaviour, ChessPieceMovement
     [SerializeField] PieceStatus pieceStatus;
     [SerializeField] SelectPiece selectPiece;
     private SceneManagement sceneManagement;
+    private MusicManagement musicManagement;
 
     private bool hasMoved = false;
 
@@ -26,6 +27,7 @@ public class RookMovement : MonoBehaviour, ChessPieceMovement
         chessBoard = FindAnyObjectByType<ChessBoard>();
         pieceStatus = FindAnyObjectByType<PieceStatus>();
         sceneManagement = FindAnyObjectByType<SceneManagement>();
+        musicManagement = FindAnyObjectByType<MusicManagement>();
     }
 
     public List<Vector3> CheckAvailableMoves(Vector3 position)
@@ -60,6 +62,7 @@ public class RookMovement : MonoBehaviour, ChessPieceMovement
         {
             hasMoved = true;
             chessBoard.StartCoroutine(MoveToTarget(targetPosition));
+            musicManagement.PlayChessMoveSound();
         }
     }
 
@@ -71,7 +74,6 @@ public class RookMovement : MonoBehaviour, ChessPieceMovement
             transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
             yield return null;
         }
-
         transform.position = target;
         isMoving = false;
         pieceStatus.SetPieceStatus(false);
@@ -80,6 +82,7 @@ public class RookMovement : MonoBehaviour, ChessPieceMovement
         {
             if (selectPiece.IsLastPiece())
             {
+                musicManagement.PlayReachedGoalSound();
                 OnEndGoalReached();
             }
         }

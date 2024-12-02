@@ -11,8 +11,9 @@ public class BishopMovement : MonoBehaviour, ChessPieceMovement
     [SerializeField] PieceStatus pieceStatus;
     [SerializeField] SelectPiece selectPiece;
     private SceneManagement sceneManagement;
+    private MusicManagement musicManagement;
 
-    [SerializeField] private float pieceSpeed = 1f;
+    [SerializeField] private float pieceSpeed = 3f;
 
     private bool hasMoved = false;
 
@@ -30,6 +31,7 @@ public class BishopMovement : MonoBehaviour, ChessPieceMovement
         chessBoard = FindAnyObjectByType<ChessBoard>();
         pieceStatus = FindAnyObjectByType<PieceStatus>();
         sceneManagement = FindAnyObjectByType<SceneManagement>();
+        musicManagement = FindAnyObjectByType<MusicManagement>();
     }
 
     public List<Vector3> CheckAvailableMoves(Vector3 position)
@@ -64,7 +66,7 @@ public class BishopMovement : MonoBehaviour, ChessPieceMovement
         {
             hasMoved = true;
             chessBoard.StartCoroutine(MoveToTarget(targetPosition));
-            
+            musicManagement.PlayChessMoveSound();
         }
         hasMoved = true;
     }
@@ -72,6 +74,7 @@ public class BishopMovement : MonoBehaviour, ChessPieceMovement
     public IEnumerator MoveToTarget(Vector3 target)
     {
         isMoving = true;
+
         while (Vector3.Distance(transform.position, target) > 0.01f)
         {
             transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
@@ -85,6 +88,7 @@ public class BishopMovement : MonoBehaviour, ChessPieceMovement
         {
             if (selectPiece.IsLastPiece())
             {
+                musicManagement.PlayReachedGoalSound();
                 OnEndGoalReached();
             }
         }

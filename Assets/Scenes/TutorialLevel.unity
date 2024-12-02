@@ -407,6 +407,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 52686504}
   m_CullTransparentMesh: 1
+--- !u!1 &86321012
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 86321014}
+  - component: {fileID: 86321013}
+  m_Layer: 0
+  m_Name: ClickListener
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &86321013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86321012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d7682926fa3541a691cdf3e576dbddd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &86321014
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86321012}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 551.5813, y: 406.54056, z: -2.9609985}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &171592258
 GameObject:
   m_ObjectHideFlags: 0
@@ -6354,6 +6398,7 @@ MonoBehaviour:
   chessMoveSound: {fileID: 8300000, guid: 13ba342c61b5f466598f8f07f070ae75, type: 3}
   reachedGoalSound: {fileID: 8300000, guid: 3db01fc6191824b65958cf7175ef187c, type: 3}
   backgroundMusic: {fileID: 8300000, guid: 1d8beb838966341bda2bc5948a0c31a1, type: 3}
+  clickSound: {fileID: 8300000, guid: fb79b6abb78284ebeb47e44c2be31cda, type: 3}
 --- !u!4 &2098645940
 Transform:
   m_ObjectHideFlags: 0
@@ -6639,3 +6684,4 @@ SceneRoots:
   - {fileID: 537478972}
   - {fileID: 7301215605856384278}
   - {fileID: 2873969884692581048}
+  - {fileID: 86321014}

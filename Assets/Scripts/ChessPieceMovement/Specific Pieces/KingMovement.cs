@@ -11,6 +11,7 @@ public class KingMovement : MonoBehaviour, ChessPieceMovement
     [SerializeField] PieceStatus pieceStatus;
     [SerializeField] SelectPiece selectPiece;
     private SceneManagement sceneManagement;
+    private MusicManagement musicManagement;
 
     private bool hasMoved = false;
 
@@ -34,6 +35,7 @@ public class KingMovement : MonoBehaviour, ChessPieceMovement
         chessBoard = FindAnyObjectByType<ChessBoard>();
         pieceStatus = FindAnyObjectByType<PieceStatus>();
         sceneManagement = FindAnyObjectByType<SceneManagement>();
+        musicManagement = FindAnyObjectByType<MusicManagement>();
     }
 
     public List<Vector3> CheckAvailableMoves(Vector3 position)
@@ -58,12 +60,14 @@ public class KingMovement : MonoBehaviour, ChessPieceMovement
         {
             hasMoved = true;
             chessBoard.StartCoroutine(MoveToTarget(targetPosition));
+            musicManagement.PlayChessMoveSound();
         }
     }
 
     public IEnumerator MoveToTarget(Vector3 target)
     {
         isMoving = true;
+
         while (Vector3.Distance(transform.position, target) > 0.01f)
         {
             transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
@@ -78,6 +82,7 @@ public class KingMovement : MonoBehaviour, ChessPieceMovement
         {
             if (selectPiece.IsLastPiece())
             {
+                musicManagement.PlayReachedGoalSound();
                 OnEndGoalReached();
             }
         }

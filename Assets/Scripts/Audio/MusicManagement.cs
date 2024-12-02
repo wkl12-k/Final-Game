@@ -1,23 +1,48 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MusicManagement : MonoBehaviour
 {
+    public static MusicManagement Instance { get; private set; }
+
     [SerializeField] private AudioClip chessMoveSound;
     [SerializeField] private AudioClip reachedGoalSound;
     [SerializeField] private AudioClip backgroundMusic;
+    [SerializeField] private AudioClip clickSound;
 
-    private AudioSource audioSource;
-    private static MusicManagement instance;
+    private AudioSource backgroundAudioSource;
+    private AudioSource chessMoveAudioSource;
+    private AudioSource reachedGoalAudioSource;
+    private AudioSource clickAudioSource;
+
+    private float musicVolume = 0.5f;
+    private float chessMoveVolume = 1f;
+    private float reachedGoalVolume = 0.6f;
+    private float clickVolume = 0.6f; 
 
     void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
-            audioSource = gameObject.AddComponent<AudioSource>();
-            audioSource.loop = true;
+
+            backgroundAudioSource = gameObject.AddComponent<AudioSource>();
+            backgroundAudioSource.loop = true;
+            backgroundAudioSource.volume = musicVolume;
+            backgroundAudioSource.clip = backgroundMusic;
+
+            chessMoveAudioSource = gameObject.AddComponent<AudioSource>();
+            chessMoveAudioSource.loop = false;
+            chessMoveAudioSource.volume = chessMoveVolume;
+
+            reachedGoalAudioSource = gameObject.AddComponent<AudioSource>();
+            reachedGoalAudioSource.loop = false;
+            reachedGoalAudioSource.volume = reachedGoalVolume;
+
+            clickAudioSource = gameObject.AddComponent<AudioSource>(); // Dedicated AudioSource for click sound
+            clickAudioSource.loop = false;
+            clickAudioSource.volume = clickVolume;
+
             PlayBackgroundMusic();
         }
         else
@@ -28,20 +53,51 @@ public class MusicManagement : MonoBehaviour
 
     public void PlayChessMoveSound()
     {
-        audioSource.PlayOneShot(chessMoveSound);
+        if (chessMoveSound != null)
+        {
+            chessMoveAudioSource.PlayOneShot(chessMoveSound, chessMoveVolume);
+        }
     }
 
     public void PlayReachedGoalSound()
     {
-        audioSource.PlayOneShot(reachedGoalSound);
+        if (reachedGoalSound != null)
+        {
+            reachedGoalAudioSource.PlayOneShot(reachedGoalSound, reachedGoalVolume);
+        }
+    }
+
+    public void PlayClick()
+    {
+        if (clickSound != null)
+        {
+            clickAudioSource.PlayOneShot(clickSound, clickVolume);
+        }
     }
 
     private void PlayBackgroundMusic()
     {
-        if (!audioSource.isPlaying)
+        if (backgroundMusic != null && !backgroundAudioSource.isPlaying)
         {
-            audioSource.clip = backgroundMusic;
-            audioSource.Play();
+            backgroundAudioSource.Play();
         }
+    }
+
+    public void SetMusicVolume(float newVolume)
+    {
+        musicVolume = Mathf.Clamp(newVolume, 0f, 1f);
+        backgroundAudioSource.volume = musicVolume;
+    }
+
+    public void SetEffectsVolume(float newVolume)
+    {
+        chessMoveVolume = Mathf.Clamp(newVolume, 0f, 1f);
+        chessMoveAudioSource.volume = chessMoveVolume;
+
+        reachedGoalVolume = Mathf.Clamp(newVolume, 0f, 1f);
+        reachedGoalAudioSource.volume = reachedGoalVolume;
+
+        clickVolume = Mathf.Clamp(newVolume, 0f, 1f);
+        clickAudioSource.volume = clickVolume;  
     }
 }

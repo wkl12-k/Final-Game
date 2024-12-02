@@ -11,10 +11,11 @@ public class PawnMovement : MonoBehaviour, ChessPieceMovement
     [SerializeField] PieceStatus pieceStatus;
     [SerializeField] SelectPiece selectPiece;
     private SceneManagement sceneManagement;
+    private MusicManagement musicManagement;
 
     private bool hasMoved = false;
 
-    [SerializeField] private float pieceSpeed = 1f;
+    [SerializeField] private float pieceSpeed = 3f;
 
     private Vector3[] pawnMoves = new Vector3[]
     {
@@ -27,6 +28,7 @@ public class PawnMovement : MonoBehaviour, ChessPieceMovement
         chessBoard = FindAnyObjectByType<ChessBoard>();
         pieceStatus = FindAnyObjectByType<PieceStatus>();
         sceneManagement = FindAnyObjectByType<SceneManagement>();
+        musicManagement = FindAnyObjectByType<MusicManagement>();
     }
 
     public List<Vector3> CheckAvailableMoves(Vector3 position)
@@ -50,12 +52,14 @@ public class PawnMovement : MonoBehaviour, ChessPieceMovement
         {
             hasMoved = true;
             chessBoard.StartCoroutine(MoveToTarget(targetPosition));
+            musicManagement.PlayChessMoveSound();
         }
     }
 
     public IEnumerator MoveToTarget(Vector3 target)
     {
         isMoving = true;
+
         while (Vector3.Distance(transform.position, target) > 0.01f)
         {
             transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
@@ -68,6 +72,7 @@ public class PawnMovement : MonoBehaviour, ChessPieceMovement
         {
             if (selectPiece.IsLastPiece())
             {
+                musicManagement.PlayReachedGoalSound();
                 OnEndGoalReached();
             }
         }
