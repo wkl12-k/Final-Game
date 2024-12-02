@@ -49,30 +49,31 @@ public class chessPuzzleSpawner : MonoBehaviour
             totalPieces = randomAmount;
             List<GameObject> pieces = new List<GameObject> { rookPrefab, bishopPrefab, knightPrefab, kingPrefab, pawnPrefab };
 
-            for (int i = 0; i < randomAmount; i++)
+            while (pieceMenu.Count < randomAmount)
             {
                 int randomPiece = Random.Range(0, pieces.Count);
-                if (pieces[randomPiece].Equals(kingPrefab) && kingCount < 1) { 
-                pieceMenu.Add(pieces[randomPiece]);
-                kingCount++;
-            }
+                GameObject selectedPiece = pieces[randomPiece];
 
-                else if (pieces[randomPiece].Equals(pawnPrefab) && pawnCount < 1)
+                if (selectedPiece.Equals(kingPrefab) && kingCount < 1)
                 {
-                    pieceMenu.Add(pieces[randomPiece]);
-                    pawnCount++;
-
+                    pieceMenu.Add(selectedPiece);
+                    kingCount++;
                 }
-
-                else
-                    pieceMenu.Add(pieces[randomPiece]);
-
+                else if (selectedPiece.Equals(pawnPrefab) && pawnCount < 1)
+                {
+                    pieceMenu.Add(selectedPiece);
+                    pawnCount++;
+                }
+                else if (!selectedPiece.Equals(kingPrefab) && !selectedPiece.Equals(pawnPrefab))
+                {
+                    pieceMenu.Add(selectedPiece);
+                }
             }
         }
 
         return pieceMenu;
-
     }
+
 
     public void CreateEndGoal()
     {
