@@ -14,6 +14,8 @@ public class BishopMovement : MonoBehaviour, ChessPieceMovement
 
     [SerializeField] private float pieceSpeed = 1f;
 
+    private bool hasMoved = false;
+
     private Vector3[] bishopDirections = new Vector3[]
     {
         new Vector3(1, 0, 1),  
@@ -57,10 +59,14 @@ public class BishopMovement : MonoBehaviour, ChessPieceMovement
 
     public void Move(Vector3 targetPosition)
     {
-        if (CheckAvailableMoves(transform.position).Contains(targetPosition))
+       
+        if (CheckAvailableMoves(transform.position).Contains(targetPosition) && !hasMoved)
         {
+            hasMoved = true;
             chessBoard.StartCoroutine(MoveToTarget(targetPosition));
+            
         }
+        hasMoved = true;
     }
 
     public IEnumerator MoveToTarget(Vector3 target)

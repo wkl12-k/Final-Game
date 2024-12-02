@@ -12,6 +12,8 @@ public class RookMovement : MonoBehaviour, ChessPieceMovement
     [SerializeField] SelectPiece selectPiece;
     private SceneManagement sceneManagement;
 
+    private bool hasMoved = false;
+
     [SerializeField] private float pieceSpeed = 3f;
 
     private Vector3[] rookMoves = new Vector3[] {
@@ -54,8 +56,9 @@ public class RookMovement : MonoBehaviour, ChessPieceMovement
 
     public void Move(Vector3 targetPosition)
     {
-        if (CheckAvailableMoves(transform.position).Contains(targetPosition))
+        if (CheckAvailableMoves(transform.position).Contains(targetPosition) && !hasMoved)
         {
+            hasMoved = true;
             chessBoard.StartCoroutine(MoveToTarget(targetPosition));
         }
     }

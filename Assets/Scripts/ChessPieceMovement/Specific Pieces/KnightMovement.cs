@@ -12,6 +12,8 @@ public class KnightMovement : MonoBehaviour, ChessPieceMovement
     [SerializeField] SelectPiece selectPiece;
     private SceneManagement sceneManagement;
 
+    private bool hasMoved = false;
+
     [SerializeField] private float pieceSpeed = 1f;
 
     private Vector3[] knightMoves = new Vector3[] {
@@ -47,8 +49,9 @@ public class KnightMovement : MonoBehaviour, ChessPieceMovement
 
     public void Move(Vector3 targetPosition)
     {
-        if (CheckAvailableMoves(transform.position).Contains(targetPosition))
+        if (CheckAvailableMoves(transform.position).Contains(targetPosition) && !hasMoved)
         {
+            hasMoved = true;
             StartCoroutine(MoveToTarget(targetPosition));
         }
     }
