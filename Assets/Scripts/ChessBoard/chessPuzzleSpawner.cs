@@ -15,6 +15,9 @@ public class chessPuzzleSpawner : MonoBehaviour
     private Vector3 oppQueenPosition;
     private GameObject oppQueen;
     private int totalPieces;
+    private int pawnCount=0;
+    private int kingCount=0;
+    private int otherPieceCount=0;
 
 
     [Header("Other Components")]
@@ -49,7 +52,21 @@ public class chessPuzzleSpawner : MonoBehaviour
             for (int i = 0; i < randomAmount; i++)
             {
                 int randomPiece = Random.Range(0, pieces.Count);
+                if (pieces[randomPiece].Equals(kingPrefab) && kingCount < 1) { 
                 pieceMenu.Add(pieces[randomPiece]);
+                kingCount++;
+            }
+
+                else if (pieces[randomPiece].Equals(pawnPrefab) && pawnCount < 1)
+                {
+                    pieceMenu.Add(pieces[randomPiece]);
+                    pawnCount++;
+
+                }
+
+                else
+                    pieceMenu.Add(pieces[randomPiece]);
+
             }
         }
 
@@ -92,7 +109,9 @@ public class chessPuzzleSpawner : MonoBehaviour
             }
             else if (piece.CompareTag("pawn"))
             {
+
                 pieceMovement = piece.GetComponent<PawnMovement>();
+                
             }
             else if (piece.CompareTag("knight"))
             {
