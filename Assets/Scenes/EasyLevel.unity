@@ -194,7 +194,7 @@ MonoBehaviour:
   chessMoveSound: {fileID: 8300000, guid: 13ba342c61b5f466598f8f07f070ae75, type: 3}
   reachedGoalSound: {fileID: 8300000, guid: 3db01fc6191824b65958cf7175ef187c, type: 3}
   backgroundMusic: {fileID: 8300000, guid: 7a31c33fd0fc648efa52de30837a67f2, type: 3}
-  clickSound: {fileID: 8300000, guid: 3db01fc6191824b65958cf7175ef187c, type: 3}
+  clickSound: {fileID: 8300000, guid: fb79b6abb78284ebeb47e44c2be31cda, type: 3}
 --- !u!4 &77277859
 Transform:
   m_ObjectHideFlags: 0
@@ -554,8 +554,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 207692775}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.92387956, z: 0.38268343, w: 0}
-  m_LocalPosition: {x: 3.5, y: 4.65, z: 10.87}
+  m_LocalRotation: {x: 0, y: -0.8870109, z: 0.46174863, w: 0}
+  m_LocalPosition: {x: 3.5, y: 5.3, z: 9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2552,13 +2552,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1055616110}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.92387956, z: 0.38268343, w: 0}
-  m_LocalPosition: {x: 3.5, y: 4.65, z: 10.87}
+  m_LocalRotation: {x: 0, y: -0.8870109, z: 0.46174863, w: 0}
+  m_LocalPosition: {x: 3.5, y: 5.3, z: 9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 45, y: -180, z: 0}
+  m_LocalEulerAnglesHint: {x: 55, y: -180, z: 0}
 --- !u!1 &1067381444
 GameObject:
   m_ObjectHideFlags: 0
