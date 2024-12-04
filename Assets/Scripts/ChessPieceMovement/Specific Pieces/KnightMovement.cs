@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class KnightMovement : MonoBehaviour, ChessPieceMovement
 {
-    public float speed => pieceSpeed;
+    public float speed { get { return 7f; } }
     public bool isMoving { get; set; }
     public ChessBoard chessBoard { get; set; }
 
@@ -14,8 +14,6 @@ public class KnightMovement : MonoBehaviour, ChessPieceMovement
     private MusicManagement musicManagement;
 
     private bool hasMoved = false;
-
-    [SerializeField] private float pieceSpeed = 3f;
 
     private Vector3[] knightMoves = new Vector3[] {
         new Vector3(2, 0, 1), new Vector3(2, 0, -1),

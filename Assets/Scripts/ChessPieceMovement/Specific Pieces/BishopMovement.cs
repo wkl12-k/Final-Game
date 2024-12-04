@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BishopMovement : MonoBehaviour, ChessPieceMovement
 {
-    public float speed => pieceSpeed;
+    public float speed { get { return 7f; } }
     public bool isMoving { get; set; }
     public ChessBoard chessBoard { get; set; }
 
@@ -12,8 +12,6 @@ public class BishopMovement : MonoBehaviour, ChessPieceMovement
     [SerializeField] SelectPiece selectPiece;
     private SceneManagement sceneManagement;
     private MusicManagement musicManagement;
-
-    [SerializeField] private float pieceSpeed = 3f;
 
     private bool hasMoved = false;
 
@@ -70,6 +68,7 @@ public class BishopMovement : MonoBehaviour, ChessPieceMovement
     public IEnumerator MoveToTarget(Vector3 target)
     {
         isMoving = true;
+        Debug.Log("Speed is: " + speed); // Check the speed value here
 
         while (Vector3.Distance(transform.position, target) > 0.01f)
         {

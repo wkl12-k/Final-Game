@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RookMovement : MonoBehaviour, ChessPieceMovement
 {
-    public float speed => pieceSpeed;
+    public float speed { get { return 7f; } }
     public bool isMoving { get; set; }
     public ChessBoard chessBoard { get; set; }
 
@@ -14,8 +14,6 @@ public class RookMovement : MonoBehaviour, ChessPieceMovement
     private MusicManagement musicManagement;
 
     private bool hasMoved = false;
-
-    [SerializeField] private float pieceSpeed = 3f;
 
     private Vector3[] rookMoves = new Vector3[] {
         Vector3.forward, Vector3.back, Vector3.left, Vector3.right
