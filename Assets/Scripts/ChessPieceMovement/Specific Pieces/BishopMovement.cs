@@ -17,7 +17,7 @@ public class BishopMovement : MonoBehaviour, ChessPieceMovement
 
     private bool hasMoved = false;
 
-    private Vector3[] bishopDirections = new Vector3[]
+    private Vector3[] bishopMoves = new Vector3[]
     {
         new Vector3(1, 0, 1),  
         new Vector3(-1, 0, 1),  
@@ -38,26 +38,22 @@ public class BishopMovement : MonoBehaviour, ChessPieceMovement
     {
         List<Vector3> availableMoves = new List<Vector3>();
 
-        foreach (Vector3 direction in bishopDirections)
+        foreach (Vector3 direction in bishopMoves)
         {
             Vector3 targetPosition = position;
-            Vector3 lastValidPosition = targetPosition;
 
             while (IsValidPosition(targetPosition + direction))
             {
-                targetPosition += direction;
-                lastValidPosition = targetPosition;
+                targetPosition += direction;   
             }
-
-
-            if (lastValidPosition != position)
+            if (targetPosition != position)
             {
-                availableMoves.Add(lastValidPosition);
+                availableMoves.Add(targetPosition);   
             }
         }
-
         return availableMoves;
     }
+
 
     public void Move(Vector3 targetPosition)
     {

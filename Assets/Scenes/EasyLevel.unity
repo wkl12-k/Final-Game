@@ -2988,7 +2988,7 @@ MonoBehaviour:
   oppQueenPrefab: {fileID: 0}
   chessBoard: {fileID: 166072035}
   sceneManager: {fileID: 1668848771}
-  minPieces: 3
+  minPieces: 4
   maxPieces: 4
 --- !u!4 &1133421166
 Transform:

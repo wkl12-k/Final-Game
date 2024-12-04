@@ -37,22 +37,16 @@ public class RookMovement : MonoBehaviour, ChessPieceMovement
         foreach (Vector3 direction in rookMoves)
         {
             Vector3 targetPosition = position;
-            Vector3 lastValidPosition = targetPosition;
 
-            
             while (IsValidPosition(targetPosition + direction))
             {
                 targetPosition += direction;
-                lastValidPosition = targetPosition;  
             }
-
-            
-            if (lastValidPosition != position)
+            if (targetPosition != position)
             {
-                availableMoves.Add(lastValidPosition);
+                availableMoves.Add(targetPosition);
             }
         }
-
         return availableMoves;
     }
 
