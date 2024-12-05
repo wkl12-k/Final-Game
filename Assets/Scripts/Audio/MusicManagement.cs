@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 public class MusicManagement : MonoBehaviour
 {
     public static MusicManagement Instance { get; private set; }
@@ -39,7 +40,7 @@ public class MusicManagement : MonoBehaviour
             reachedGoalAudioSource.loop = false;
             reachedGoalAudioSource.volume = reachedGoalVolume;
 
-            clickAudioSource = gameObject.AddComponent<AudioSource>(); // Dedicated AudioSource for click sound
+            clickAudioSource = gameObject.AddComponent<AudioSource>(); 
             clickAudioSource.loop = false;
             clickAudioSource.volume = clickVolume;
 
@@ -81,23 +82,5 @@ public class MusicManagement : MonoBehaviour
         {
             backgroundAudioSource.Play();
         }
-    }
-
-    public void SetMusicVolume(float newVolume)
-    {
-        musicVolume = Mathf.Clamp(newVolume, 0f, 1f);
-        backgroundAudioSource.volume = musicVolume;
-    }
-
-    public void SetEffectsVolume(float newVolume)
-    {
-        chessMoveVolume = Mathf.Clamp(newVolume, 0f, 1f);
-        chessMoveAudioSource.volume = chessMoveVolume;
-
-        reachedGoalVolume = Mathf.Clamp(newVolume, 0f, 1f);
-        reachedGoalAudioSource.volume = reachedGoalVolume;
-
-        clickVolume = Mathf.Clamp(newVolume, 0f, 1f);
-        clickAudioSource.volume = clickVolume;  
     }
 }

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+
 public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     private Renderer tileRenderer;
@@ -14,17 +15,11 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     [HideInInspector]
     public ChessBoard chessBoard;
 
-
-
     void Start()
     {
         tileRenderer = GetComponent<Renderer>();
         originalColor = tileRenderer.material.color;
-        //createTextIndicatorsOnTile();
     }
-
-
-
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -38,22 +33,20 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
             tileRenderer.material.color = originalColor;
     }
 
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        chessBoard.OnTileClicked(this);
+    }
+
     public void setStartTileColor()
     {
         tileRenderer.material.color = startTileColor;
         isStartGoal = true;
-  
-    }
-
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        chessBoard.OnTileClicked(this);
     }
 
     public void SetEndGoal()
     {
         tileRenderer.material.color = endGoalColor;
         isEndGoal = true;
-
     }
 }

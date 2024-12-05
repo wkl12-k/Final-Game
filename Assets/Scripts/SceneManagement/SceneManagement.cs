@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 
+
 public class SceneManagement : MonoBehaviour
 {
     [SerializeField] GameObject exitPanel;
@@ -14,7 +15,6 @@ public class SceneManagement : MonoBehaviour
 
     private static string lastSceneName;
     private SelectPiece selectPiece;
-
 
     void Update()
     {
@@ -80,8 +80,7 @@ public class SceneManagement : MonoBehaviour
     {
         lastSceneName = SceneManager.GetActiveScene().name;
         Time.timeScale = 1;
-        SceneManager.LoadScene(name);
-        
+        SceneManager.LoadScene(name);  
     }
 
     public void LoadLastScene()
