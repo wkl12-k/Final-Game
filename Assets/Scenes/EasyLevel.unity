@@ -2988,8 +2988,8 @@ MonoBehaviour:
   oppQueenPrefab: {fileID: 0}
   chessBoard: {fileID: 166072035}
   sceneManager: {fileID: 1668848771}
-  minPieces: 4
-  maxPieces: 4
+  minPieces: 3
+  maxPieces: 3
 --- !u!4 &1133421166
 Transform:
   m_ObjectHideFlags: 0
