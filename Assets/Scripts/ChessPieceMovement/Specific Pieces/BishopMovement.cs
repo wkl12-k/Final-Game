@@ -68,7 +68,6 @@ public class BishopMovement : MonoBehaviour, ChessPieceMovement
     public IEnumerator MoveToTarget(Vector3 target)
     {
         isMoving = true;
-        Debug.Log("Speed is: " + speed); // Check the speed value here
 
         while (Vector3.Distance(transform.position, target) > 0.01f)
         {
