@@ -16,9 +16,9 @@ public class ChessBoard : MonoBehaviour
     [SerializeField] GameObject endLight;
     private float lightHeight = 1.5f;
 
-    public chessPuzzleSpawner chessPuzzleSpawner;
+    public ChessPuzzleSpawner chessPuzzleSpawner;
 
-    public chessPuzzleSpawner chessSpawner = null;
+    public ChessPuzzleSpawner chessSpawner = null;
     [SerializeField] PieceButtons pieceButtons = null;
 
     [Header("Grid Creation")]

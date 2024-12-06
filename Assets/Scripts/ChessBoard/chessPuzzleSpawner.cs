@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class chessPuzzleSpawner : MonoBehaviour
+public class ChessPuzzleSpawner : MonoBehaviour
 {
 
     [Header("Piece Prefabs")]

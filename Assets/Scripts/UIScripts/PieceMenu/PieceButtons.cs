@@ -23,7 +23,7 @@ public class PieceButtons : MonoBehaviour
     [SerializeField] ChessBoard chessBoard;
 
     [Header("Other Scripts")]
-    [SerializeField] chessPuzzleSpawner puzzleSpawner;
+    [SerializeField] ChessPuzzleSpawner puzzleSpawner;
     [SerializeField] PieceButtonMonitor pieceButtonMonitor;
 
     private List<GameObject> pieceMenuButtonList;

@@ -19,7 +19,7 @@ public class SelectPiece : MonoBehaviour
 
     [Header("Other Scripts")]
     [SerializeField] PieceStatus pieceStatus;
-    [SerializeField] chessPuzzleSpawner chessPuzzleSpawner;
+    [SerializeField] ChessPuzzleSpawner chessPuzzleSpawner;
 
   
 
@@ -30,7 +30,7 @@ public class SelectPiece : MonoBehaviour
 
     private void Start()
     {
-        chessPuzzleSpawner = FindAnyObjectByType<chessPuzzleSpawner>();
+        chessPuzzleSpawner = FindAnyObjectByType<ChessPuzzleSpawner>();
         
     }
 
