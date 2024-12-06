@@ -88,8 +88,6 @@ public class ChessBoard : MonoBehaviour
         yield return new WaitForEndOfFrame();
         
             Quaternion uprightRotation = Quaternion.Euler(-90, 90, 0);
-            //oppQueenPosition = new Vector3(UnityEngine.Random.Range(0, 8), 0, UnityEngine.Random.Range(0, 8));
-            //oppQueenPosition = chessPuzzleSpawner.GetQueenPosition();
             Debug.Log("queen in chess board" + oppQueenPosition);
             oppQueen = Instantiate(oppQueenPrefab, oppQueenPosition, uprightRotation);
             oppQueen.SetActive(true);
