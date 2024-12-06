@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class SelectPiece : MonoBehaviour
 {
     [Header("Chess Board Reference")]
-    [SerializeField] chessBoard chessBoard;
+    [SerializeField] ChessBoard chessBoard;
 
     [Header("Other Scripts")]
     [SerializeField] PieceStatus pieceStatus;

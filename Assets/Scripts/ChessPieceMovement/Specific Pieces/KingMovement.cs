@@ -6,7 +6,7 @@ public class KingMovement : MonoBehaviour, ChessPieceMovement
 {
     public float speed { get { return 7f; } }
     public bool isMoving { get; set; }
-    public chessBoard chessBoard { get; set; }
+    public ChessBoard chessBoard { get; set; }
 
     [SerializeField] PieceStatus pieceStatus;
     [SerializeField] SelectPiece selectPiece;
@@ -31,7 +31,7 @@ public class KingMovement : MonoBehaviour, ChessPieceMovement
     void Start()
     {
         selectPiece = FindAnyObjectByType<SelectPiece>();
-        chessBoard = FindAnyObjectByType<chessBoard>();
+        chessBoard = FindAnyObjectByType<ChessBoard>();
         pieceStatus = FindAnyObjectByType<PieceStatus>();
         sceneManagement = FindAnyObjectByType<SceneManagement>();
         musicManagement = FindAnyObjectByType<MusicManagement>();

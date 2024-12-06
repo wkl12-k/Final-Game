@@ -5,10 +5,11 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 
 
-public class chessBoard : MonoBehaviour
+public class ChessBoard : MonoBehaviour
 {
     public static event Action OnBoardCreated;
     public MusicManagement musicManager;
+    private SceneManagement sceneManager;
 
     [Header("Game Objects")]
     public GameObject whiteBoardTile;
@@ -40,25 +41,25 @@ public class chessBoard : MonoBehaviour
 
     void Start()
     {
+        if (sceneManager == null)
+        {
+            sceneManager = FindObjectOfType<SceneManagement>();
+            if (sceneManager == null)
+            {
+                Debug.LogError("SceneManagement component not found in the scene. Please add it.");
+            }
+        }
 
         endLight.SetActive(false);
         CreateBoard();
         OnBoardCreated?.Invoke();
-        
 
-        //if (SceneManager.GetActiveScene().name == "TutorialLevel")
-        //{
-        //    StartCoroutine(SetGoalsForTutorialLevel());
-        //}
-
-    if (chessSpawner != null && pieceButtons != null)
+        if (chessSpawner != null && pieceButtons != null)
         {
             StartCoroutine(SetGoalsAfterBoardCreated());
-            //StartCoroutine(SetQueenAfterBoardCreated());
         }
-
-
     }
+
 
     private IEnumerator SetGoalsAfterBoardCreated()
     {
@@ -85,14 +86,15 @@ public class chessBoard : MonoBehaviour
 
     private IEnumerator SetQueenAfterBoardCreated()
     {
-        yield return new WaitForEndOfFrame();
-        
+        if (sceneManager.GetCurrentScene() != "EasyLevel")
+        {
+            yield return new WaitForEndOfFrame();
+
             Quaternion uprightRotation = Quaternion.Euler(-90, 90, 0);
-            Debug.Log("queen in chess board" + oppQueenPosition);
             oppQueen = Instantiate(oppQueenPrefab, oppQueenPosition, uprightRotation);
             oppQueen.SetActive(true);
-        
-        
+
+        }
     }
 
     public void ResetQueenOnRestart()

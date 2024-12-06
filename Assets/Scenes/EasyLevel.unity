@@ -2986,7 +2986,6 @@ MonoBehaviour:
   kingPrefab: {fileID: 1000013427829390, guid: 1700328aaf96fd243a71d862897619a4, type: 3}
   knightPrefab: {fileID: 1000010201698906, guid: edd10668f6a183d4180f8dc7b94f9e5c, type: 3}
   pawnPrefab: {fileID: 1000014207659374, guid: 61ed95d5d9afc0842b0c4d0c96678d38, type: 3}
-  oppQueenPrefab: {fileID: 0}
   chessBoard: {fileID: 166072035}
   sceneManager: {fileID: 1668848771}
   minPieces: 4
@@ -3899,10 +3898,6 @@ MonoBehaviour:
   exitPanel: {fileID: 1695061900}
   instructionsPanel: {fileID: 720009132}
   playButton: {fileID: 0}
-  UIelements:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   chessSpawner: {fileID: 1133421165}
   pieceButtons: {fileID: 1725264164}
 --- !u!4 &1668848772
@@ -4177,6 +4172,7 @@ MonoBehaviour:
   knightButtonPrefab: {fileID: 7643512000386898338, guid: 95488fe6193164999879dde4f149e83d, type: 3}
   pawnButtonPrefab: {fileID: 1658675421227699689, guid: a7f4e1fcc68cb48218ce8c4ae9291ffe, type: 3}
   pieceMenuPanel: {fileID: 481203007}
+  chessBoard: {fileID: 0}
   puzzleSpawner: {fileID: 1133421165}
 --- !u!224 &1725264165
 RectTransform:

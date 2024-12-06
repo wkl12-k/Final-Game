@@ -1,3 +1,4 @@
+
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,23 +11,23 @@ public class ChessPuzzleSpawner : MonoBehaviour
     [SerializeField] GameObject kingPrefab;
     [SerializeField] GameObject knightPrefab;
     [SerializeField] GameObject pawnPrefab;
-    [SerializeField] GameObject oppQueenPrefab;
+
 
     private Vector3 oppQueenPosition;
     private GameObject oppQueen;
 
 
-  
+
 
     private int totalPieces;
-    private int pawnCount=0;
-    private int kingCount=0;
-    private int otherPieceCount=0;
+    private int pawnCount = 0;
+    private int kingCount = 0;
+    private int otherPieceCount = 0;
 
 
     [Header("Other Components")]
     [SerializeField] ChessPieceMovement pieceMovement;
-    [SerializeField] chessBoard chessBoard;
+    [SerializeField] ChessBoard chessBoard;
     [SerializeField] SceneManagement sceneManager;
 
     [Header("Difficulty Indicator")]
@@ -34,7 +35,7 @@ public class ChessPuzzleSpawner : MonoBehaviour
     [SerializeField] int maxPieces = 8;
 
     private List<GameObject> pieceMenu;
-    private Vector3 queenPosition;
+
 
     List<GameObject> CreatePieceMenu()
     {
@@ -88,19 +89,9 @@ public class ChessPuzzleSpawner : MonoBehaviour
         Vector3 endPosition = chessBoard.GetStartTilePosition();
 
         Vector3 prevPosition = chessBoard.GetStartTilePosition();
-        string prevPieceType = "";
+
 
         int queenListPosition = Random.Range(0, pieceMenu.Count);
-
-        Debug.Log("queenPos" + queenListPosition);
-        Debug.Log(pieceMenu.Count);
-
-
-        //while (oppQueenPosition == prevPosition || oppQueenPosition == new Vector3(7, 0, 7))
-        //{
-        //    oppQueenPosition = new Vector3(Random.Range(0, 8), 0, Random.Range(0, 8));
-        //    oppQueen = Instantiate(oppQueenPrefab, oppQueenPosition, Quaternion.identity);
-        //}
 
         int i = 0;
 
@@ -137,27 +128,29 @@ public class ChessPuzzleSpawner : MonoBehaviour
 
             if (i == queenListPosition)
             {
-                Debug.Log("prev position " + prevPosition + "i " + i);
 
-                chessBoard.setQueenPosition(availableTiles[0]);
-               
+
+                oppQueenPosition = availableTiles[Random.Range(0, availableTiles.Count)];
+
+                chessBoard.setQueenPosition(oppQueenPosition);
             }
+
 
             int randomPosition = Random.Range(0, availableTiles.Count);
-
-            while (prevPosition == new Vector3(7, 0, 7))
+            while (availableTiles[randomPosition] == oppQueenPosition)
             {
-                prevPosition = availableTiles[randomPosition];
+                randomPosition = Random.Range(0, availableTiles.Count);
             }
 
-
+            prevPosition = availableTiles[randomPosition];
             i++;
-            Debug.Log("prevpositions "+prevPosition);
-      
+
+
         }
         endPosition = prevPosition;
         chessBoard.SetEndGoalTile((int)endPosition.x, (int)endPosition.z);
     }
+
 
     public GameObject GetOppQueen()
     {
@@ -175,11 +168,5 @@ public class ChessPuzzleSpawner : MonoBehaviour
         return totalPieces;
     }
 
-    //public Vector3 GetQueenPosition()
-    //{
 
-        
-    //    Debug.Log("queen in chess puzzle spawner" + oppQueenPosition);
-    //    return queenPosition;
-    //}
 }

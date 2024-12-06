@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class PieceStatus : MonoBehaviour
 {
-    private chessPuzzleSpawner chessPuzzleSpawner;
+    private ChessPuzzleSpawner chessPuzzleSpawner;
     public bool pieceOnBoard = false; 
     public bool allowEndGoal = true;  
 
     void Start()
     {
-        chessPuzzleSpawner = FindObjectOfType<chessPuzzleSpawner>();  
+        chessPuzzleSpawner = FindObjectOfType<ChessPuzzleSpawner>();  
     }
 
     public void SetPieceStatus(bool status)
