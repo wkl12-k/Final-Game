@@ -4534,6 +4534,7 @@ MonoBehaviour:
   gridSize: 8
   tileSize: 1
   y: 0
+  oppQueenPrefab: {fileID: 1000011613667446, guid: c9476b5c23fb4634485fcb52734c04d5, type: 3}
 --- !u!4 &1922466477
 Transform:
   m_ObjectHideFlags: 0
