@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PieceStatus : MonoBehaviour
 {
-    private ChessPuzzleSpawner chessPuzzleSpawner;      
+    private ChessPuzzleSpawner chessPuzzleSpawner;
     public bool pieceOnBoard = false; 
     public bool allowEndGoal = true;  
 
