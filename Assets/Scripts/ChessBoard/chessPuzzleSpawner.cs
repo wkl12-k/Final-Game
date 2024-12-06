@@ -123,11 +123,11 @@ public class ChessPuzzleSpawner : MonoBehaviour
             
             prevPosition = availableTiles[randomPosition];
 
-            if (prevPosition == chessBoard.GetStartTilePosition())
+            do
             {
                 randomPosition = Random.Range(0, availableTiles.Count);
                 prevPosition = availableTiles[randomPosition];
-            }
+            } while (prevPosition == chessBoard.GetStartTilePosition());
 
             if (i == queenListPosition)
             {
