@@ -2,16 +2,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-//public enum PieceType
-//{
-//    Rook,
-//    Bishop,
-//    Knight,
-//    Pawn,
-//    King
-//}
-
-
 public class SelectPiece : MonoBehaviour
 {
     [Header("Chess Board Reference")]
@@ -19,7 +9,7 @@ public class SelectPiece : MonoBehaviour
 
     [Header("Other Scripts")]
     [SerializeField] PieceStatus pieceStatus;
-    [SerializeField] chessPuzzleSpawner chessPuzzleSpawner;
+    [SerializeField] ChessPuzzleSpawner chessPuzzleSpawner;
 
   
 
@@ -30,7 +20,7 @@ public class SelectPiece : MonoBehaviour
 
     private void Start()
     {
-        chessPuzzleSpawner = FindAnyObjectByType<chessPuzzleSpawner>();
+        chessPuzzleSpawner = FindAnyObjectByType<ChessPuzzleSpawner>();
         
     }
 
@@ -67,10 +57,6 @@ public class SelectPiece : MonoBehaviour
         }
 
     }
-
-   
-
-   
 
     public GameObject InstantiatePieceOnBoard(Vector3 position, GameObject piecePrefab)
     {

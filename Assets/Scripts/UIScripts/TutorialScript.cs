@@ -10,6 +10,7 @@ public class TutorialScript : MonoBehaviour
     public GameObject tutorial2_1;
     public GameObject tutorial3;
     public GameObject tutorial4;
+    public GameObject tutorial5;
     public Button bishopButton;
     public Button rookButton;
     public Button knightButton;
@@ -25,11 +26,6 @@ public class TutorialScript : MonoBehaviour
     {
         sceneManagement = FindAnyObjectByType<SceneManagement>();
 
-        if (sceneManagement == null)
-        {
-            Debug.LogError("SceneManagement not found in the scene.");
-        }
-
         if (tutorialsCompleted)
         {
             tutorial1.SetActive(false);
@@ -37,6 +33,7 @@ public class TutorialScript : MonoBehaviour
             tutorial2_1.SetActive(false);
             tutorial3.SetActive(false);
             tutorial4.SetActive(false);
+            tutorial5.SetActive(false);
         }
         else
         {
@@ -46,25 +43,33 @@ public class TutorialScript : MonoBehaviour
 
     void Update()
     {
-        if (nextTutorial == 2 && Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
+            if (nextTutorial == 2)
+            {
                 HideTutorial1();
                 ShowTutorial2();
-        }
-        else if (nextTutorial == 3 && Input.GetMouseButtonDown(0))
-        {
-            HideTutorial2();
-            ShowTutorial3();
-        }
-        else if (nextTutorial == 4 && Input.GetMouseButtonDown(0))
-        {
-            HideTutorial3();
-            ShowTutorial4();
-        }
-        else if (nextTutorial == 0 && Input.GetMouseButtonDown(0))
-        {
-            HideTutorial4();
-            tutorialsCompleted = true;
+            }
+            else if (nextTutorial == 3)
+            {
+                HideTutorial2();
+                ShowTutorial3();
+            }
+            else if (nextTutorial == 4)
+            {
+                HideTutorial3();
+                ShowTutorial4();
+            }
+            else if (nextTutorial == 5)
+            {
+                HideTutorial4();
+                ShowTutorial5();
+            }
+            else if (nextTutorial == 0)
+            {
+                HideTutorial5();
+                tutorialsCompleted = true;
+            }
         }
     }
 
@@ -72,11 +77,11 @@ public class TutorialScript : MonoBehaviour
     {
         tutorial1.SetActive(true);
         tutorial1_1.SetActive(true);
-
         tutorial2.SetActive(false);
         tutorial2_1.SetActive(false);
         tutorial3.SetActive(false);
         tutorial4.SetActive(false);
+        tutorial5.SetActive(false);
 
         nextTutorial = 2;
     }
@@ -118,11 +123,22 @@ public class TutorialScript : MonoBehaviour
     void ShowTutorial4()
     {
         tutorial4.SetActive(true);
-        nextTutorial = 0;
+        nextTutorial = 5;
     }
 
     void HideTutorial4()
     {
         tutorial4.SetActive(false);
+    }
+
+    void ShowTutorial5()
+    {
+        tutorial5.SetActive(true);
+        nextTutorial = 0;
+    }
+
+    void HideTutorial5()
+    {
+        tutorial5.SetActive(false);
     }
 }

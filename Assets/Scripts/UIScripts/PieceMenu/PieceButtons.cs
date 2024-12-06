@@ -20,12 +20,17 @@ public class PieceButtons : MonoBehaviour
 
     [Header("UI Setup")]
     [SerializeField] GameObject pieceMenuPanel;
+    [SerializeField] ChessBoard chessBoard;
 
     [Header("Other Scripts")]
-    [SerializeField] chessPuzzleSpawner puzzleSpawner;
-    [SerializeField] PieceButtonMonitor pieceButtonMonitor;
+    [SerializeField] ChessPuzzleSpawner puzzleSpawner;
 
     private List<GameObject> pieceMenuButtonList;
+
+    void Start()
+    {
+        chessBoard = FindAnyObjectByType<ChessBoard>();
+    }
 
     public void CreatePieceMenu(List<GameObject> pieceMenu)
     {
@@ -59,8 +64,6 @@ public class PieceButtons : MonoBehaviour
 
             pieceMenuButtonList.Add(button);
         }
-
-        //pieceButtonMonitor.StartMonitoringPieceButtons(pieceMenuButtonList);
     }
 
     public void ResetPieceMenu()
@@ -71,6 +74,8 @@ public class PieceButtons : MonoBehaviour
         }
 
         GetComponent<SelectPiece>().ResetBoard();
+
+        chessBoard.ResetQueenOnRestart();
     }
 
     private GameObject SpawnPiece(GameObject piecePrefab, GameObject pieceButton)

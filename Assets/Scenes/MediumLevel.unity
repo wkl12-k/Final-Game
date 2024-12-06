@@ -922,6 +922,7 @@ MonoBehaviour:
   knightButtonPrefab: {fileID: 7643512000386898338, guid: 95488fe6193164999879dde4f149e83d, type: 3}
   pawnButtonPrefab: {fileID: 1658675421227699689, guid: a7f4e1fcc68cb48218ce8c4ae9291ffe, type: 3}
   pieceMenuPanel: {fileID: 321533042}
+  chessBoard: {fileID: 0}
   puzzleSpawner: {fileID: 866918119}
 --- !u!224 &397505990
 RectTransform:
@@ -970,17 +971,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7585b3996b27c4bb18659fcc1cc01dc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rookPrefab: {fileID: 1000013351177638, guid: 411f5295934dd1c4eb5916e3c649f0a7, type: 3}
-  bishopPrefab: {fileID: 1000012633253314, guid: 8c44c8a6238ea0148bc07d2371dedc74, type: 3}
-  kingPrefab: {fileID: 1000013427829390, guid: 1700328aaf96fd243a71d862897619a4, type: 3}
-  knightPrefab: {fileID: 1000010201698906, guid: edd10668f6a183d4180f8dc7b94f9e5c, type: 3}
-  pawnPrefab: {fileID: 1000014207659374, guid: 61ed95d5d9afc0842b0c4d0c96678d38, type: 3}
-  rookButton: {fileID: 0}
-  bishopButton: {fileID: 4264253893759355844, guid: 18e5806158a8b4b3ca4bc80bd6b5a15b, type: 3}
-  kingButton: {fileID: 0}
-  knightButton: {fileID: 0}
-  pawnButton: {fileID: 0}
-  chessBoard: {fileID: 1922466476}
 --- !u!114 &397505993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1929,7 +1919,7 @@ MonoBehaviour:
   chessBoard: {fileID: 1922466476}
   sceneManager: {fileID: 2092540771}
   minPieces: 5
-  maxPieces: 6
+  maxPieces: 7
 --- !u!4 &866918120
 Transform:
   m_ObjectHideFlags: 0
@@ -4872,10 +4862,6 @@ MonoBehaviour:
   exitPanel: {fileID: 725417915}
   instructionsPanel: {fileID: 526897672}
   playButton: {fileID: 0}
-  UIelements:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   chessSpawner: {fileID: 866918119}
   pieceButtons: {fileID: 397505989}
 --- !u!4 &2092540772

@@ -8,9 +8,8 @@ public class SceneManagement : MonoBehaviour
     [SerializeField] GameObject exitPanel;
     [SerializeField] GameObject instructionsPanel;
     [SerializeField] GameObject playButton;
-    [SerializeField] GameObject[] UIelements;
 
-    [SerializeField] chessPuzzleSpawner chessSpawner = null;
+    [SerializeField] ChessPuzzleSpawner chessSpawner = null;
     [SerializeField] PieceButtons pieceButtons = null;
 
     private static string lastSceneName;

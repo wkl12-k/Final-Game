@@ -16,9 +16,9 @@ public class chessBoard : MonoBehaviour
     [SerializeField] GameObject endLight;
     private float lightHeight = 1.5f;
 
-    public chessPuzzleSpawner chessPuzzleSpawner;
+    public ChessPuzzleSpawner chessPuzzleSpawner;
 
-    public chessPuzzleSpawner chessSpawner = null;
+    public ChessPuzzleSpawner chessSpawner = null;
     [SerializeField] PieceButtons pieceButtons = null;
 
     [Header("Grid Creation")]
@@ -30,7 +30,7 @@ public class chessBoard : MonoBehaviour
 
     private Vector3 oppQueenPosition;
     private GameObject oppQueen;
-
+    private bool queenDestroyed;
 
 
     private GameObject[,] tiles;
@@ -88,12 +88,19 @@ public class chessBoard : MonoBehaviour
         yield return new WaitForEndOfFrame();
         
             Quaternion uprightRotation = Quaternion.Euler(-90, 90, 0);
-            //oppQueenPosition = new Vector3(UnityEngine.Random.Range(0, 8), 0, UnityEngine.Random.Range(0, 8));
-            //oppQueenPosition = chessPuzzleSpawner.GetQueenPosition();
-         Debug.Log("queen in chess board" + oppQueenPosition);
+            Debug.Log("queen in chess board" + oppQueenPosition);
             oppQueen = Instantiate(oppQueenPrefab, oppQueenPosition, uprightRotation);
             oppQueen.SetActive(true);
         
+        
+    }
+
+    public void ResetQueenOnRestart()
+    {
+        if (oppQueen == null)
+        {
+            StartCoroutine(SetQueenAfterBoardCreated());
+        }
         
     }
 
@@ -108,10 +115,15 @@ public class chessBoard : MonoBehaviour
         {
             Destroy(oppQueen);
             oppQueen = null;
-          
+            queenDestroyed = true;
         }
     }
 
+
+    public bool IsQueenDestroyed()
+    {
+        return queenDestroyed;
+    }
 
    
     public Vector3 GetStartTilePosition()
