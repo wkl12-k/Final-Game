@@ -9,7 +9,7 @@ public class PawnMovement : MonoBehaviour, ChessPieceMovement
     public ChessBoard chessBoard { get; set; }
 
     [SerializeField] PieceStatus pieceStatus;
-    [SerializeField] selectPiece selectPiece;
+    [SerializeField] SelectPiece selectPiece;
     private SceneManagement sceneManagement;
     private MusicManagement musicManagement;
 
@@ -24,7 +24,7 @@ public class PawnMovement : MonoBehaviour, ChessPieceMovement
 
     void Start()
     {
-        selectPiece = FindAnyObjectByType<selectPiece>();
+        selectPiece = FindAnyObjectByType<SelectPiece>();
         chessBoard = FindAnyObjectByType<ChessBoard>();
         pieceStatus = FindAnyObjectByType<PieceStatus>();
         sceneManagement = FindAnyObjectByType<SceneManagement>();

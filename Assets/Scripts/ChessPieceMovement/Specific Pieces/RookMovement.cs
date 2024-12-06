@@ -9,7 +9,7 @@ public class RookMovement : MonoBehaviour, ChessPieceMovement
     public ChessBoard chessBoard { get; set; }
 
     [SerializeField] PieceStatus pieceStatus;
-    [SerializeField] selectPiece selectPiece;
+    [SerializeField] SelectPiece selectPiece;
     private SceneManagement sceneManagement;
     private MusicManagement musicManagement;
     public GameObject oppQueen;
@@ -22,7 +22,7 @@ public class RookMovement : MonoBehaviour, ChessPieceMovement
 
     void Start()
     {
-        selectPiece = FindAnyObjectByType<selectPiece>();
+        selectPiece = FindAnyObjectByType<SelectPiece>();
         chessBoard = FindAnyObjectByType<ChessBoard>();
         pieceStatus = FindAnyObjectByType<PieceStatus>();
         sceneManagement = FindAnyObjectByType<SceneManagement>();

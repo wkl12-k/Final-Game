@@ -12,7 +12,7 @@ using UnityEngine.UI;
 //}
 
 
-public class selectPiece : MonoBehaviour
+public class SelectPiece : MonoBehaviour
 {
     [Header("Chess Board Reference")]
     [SerializeField] ChessBoard chessBoard;
