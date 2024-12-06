@@ -83,7 +83,7 @@ public class BishopMovement : MonoBehaviour, ChessPieceMovement
         pieceStatus.SetPieceStatus(false);
         if (target == chessBoard.EndGoalPosition)
         {
-            if (selectPiece.IsLastPiece() && oppQueen == null)
+            if (selectPiece.IsLastPiece() && chessBoard.IsQueenDestroyed())
             {
                 musicManagement.PlayReachedGoalSound();
                 OnEndGoalReached();

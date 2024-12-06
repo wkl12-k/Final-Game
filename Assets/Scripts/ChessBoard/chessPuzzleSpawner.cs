@@ -140,6 +140,7 @@ public class chessPuzzleSpawner : MonoBehaviour
                 Debug.Log("prev position " + prevPosition + "i " + i);
 
                 chessBoard.setQueenPosition(availableTiles[0]);
+               
             }
 
             int randomPosition = Random.Range(0, availableTiles.Count);
@@ -147,27 +148,10 @@ public class chessPuzzleSpawner : MonoBehaviour
             while (prevPosition == new Vector3(7, 0, 7))
             {
                 prevPosition = availableTiles[randomPosition];
-               
-
-
-                //if (i == setQueenPosition)
-                //{
-                //    Debug.Log("prev position " + prevPosition + "i " + i);
-
-                //    chessBoard.setQueenPosition(prevPosition);
-                //}
-
             }
-            
 
-            //if (i == setQueenPosition)
-            //{
-            //    Debug.Log("prev position " + prevPosition + "i "+i);
 
-            //    chessBoard.setQueenPosition(prevPosition);
-            //}
-
-              i++;
+            i++;
             Debug.Log("prevpositions "+prevPosition);
       
         }

@@ -74,7 +74,7 @@ public class RookMovement : MonoBehaviour, ChessPieceMovement
 
         if (target == chessBoard.EndGoalPosition)
         {
-            if (selectPiece.IsLastPiece() && oppQueen == null)
+            if (selectPiece.IsLastPiece() && chessBoard.IsQueenDestroyed())
             {
                 musicManagement.PlayReachedGoalSound();
                 OnEndGoalReached();

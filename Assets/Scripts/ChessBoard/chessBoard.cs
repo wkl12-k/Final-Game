@@ -30,7 +30,7 @@ public class ChessBoard : MonoBehaviour
 
     private Vector3 oppQueenPosition;
     private GameObject oppQueen;
-
+    private bool queenDestroyed;
 
 
     private GameObject[,] tiles;
@@ -115,10 +115,15 @@ public class ChessBoard : MonoBehaviour
         {
             Destroy(oppQueen);
             oppQueen = null;
-          
+            queenDestroyed = true;
         }
     }
 
+
+    public bool IsQueenDestroyed()
+    {
+        return queenDestroyed;
+    }
 
    
     public Vector3 GetStartTilePosition()
