@@ -60,7 +60,7 @@ public class PieceButtons : MonoBehaviour
             pieceMenuButtonList.Add(button);
         }
 
-        pieceButtonMonitor.StartMonitoringPieceButtons(pieceMenuButtonList);
+        //pieceButtonMonitor.StartMonitoringPieceButtons(pieceMenuButtonList);
     }
 
     public void ResetPieceMenu()
