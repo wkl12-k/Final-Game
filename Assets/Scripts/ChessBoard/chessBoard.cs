@@ -109,7 +109,7 @@ public class ChessBoard : MonoBehaviour
         oppQueenPosition = position;
     }
 
-  public void KillQueen(Vector3 position)
+    public void KillQueen(Vector3 position)
     {
         if (position == oppQueenPosition)
         {
@@ -118,7 +118,6 @@ public class ChessBoard : MonoBehaviour
             queenDestroyed = true;
         }
     }
-
 
     public bool IsQueenDestroyed()
     {

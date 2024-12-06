@@ -86,26 +86,13 @@ public class ChessPuzzleSpawner : MonoBehaviour
 
 
         Vector3 endPosition = chessBoard.GetStartTilePosition();
-
         Vector3 prevPosition = chessBoard.GetStartTilePosition();
-        string prevPieceType = "";
 
         int queenListPosition = Random.Range(0, pieceMenu.Count);
 
-        Debug.Log("queenPos" + queenListPosition);
-        Debug.Log(pieceMenu.Count);
-
-
-        //while (oppQueenPosition == prevPosition || oppQueenPosition == new Vector3(7, 0, 7))
-        //{
-        //    oppQueenPosition = new Vector3(Random.Range(0, 8), 0, Random.Range(0, 8));
-        //    oppQueen = Instantiate(oppQueenPrefab, oppQueenPosition, Quaternion.identity);
-        //}
-
-        int i = 0;
-
-        foreach (GameObject piece in pieceMenu)
+        for (int i = 0; i < pieceMenu.Count; i++)
         {
+            GameObject piece = pieceMenu[i];
 
             if (piece.CompareTag("rook"))
             {
@@ -130,33 +117,28 @@ public class ChessPuzzleSpawner : MonoBehaviour
                 pieceMovement = piece.GetComponent<KnightMovement>();
             }
 
-
-
             List<Vector3> availableTiles = pieceMovement.CheckAvailableMoves(prevPosition);
 
-
-            if (i == queenListPosition)
-            {
-                Debug.Log("prev position " + prevPosition + "i " + i);
-
-                chessBoard.setQueenPosition(availableTiles[0]);
-               
-            }
-
             int randomPosition = Random.Range(0, availableTiles.Count);
+            
+            prevPosition = availableTiles[randomPosition];
 
-            while (prevPosition == new Vector3(7, 0, 7))
+            if (prevPosition == chessBoard.GetStartTilePosition())
             {
+                randomPosition = Random.Range(0, availableTiles.Count);
                 prevPosition = availableTiles[randomPosition];
             }
 
+            if (i == queenListPosition)
+            {
+                chessBoard.setQueenPosition(availableTiles[randomPosition]);
+            }
 
-            i++;
-            Debug.Log("prevpositions "+prevPosition);
-      
         }
+
         endPosition = prevPosition;
         chessBoard.SetEndGoalTile((int)endPosition.x, (int)endPosition.z);
+
     }
 
     public GameObject GetOppQueen()

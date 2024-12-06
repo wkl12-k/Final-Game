@@ -35,7 +35,6 @@ public class SelectPiece : MonoBehaviour
         {
             Vector3 position = lastPlacedPiece != null ? lastPlacedPiece.transform.position : chessBoard.GetStartTilePosition();
 
-          
 
             if (lastPlacedPiece != null)
             {
@@ -61,7 +60,7 @@ public class SelectPiece : MonoBehaviour
     public GameObject InstantiatePieceOnBoard(Vector3 position, GameObject piecePrefab)
     {
        
-            Quaternion uprightRotation = Quaternion.Euler(-90, 90, 0);
+        Quaternion uprightRotation = Quaternion.Euler(-90, 90, 0);
         GameObject piece = Instantiate(piecePrefab, position, uprightRotation);
 
         ChessPieceMovement pieceMovement = piece.GetComponent<ChessPieceMovement>();
