@@ -924,7 +924,6 @@ MonoBehaviour:
   pieceMenuPanel: {fileID: 321533042}
   chessBoard: {fileID: 0}
   puzzleSpawner: {fileID: 866918119}
-  pieceButtonMonitor: {fileID: 0}
 --- !u!224 &397505990
 RectTransform:
   m_ObjectHideFlags: 0
