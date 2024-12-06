@@ -24,7 +24,6 @@ public class PieceButtons : MonoBehaviour
 
     [Header("Other Scripts")]
     [SerializeField] ChessPuzzleSpawner puzzleSpawner;
-    [SerializeField] PieceButtonMonitor pieceButtonMonitor;
 
     private List<GameObject> pieceMenuButtonList;
 
