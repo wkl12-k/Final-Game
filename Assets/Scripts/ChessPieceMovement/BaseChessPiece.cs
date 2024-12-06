@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class BaseChessPiece : MonoBehaviour
 {
-    protected ChessBoard chessBoard;
+    protected chessBoard chessBoard;
 
     protected bool IsValidPosition(Vector3 targetPosition)
     {

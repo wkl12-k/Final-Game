@@ -5,7 +5,7 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 
 
-public class ChessBoard : MonoBehaviour
+public class chessBoard : MonoBehaviour
 {
     public static event Action OnBoardCreated;
     public MusicManagement musicManager;

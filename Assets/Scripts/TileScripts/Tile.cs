@@ -13,7 +13,7 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     private Color endGoalColor = new Color(0.416f, 0.6f, 0.447f); // green
 
     [HideInInspector]
-    public ChessBoard chessBoard;
+    public chessBoard chessBoard;
 
     void Start()
     {
