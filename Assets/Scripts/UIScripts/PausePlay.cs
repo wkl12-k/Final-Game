@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 public class PausePlay : MonoBehaviour
 {
     [SerializeField] GameObject playButton;
@@ -24,5 +25,4 @@ public class PausePlay : MonoBehaviour
         playButton.SetActive(false);
         pauseButton.SetActive(true);
     }
-
 }

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class TutorialScript : MonoBehaviour
 {
     public GameObject tutorial1;
@@ -15,13 +16,10 @@ public class TutorialScript : MonoBehaviour
     public Button kingButton;
     public Button pawnButton;
 
-    private bool isTutorial1Completed = false;
-    private int nextTutorial = 1;
-
-
-    private static bool tutorialsCompleted = false;
-
     private SceneManagement sceneManagement;
+    private bool isTutorial1Completed = false;
+    private static bool tutorialsCompleted = false;
+    private int nextTutorial = 1;
 
     void Awake()
     {
@@ -127,5 +125,4 @@ public class TutorialScript : MonoBehaviour
     {
         tutorial4.SetActive(false);
     }
-
 }
