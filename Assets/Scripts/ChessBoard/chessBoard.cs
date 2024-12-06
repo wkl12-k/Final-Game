@@ -2,7 +2,6 @@ using UnityEngine;
 using System.Collections.Generic;
 using System;
 using System.Collections;
-using UnityEngine.SceneManagement;
 
 
 public class ChessBoard : MonoBehaviour
@@ -44,17 +43,10 @@ public class ChessBoard : MonoBehaviour
         endLight.SetActive(false);
         CreateBoard();
         OnBoardCreated?.Invoke();
-        
 
-        //if (SceneManager.GetActiveScene().name == "TutorialLevel")
-        //{
-        //    StartCoroutine(SetGoalsForTutorialLevel());
-        //}
-
-    if (chessSpawner != null && pieceButtons != null)
+        if (chessSpawner != null && pieceButtons != null)
         {
             StartCoroutine(SetGoalsAfterBoardCreated());
-            //StartCoroutine(SetQueenAfterBoardCreated());
         }
 
 
@@ -163,10 +155,6 @@ public class ChessBoard : MonoBehaviour
 
                 Tile tileComponent = tile.GetComponent<Tile>();
                 tileComponent.chessBoard = this;
-
-               
-
-               
 
                 tiles[x, z] = tile;
             }

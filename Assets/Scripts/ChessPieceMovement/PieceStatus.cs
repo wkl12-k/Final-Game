@@ -1,24 +1,18 @@
 using UnityEngine;
 
 public class PieceStatus : MonoBehaviour
-{
-    private ChessPuzzleSpawner chessPuzzleSpawner;      
-    public bool pieceOnBoard = false; 
+{   
+    public bool moving = false; 
     public bool allowEndGoal = true;  
 
-    void Start()
+    public void SetPieceMoving(bool status)
     {
-        chessPuzzleSpawner = FindObjectOfType<ChessPuzzleSpawner>();  
-    }
-
-    public void SetPieceStatus(bool status)
-    {
-        pieceOnBoard = status;
+        moving = status;
         
     }
 
-    public bool GetPieceStatus()
+    public bool IsPieceMoving()
     {
-        return pieceOnBoard;
+        return moving;
     }
 }

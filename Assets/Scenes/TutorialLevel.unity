@@ -4900,8 +4900,8 @@ MonoBehaviour:
   knightButtonPrefab: {fileID: 7643512000386898338, guid: 95488fe6193164999879dde4f149e83d, type: 3}
   pawnButtonPrefab: {fileID: 1658675421227699689, guid: a7f4e1fcc68cb48218ce8c4ae9291ffe, type: 3}
   pieceMenuPanel: {fileID: 315805623}
+  chessBoard: {fileID: 0}
   puzzleSpawner: {fileID: 537478971}
-  pieceButtonMonitor: {fileID: 0}
 --- !u!114 &1597341336
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -31,7 +30,7 @@ public class SelectPiece : MonoBehaviour
             pieceButton.interactable = false;  
             return;  
         }
-        if (!pieceStatus.GetPieceStatus())  
+        if (!pieceStatus.IsPieceMoving())  
         {
             Vector3 position = lastPlacedPiece != null ? lastPlacedPiece.transform.position : chessBoard.GetStartTilePosition();
 
@@ -43,7 +42,7 @@ public class SelectPiece : MonoBehaviour
             }
 
             lastPlacedPiece = InstantiatePieceOnBoard(position, piecePrefab);
-            pieceStatus.SetPieceStatus(true);   
+            pieceStatus.SetPieceMoving(true);   
 
             pieceButton.interactable = false;
 

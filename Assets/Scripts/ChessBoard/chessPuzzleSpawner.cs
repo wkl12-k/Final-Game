@@ -12,16 +12,11 @@ public class ChessPuzzleSpawner : MonoBehaviour
     [SerializeField] GameObject pawnPrefab;
     [SerializeField] GameObject oppQueenPrefab;
 
-    private Vector3 oppQueenPosition;
     private GameObject oppQueen;
-
-
-  
 
     private int totalPieces;
     private int pawnCount=0;
     private int kingCount=0;
-    private int otherPieceCount=0;
 
 
     [Header("Other Components")]
@@ -85,10 +80,10 @@ public class ChessPuzzleSpawner : MonoBehaviour
         CreatePieceMenu();
 
 
-        Vector3 endPosition = chessBoard.GetStartTilePosition();
+        Vector3 endPosition; 
         Vector3 prevPosition = chessBoard.GetStartTilePosition();
 
-        int queenListPosition = Random.Range(0, pieceMenu.Count);
+        int queenListPosition = Random.Range(0, pieceMenu.Count-1);
 
         for (int i = 0; i < pieceMenu.Count; i++)
         {
@@ -120,13 +115,15 @@ public class ChessPuzzleSpawner : MonoBehaviour
             List<Vector3> availableTiles = pieceMovement.CheckAvailableMoves(prevPosition);
 
             int randomPosition;
-           
+
 
             do
             {
                 randomPosition = Random.Range(0, availableTiles.Count);
                 prevPosition = availableTiles[randomPosition];
+
             } while (prevPosition == chessBoard.GetStartTilePosition());
+
 
             if (i == queenListPosition)
             {
@@ -156,11 +153,4 @@ public class ChessPuzzleSpawner : MonoBehaviour
         return totalPieces;
     }
 
-    //public Vector3 GetQueenPosition()
-    //{
-
-        
-    //    Debug.Log("queen in chess puzzle spawner" + oppQueenPosition);
-    //    return queenPosition;
-    //}
 }

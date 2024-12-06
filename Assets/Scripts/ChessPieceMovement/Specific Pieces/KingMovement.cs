@@ -76,7 +76,7 @@ public class KingMovement : MonoBehaviour, ChessPieceMovement
         transform.position = target;
         chessBoard.KillQueen(target);
         isMoving = false;
-        pieceStatus.SetPieceStatus(false);
+        pieceStatus.SetPieceMoving(false);
 
         if (target == chessBoard.EndGoalPosition)
         {

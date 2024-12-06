@@ -1,7 +1,5 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections.Generic;
-
 
 public class SceneManagement : MonoBehaviour
 {
@@ -94,7 +92,7 @@ public class SceneManagement : MonoBehaviour
     {
         pieceButtons.ResetPieceMenu();
         PieceStatus pieceStatus = FindAnyObjectByType<PieceStatus>();
-        pieceStatus.SetPieceStatus(false);
+        pieceStatus.SetPieceMoving(false);
         selectPiece.ResetBoard();
     }
 }

@@ -73,7 +73,7 @@ public class KnightMovement : MonoBehaviour, ChessPieceMovement
 
         chessBoard.KillQueen(target);
         isMoving = false;
-        pieceStatus.SetPieceStatus(false);
+        pieceStatus.SetPieceMoving(false);
         if (target == chessBoard.EndGoalPosition)
         {
             if (selectPiece.IsLastPiece() && chessBoard.IsQueenDestroyed())
