@@ -27,7 +27,7 @@ public class ChessPuzzleSpawner : MonoBehaviour
 
     [Header("Other Components")]
     [SerializeField] ChessPieceMovement pieceMovement;
-    [SerializeField] ChessBoard chessBoard;
+    [SerializeField] chessBoard chessBoard;
     [SerializeField] SceneManagement sceneManager;
 
     [Header("Difficulty Indicator")]
