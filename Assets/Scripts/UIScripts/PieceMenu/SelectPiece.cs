@@ -2,16 +2,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-//public enum PieceType
-//{
-//    Rook,
-//    Bishop,
-//    Knight,
-//    Pawn,
-//    King
-//}
-
-
 public class SelectPiece : MonoBehaviour
 {
     [Header("Chess Board Reference")]
@@ -67,10 +57,6 @@ public class SelectPiece : MonoBehaviour
         }
 
     }
-
-   
-
-   
 
     public GameObject InstantiatePieceOnBoard(Vector3 position, GameObject piecePrefab)
     {
