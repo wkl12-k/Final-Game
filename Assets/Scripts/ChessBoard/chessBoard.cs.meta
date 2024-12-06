@@ -4,8 +4,14 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
+  - musicManager: {instanceID: 0}
   - whiteBoardTile: {fileID: 87067673436362835, guid: 923c128ca03994ad08b22c212d2de687, type: 3}
   - blackBoardTile: {fileID: 8973000590598736865, guid: 62a2c255d3d3f4602abaa55edb163912, type: 3}
+  - endLight: {instanceID: 0}
+  - chessPuzzleSpawner: {instanceID: 0}
+  - chessSpawner: {instanceID: 0}
+  - pieceButtons: {instanceID: 0}
+  - oppQueenPrefab: {fileID: 1000011613667446, guid: c9476b5c23fb4634485fcb52734c04d5, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

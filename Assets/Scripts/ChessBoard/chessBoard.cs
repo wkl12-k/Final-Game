@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
+
 public class ChessBoard : MonoBehaviour
 {
     public static event Action OnBoardCreated;
@@ -25,6 +26,11 @@ public class ChessBoard : MonoBehaviour
     [SerializeField] private int tileSize = 1;
     [SerializeField] private float y = 0.1f;
 
+    [SerializeField] GameObject oppQueenPrefab;
+
+    private Vector3 oppQueenPosition;
+    private GameObject oppQueen;
+
 
 
     private GameObject[,] tiles;
@@ -38,6 +44,7 @@ public class ChessBoard : MonoBehaviour
         endLight.SetActive(false);
         CreateBoard();
         OnBoardCreated?.Invoke();
+        
 
         //if (SceneManager.GetActiveScene().name == "TutorialLevel")
         //{
@@ -47,7 +54,10 @@ public class ChessBoard : MonoBehaviour
     if (chessSpawner != null && pieceButtons != null)
         {
             StartCoroutine(SetGoalsAfterBoardCreated());
+            //StartCoroutine(SetQueenAfterBoardCreated());
         }
+
+
     }
 
     private IEnumerator SetGoalsAfterBoardCreated()
@@ -61,6 +71,7 @@ public class ChessBoard : MonoBehaviour
 
         List<GameObject> pieceMenu = chessSpawner.GetPieceMenu();
         pieceButtons.CreatePieceMenu(pieceMenu);
+        StartCoroutine(SetQueenAfterBoardCreated());
     }
 
     private IEnumerator SetGoalsForTutorialLevel()
@@ -75,14 +86,34 @@ public class ChessBoard : MonoBehaviour
     private IEnumerator SetQueenAfterBoardCreated()
     {
         yield return new WaitForEndOfFrame();
-
-        SetStartTile(7, 7);
-        chessSpawner.CreateEndGoal();
-
-        List<GameObject> pieceMenu = chessSpawner.GetPieceMenu();
-        pieceButtons.CreatePieceMenu(pieceMenu);
+        
+            Quaternion uprightRotation = Quaternion.Euler(-90, 90, 0);
+            //oppQueenPosition = new Vector3(UnityEngine.Random.Range(0, 8), 0, UnityEngine.Random.Range(0, 8));
+            //oppQueenPosition = chessPuzzleSpawner.GetQueenPosition();
+         Debug.Log("queen in chess board" + oppQueenPosition);
+            oppQueen = Instantiate(oppQueenPrefab, oppQueenPosition, uprightRotation);
+            oppQueen.SetActive(true);
+        
+        
     }
 
+    public void setQueenPosition(Vector3 position)
+    {
+        oppQueenPosition = position;
+    }
+
+  public void KillQueen(Vector3 position)
+    {
+        if (position == oppQueenPosition)
+        {
+            Destroy(oppQueen);
+            oppQueen = null;
+          
+        }
+    }
+
+
+   
     public Vector3 GetStartTilePosition()
     {
         if (tiles != null && tiles[7, 7] != null)

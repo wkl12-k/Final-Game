@@ -14,6 +14,10 @@ public class chessPuzzleSpawner : MonoBehaviour
 
     private Vector3 oppQueenPosition;
     private GameObject oppQueen;
+
+
+  
+
     private int totalPieces;
     private int pawnCount=0;
     private int kingCount=0;
@@ -30,6 +34,7 @@ public class chessPuzzleSpawner : MonoBehaviour
     [SerializeField] int maxPieces = 8;
 
     private List<GameObject> pieceMenu;
+    private Vector3 queenPosition;
 
     List<GameObject> CreatePieceMenu()
     {
@@ -75,157 +80,105 @@ public class chessPuzzleSpawner : MonoBehaviour
     }
 
 
-    //public void CreateEndGoal()
-    //{
-    //    CreatePieceMenu();
-
-
-    //    Vector3 endPosition = chessBoard.GetStartTilePosition();
-
-    //    Vector3 prevPosition = chessBoard.GetStartTilePosition();
-    //    string prevPieceType = "";
-
-
-    //    //while (oppQueenPosition == prevPosition || oppQueenPosition == new Vector3(7, 0, 7))
-    //    //{
-    //    //    oppQueenPosition = new Vector3(Random.Range(0, 8), 0, Random.Range(0, 8));
-    //    //    oppQueen = Instantiate(oppQueenPrefab, oppQueenPosition, Quaternion.identity);
-    //    //}
-
-
-    //    foreach (GameObject piece in pieceMenu)
-    //    {
-
-    //        if (piece.CompareTag("rook"))
-    //        {
-    //            pieceMovement = piece.GetComponent<RookMovement>();
-    //        }
-    //        else if (piece.CompareTag("king"))
-    //        {
-    //            pieceMovement = piece.GetComponent<KingMovement>();
-    //        }
-    //        else if (piece.CompareTag("bishop"))
-    //        {
-    //            pieceMovement = piece.GetComponent<BishopMovement>();
-    //        }
-    //        else if (piece.CompareTag("pawn"))
-    //        {
-
-    //            pieceMovement = piece.GetComponent<PawnMovement>();
-
-    //        }
-    //        else if (piece.CompareTag("knight"))
-    //        {
-    //            pieceMovement = piece.GetComponent<KnightMovement>();
-    //        }
-
-
-
-    //        List<Vector3> availableTiles = pieceMovement.CheckAvailableMoves(prevPosition);
-
-
-
-    //        int randomPosition = Random.Range(0, availableTiles.Count);
-
-    //        while(prevPosition == new Vector3(7,0,7))
-    //        prevPosition = availableTiles[randomPosition];
-
-
-
-    //        Debug.Log(prevPosition.ToString());
-
-    //    }
-    //    endPosition = prevPosition;
-    //    chessBoard.SetEndGoalTile((int)endPosition.x, (int)endPosition.z);
-    //}
-
     public void CreateEndGoal()
     {
         CreatePieceMenu();
 
+
         Vector3 endPosition = chessBoard.GetStartTilePosition();
+
         Vector3 prevPosition = chessBoard.GetStartTilePosition();
         string prevPieceType = "";
 
-        // Debug log when the piece menu is created
-        Debug.Log("Piece Menu Created with " + pieceMenu.Count + " pieces.");
+        int queenListPosition = Random.Range(0, pieceMenu.Count);
+
+        Debug.Log("queenPos" + queenListPosition);
+        Debug.Log(pieceMenu.Count);
+
+
+        //while (oppQueenPosition == prevPosition || oppQueenPosition == new Vector3(7, 0, 7))
+        //{
+        //    oppQueenPosition = new Vector3(Random.Range(0, 8), 0, Random.Range(0, 8));
+        //    oppQueen = Instantiate(oppQueenPrefab, oppQueenPosition, Quaternion.identity);
+        //}
+
+        int i = 0;
 
         foreach (GameObject piece in pieceMenu)
         {
-            // Debug log which piece is currently being processed
-            Debug.Log("Processing piece: " + piece.name);
 
             if (piece.CompareTag("rook"))
             {
                 pieceMovement = piece.GetComponent<RookMovement>();
-                Debug.Log("Piece is Rook.");
             }
             else if (piece.CompareTag("king"))
             {
                 pieceMovement = piece.GetComponent<KingMovement>();
-                Debug.Log("Piece is King.");
             }
             else if (piece.CompareTag("bishop"))
             {
                 pieceMovement = piece.GetComponent<BishopMovement>();
-                Debug.Log("Piece is Bishop.");
             }
             else if (piece.CompareTag("pawn"))
             {
+
                 pieceMovement = piece.GetComponent<PawnMovement>();
-                Debug.Log("Piece is Pawn.");
+
             }
             else if (piece.CompareTag("knight"))
             {
                 pieceMovement = piece.GetComponent<KnightMovement>();
-                Debug.Log("Piece is Knight.");
             }
 
-            // Get available moves
+
+
             List<Vector3> availableTiles = pieceMovement.CheckAvailableMoves(prevPosition);
 
-            // Debug log the available moves
-            if (availableTiles.Count > 0)
+
+            if (i == queenListPosition)
             {
-                Debug.Log("Available moves for " + piece.name + ":");
-                foreach (Vector3 move in availableTiles)
-                {
-                    Debug.Log("  " + move.ToString());
-                }
-            }
-            else
-            {
-                Debug.Log("No available moves for " + piece.name);
+                Debug.Log("prev position " + prevPosition + "i " + i);
+
+                chessBoard.setQueenPosition(availableTiles[0]);
             }
 
-            // Randomly select a position
             int randomPosition = Random.Range(0, availableTiles.Count);
 
-            // Debug log the randomly selected position
-            Debug.Log("Randomly selected position: " + availableTiles[randomPosition].ToString());
-
-            // Prevent selecting certain positions like (7,0,7)
             while (prevPosition == new Vector3(7, 0, 7))
             {
                 prevPosition = availableTiles[randomPosition];
-                Debug.Log("Selected position was (7,0,7), trying again: " + prevPosition.ToString());
+               
+
+
+                //if (i == setQueenPosition)
+                //{
+                //    Debug.Log("prev position " + prevPosition + "i " + i);
+
+                //    chessBoard.setQueenPosition(prevPosition);
+                //}
+
             }
+            
 
-            prevPosition = availableTiles[randomPosition];
+            //if (i == setQueenPosition)
+            //{
+            //    Debug.Log("prev position " + prevPosition + "i "+i);
 
-            // Debug log the final chosen position for the piece
-            Debug.Log("Final chosen position for " + piece.name + ": " + prevPosition.ToString());
+            //    chessBoard.setQueenPosition(prevPosition);
+            //}
+
+              i++;
+            Debug.Log("prevpositions "+prevPosition);
+      
         }
-
-        // Set the end position on the chess board
         endPosition = prevPosition;
         chessBoard.SetEndGoalTile((int)endPosition.x, (int)endPosition.z);
-
-        // Debug log the final end position
-        Debug.Log("End position set at: " + endPosition.ToString());
     }
 
-
+    public GameObject GetOppQueen()
+    {
+        return oppQueen;
+    }
 
 
     public List<GameObject> GetPieceMenu()
@@ -237,4 +190,12 @@ public class chessPuzzleSpawner : MonoBehaviour
     {
         return totalPieces;
     }
+
+    //public Vector3 GetQueenPosition()
+    //{
+
+        
+    //    Debug.Log("queen in chess puzzle spawner" + oppQueenPosition);
+    //    return queenPosition;
+    //}
 }

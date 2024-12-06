@@ -14,11 +14,11 @@ public class SceneManagement : MonoBehaviour
     [SerializeField] PieceButtons pieceButtons = null;
 
     private static string lastSceneName;
-    private SelectPiece selectPiece;
+    private selectPiece selectPiece;
 
     void Update()
     {
-        selectPiece = FindAnyObjectByType<SelectPiece>();
+        selectPiece = FindAnyObjectByType<selectPiece>();
     }
 
     public string GetCurrentScene()

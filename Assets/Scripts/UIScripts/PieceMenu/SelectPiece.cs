@@ -12,7 +12,7 @@ using UnityEngine.UI;
 //}
 
 
-public class SelectPiece : MonoBehaviour
+public class selectPiece : MonoBehaviour
 {
     [Header("Chess Board Reference")]
     [SerializeField] ChessBoard chessBoard;
@@ -21,20 +21,31 @@ public class SelectPiece : MonoBehaviour
     [SerializeField] PieceStatus pieceStatus;
     [SerializeField] chessPuzzleSpawner chessPuzzleSpawner;
 
+  
+
     private GameObject lastPlacedPiece;
     private int counter;
     private bool lastPiece = false;
+    private bool kingSafe=false;
 
     private void Start()
     {
         chessPuzzleSpawner = FindAnyObjectByType<chessPuzzleSpawner>();
+        
     }
 
     public void PieceSelected(GameObject piecePrefab, Button pieceButton)
     {
+        if (piecePrefab.CompareTag("king") && kingSafe)
+        {
+            pieceButton.interactable = false;  
+            return;  
+        }
         if (!pieceStatus.GetPieceStatus())  
         {
             Vector3 position = lastPlacedPiece != null ? lastPlacedPiece.transform.position : chessBoard.GetStartTilePosition();
+
+          
 
             if (lastPlacedPiece != null)
             {
@@ -57,9 +68,14 @@ public class SelectPiece : MonoBehaviour
 
     }
 
+   
+
+   
+
     public GameObject InstantiatePieceOnBoard(Vector3 position, GameObject piecePrefab)
     {
-        Quaternion uprightRotation = Quaternion.Euler(-90, 90, 0);
+       
+            Quaternion uprightRotation = Quaternion.Euler(-90, 90, 0);
         GameObject piece = Instantiate(piecePrefab, position, uprightRotation);
 
         ChessPieceMovement pieceMovement = piece.GetComponent<ChessPieceMovement>();
@@ -82,6 +98,8 @@ public class SelectPiece : MonoBehaviour
         {
             lastPlacedPiece.GetComponent<ShowAvailableTiles>().DestroyTileLights();
         }
+
+        kingSafe = false;
 
     }
 

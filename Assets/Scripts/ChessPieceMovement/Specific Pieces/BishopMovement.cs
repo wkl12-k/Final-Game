@@ -9,9 +9,11 @@ public class BishopMovement : MonoBehaviour, ChessPieceMovement
     public ChessBoard chessBoard { get; set; }
 
     [SerializeField] PieceStatus pieceStatus;
-    [SerializeField] SelectPiece selectPiece;
+    [SerializeField] selectPiece selectPiece;
     private SceneManagement sceneManagement;
     private MusicManagement musicManagement;
+
+    public GameObject oppQueen;
 
     private bool hasMoved = false;
 
@@ -25,7 +27,7 @@ public class BishopMovement : MonoBehaviour, ChessPieceMovement
 
     void Start()
     {
-        selectPiece = FindAnyObjectByType<SelectPiece>();
+        selectPiece = FindAnyObjectByType<selectPiece>();
         chessBoard = FindAnyObjectByType<ChessBoard>();
         pieceStatus = FindAnyObjectByType<PieceStatus>();
         sceneManagement = FindAnyObjectByType<SceneManagement>();
@@ -76,11 +78,12 @@ public class BishopMovement : MonoBehaviour, ChessPieceMovement
         }
 
         transform.position = target;
+        chessBoard.KillQueen(target);
         isMoving = false;
         pieceStatus.SetPieceStatus(false);
         if (target == chessBoard.EndGoalPosition)
         {
-            if (selectPiece.IsLastPiece())
+            if (selectPiece.IsLastPiece() && oppQueen == null)
             {
                 musicManagement.PlayReachedGoalSound();
                 OnEndGoalReached();

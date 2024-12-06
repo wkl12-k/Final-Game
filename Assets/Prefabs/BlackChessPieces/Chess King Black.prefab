@@ -100,7 +100,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 074f2d0c62d4841bb8c545fdff996681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pieceSpeed: 3
+  pieceStatus: {fileID: 0}
+  selectPiece: {fileID: 0}
+  oppQueen: {fileID: 1000011613667446, guid: c9476b5c23fb4634485fcb52734c04d5, type: 3}
 --- !u!114 &8597673304567974555
 MonoBehaviour:
   m_ObjectHideFlags: 0
