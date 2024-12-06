@@ -80,7 +80,6 @@ public class ChessBoard : MonoBehaviour
         yield return new WaitForEndOfFrame();
         
             Quaternion uprightRotation = Quaternion.Euler(-90, 90, 0);
-            Debug.Log("queen in chess board" + oppQueenPosition);
             oppQueen = Instantiate(oppQueenPrefab, oppQueenPosition, uprightRotation);
             oppQueen.SetActive(true);
         

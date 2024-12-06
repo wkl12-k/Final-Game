@@ -33,7 +33,6 @@ public class TutorialScript : MonoBehaviour
             tutorial2_1.SetActive(false);
             tutorial3.SetActive(false);
             tutorial4.SetActive(false);
-            tutorial5.SetActive(false);
         }
         else
         {
@@ -63,11 +62,9 @@ public class TutorialScript : MonoBehaviour
             else if (nextTutorial == 5)
             {
                 HideTutorial4();
-                ShowTutorial5();
             }
             else if (nextTutorial == 0)
             {
-                HideTutorial5();
                 tutorialsCompleted = true;
             }
         }
@@ -81,7 +78,6 @@ public class TutorialScript : MonoBehaviour
         tutorial2_1.SetActive(false);
         tutorial3.SetActive(false);
         tutorial4.SetActive(false);
-        tutorial5.SetActive(false);
 
         nextTutorial = 2;
     }
@@ -123,22 +119,11 @@ public class TutorialScript : MonoBehaviour
     void ShowTutorial4()
     {
         tutorial4.SetActive(true);
-        nextTutorial = 5;
+        nextTutorial = 0;
     }
 
     void HideTutorial4()
     {
         tutorial4.SetActive(false);
-    }
-
-    void ShowTutorial5()
-    {
-        tutorial5.SetActive(true);
-        nextTutorial = 0;
-    }
-
-    void HideTutorial5()
-    {
-        tutorial5.SetActive(false);
     }
 }
